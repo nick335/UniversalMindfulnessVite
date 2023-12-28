@@ -1,0 +1,15 @@
+.sponsor1{
+  @apply w-[3.85713rem] h-[3.375rem];
+}
+.sponsor2{
+  @apply w-[2.47306rem] h-[3.375rem];
+}
+.sponsor3{
+  @apply w-[2.9605rem] h-[3.375rem];
+}
+.sponsor4{
+  @apply w-[3.2895rem] h-[3.375rem];
+}
+.sponsor5{
+  @apply w-[6.84375rem] h-[2.53125rem];
+}

@@ -7,7 +7,7 @@ function App() {
   return (
     <main className=' font-lato text-textSecondary'>
       <Header />
-      <div className='mx-4'>
+      <div className=''>
         <Outlet />
       </div>
       <Footer />
