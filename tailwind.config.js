@@ -9,6 +9,7 @@ export default {
       fontFamily: {
         'lato': ['Lato', 'sans-serif'],
         'inter': ['Inter', 'sans-serif'],
+        'dmSans': ['DM Sans', 'sans-serif']
       },
       colors:{
         linkPrimary: '#527BBD',
@@ -16,13 +17,15 @@ export default {
         textSecondary: '#333',
         headerPrimary: '#FC5704',
         headerSecondary: '#527BBD',
-        bgPrimary: '#FC5704',
-        btnPrimary: '#527BBD',
-        bgSubHeader: '#F2F7FF',
-        footerBg: '#152848',
+        headerPopularBlog: '#0D60D8',
         footerText: '#FC5704',
-        inputBorder: 'rgba(255, 255, 255, 0.08)',
+        bgPrimary: '#FC5704',
+        footerBg: '#152848',
         inputBg: 'rgba(255, 255, 255, 0.05)',
+        bgSubHeader: '#F2F7FF',
+        bgBlogBox: '#F9F9F9',
+        btnPrimary: '#527BBD',
+        inputBorder: 'rgba(255, 255, 255, 0.08)',
         formBorder: 'rgba(3, 33, 37, 0.10)',
         formLabel: '#032125',
         eventText: '#060809',

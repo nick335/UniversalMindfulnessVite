@@ -11,6 +11,8 @@ import Home from './pages/Home.tsx'
 import ContactUs from './pages/ContactUs.tsx'
 import MeetTheTeam from './pages/MeetTheTeam.tsx'
 import Events from './pages/Events.tsx'
+import Blog from './pages/Blog.tsx'
+import Shop from './pages/Shop.tsx'
 
 
 const router = createBrowserRouter([
@@ -34,6 +36,14 @@ const router = createBrowserRouter([
       {
         path: '/events',
         element: <Events />
+      },
+      {
+        path: '/blog',
+        element: <Blog />
+      },
+      {
+        path:'/shop',
+        element: <Shop />
       }
     ]
   }
