@@ -22,7 +22,10 @@ export default {
         footerBg: '#152848',
         footerText: '#FC5704',
         inputBorder: 'rgba(255, 255, 255, 0.08)',
-        inputBg: 'rgba(255, 255, 255, 0.05)'
+        inputBg: 'rgba(255, 255, 255, 0.05)',
+        formBorder: 'rgba(3, 33, 37, 0.10)',
+        formLabel: '#032125',
+        eventText: '#060809',
       },
       keyframes: {
         infiniteImageScroll: {

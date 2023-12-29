@@ -11,6 +11,7 @@ const PageTransition = ({ children }: props) => {
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
+      className="mt-[2.29rem] text-textSecondary mx-4  lg:w-[90%] lg:mx-auto"
     >
       {children}
     </motion.main>

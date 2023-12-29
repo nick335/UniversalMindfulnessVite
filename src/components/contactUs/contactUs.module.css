@@ -1,0 +1,18 @@
+.paraSpacing{
+  @apply mt-[0.81rem]
+}
+.paraHighlight{
+  @apply font-bold text-[1.13781rem] lg:text-lg xl:text-xl text-headerPrimary;
+}
+.formInput{
+  @apply outline-none border border-formBorder rounded-[0.25rem] w-full py-[7px] px-2
+}
+.formLabel{
+  @apply text-base font-lato text-formLabel;
+}
+.inputDiv{
+  @apply flex flex-col gap-y-2 mb-6;
+}
+.divContainer{
+  @apply lg:flex gap-x-6;
+}
