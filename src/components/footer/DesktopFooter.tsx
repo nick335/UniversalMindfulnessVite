@@ -6,7 +6,7 @@ import FooterSponsorLogo from "./FooterSponsorLogo"
 const DesktopFooter = () => {
 
   return (
-    <div className='max-w-[80%] w-[80%] mx-auto text-sm'>
+    <div className='max-w-[80%] w-[80%] mx-auto text-sm hidden lg:block'>
       <div className="flex items-start justify-between">
         <div>
           <FooterNewsLetter />

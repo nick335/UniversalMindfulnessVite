@@ -1,17 +1,18 @@
 import data from "./sponsorsData"
+import Marquee from 'react-fast-marquee';
 
 const SlidingImages = () => {
   const slidingImages = data.map((each, idx) => {
-    return <img key={idx} src={each.img} alt="sponsorImg" className={`${each.style} object-fill`} />
+    return <img key={idx} src={each.img} alt="sponsorImg" className={`${each.style} object-fill mr-14`} />
   })  
   return (
-    <div className='w-full overflow-hidden flex whitespace-nowrap transition-all duration-1000 ease-linear'>
-      <div className='flex items-center gap-x-14 animate-infiniteImageScroll '>
-            {slidingImages}
-            {slidingImages}
-            {slidingImages}
-      </div>
-    </div>
+    <Marquee
+      className='flex items-center'
+      pauseOnHover={true}
+      pauseOnClick={true}
+    >
+      {slidingImages}
+    </Marquee>
   )
 }
 

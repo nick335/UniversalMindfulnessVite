@@ -18,6 +18,15 @@
   .flexCenter{
     @apply flex items-center justify-center;
   }
+  .layout{
+    @apply
+  }
+  .navLayout{
+    @apply px-6 ;
+  }
+  .btn3{
+    @apply outline-none font-inter rounded-[0.32419rem] border;
+  }
 }
 
 *{
@@ -28,6 +37,3 @@
 body {
   min-height: 100vh;
 }
-
-
-

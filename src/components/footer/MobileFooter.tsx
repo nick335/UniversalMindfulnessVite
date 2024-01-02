@@ -5,7 +5,7 @@ import FooterSocials from './FooterSocials'
 
 const MobileFooter = () => {
   return (
-    <div className='text-sm flex flex-col gap-y-4'>
+    <div className='text-sm flex flex-col gap-y-4 lg:hidden'>
       <ul className='text-center flex flex-col gap-y-4'>
         <li>About</li>
         <li>Solutions</li>
