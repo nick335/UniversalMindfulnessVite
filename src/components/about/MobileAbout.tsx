@@ -2,7 +2,6 @@
 const MobileAbout = () => {
   return (
     <div>
-      
     </div>
   )
 }

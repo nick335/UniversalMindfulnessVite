@@ -5,7 +5,7 @@ import Subheader from "../components/utility/subHeaders/Subheader"
 
 const MeetTheTeam = () => {
   return (
-    <PageTransition>
+    <PageTransition layout='layout'>
       <Subheader header='Meet the Team' />
       <PageHeaderSection 
         header='Meet the Team: The right skills, the right people.'

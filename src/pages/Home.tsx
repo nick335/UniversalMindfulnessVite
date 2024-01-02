@@ -7,7 +7,7 @@ import PageTransition from '../components/utility/motion/PageTransition'
 
 const Home = () => {
   return (
-    <PageTransition >
+    <PageTransition layout='layout'>
         <Hero />
         <Sponsor />
         <OurServices />

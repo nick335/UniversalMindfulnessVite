@@ -5,7 +5,7 @@ import Event from '../components/events/Event'
 
 const Events = () => {
   return (
-    <PageTransition>
+    <PageTransition layout='layout'>
       <Subheader header='Events' />
       <PageHeaderSection 
         header='Providing emotional intelligence and mindfulness in adults and kids.'

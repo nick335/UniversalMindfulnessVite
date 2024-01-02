@@ -15,6 +15,7 @@ import Blog from './pages/Blog.tsx'
 import Shop from './pages/Shop.tsx'
 import ShopItemDescription from './pages/ShopItemDescription.tsx'
 import About from './pages/About.tsx'
+import WhatWeOffer from './pages/WhatWeOffer.tsx'
 
 
 const router = createBrowserRouter([
@@ -54,6 +55,10 @@ const router = createBrowserRouter([
       {
         path:'/about',
         element: <About />
+      },
+      {
+        path: '/whatweoffer',
+        element: <WhatWeOffer />
       }
     ]
   }

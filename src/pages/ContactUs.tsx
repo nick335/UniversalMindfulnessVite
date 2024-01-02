@@ -5,7 +5,7 @@ import styles from '../components/contactUs/contactUs.module.css'
 
 const ContactUs = () => {
   return (
-    <PageTransition>
+    <PageTransition layout="layout">
       <div className="lg:mb-32">
         <Subheader header='Contact Us' />
         <section className="mt-8 lg:flex lg:gap-x-32 xl:gap-x-40 lg:mt-10">

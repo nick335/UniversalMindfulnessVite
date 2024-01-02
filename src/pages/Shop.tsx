@@ -5,7 +5,7 @@ import ShopItem from '../components/shop/ShopItem'
 
 const Shop = () => {
   return (
-    <PageTransition>
+    <PageTransition layout='layout'>
       <Subheader header='Shop' />
       <PageHeaderSection 
         header='Bling for a Cause: Buy Bracelets, Support Charity'

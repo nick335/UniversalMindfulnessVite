@@ -1,11 +1,11 @@
-import Nav from "../components/utility/CustomDisclosure/Nav"
+import CustomAboutAccordion from "../components/about/CustomAboutAccordion"
 import PageTransition from "../components/utility/motion/PageTransition"
 import PageHeaderSection from "../components/utility/subHeaders/PageHeaderSection"
 import Subheader from "../components/utility/subHeaders/Subheader"
 
 const About = () => {
   return (
-    <PageTransition>
+    <PageTransition layout="none">
       <Subheader header='About Us' />
       <PageHeaderSection 
         header='The world’s destination for emotional intelligence'
@@ -13,7 +13,7 @@ const About = () => {
         max="41.75"
       />
       <section className="mt-[2.43rem]">
-        <Nav />
+       <CustomAboutAccordion />
       </section>
     </PageTransition>
   )

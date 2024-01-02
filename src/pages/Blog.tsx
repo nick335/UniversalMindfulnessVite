@@ -6,7 +6,7 @@ import Subheader from "../components/utility/subHeaders/Subheader"
 
 const Blog = () => {
   return (
-    <PageTransition>
+    <PageTransition layout="layout">
       <Subheader header="Mindfulness Blog" />
       <section className="flex flex-col-reverse mt-12 lg:flex-col lg:mb-32">
         <div className="lg:flex lg:gap-x-12 lg:mb-16">

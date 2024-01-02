@@ -5,7 +5,7 @@ import ItemDescriptionContent from '../components/shop/ItemDescriptionContent'
 
 const ShopItemDescription = () => {
   return (
-    <PageTransition>
+    <PageTransition layout='layout'>
       <Subheader header='Shop' />
       <section className='mt-8'>
         <ItemDescriptionImages />
