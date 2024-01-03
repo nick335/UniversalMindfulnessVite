@@ -13,7 +13,6 @@ const MenuLI = ({ name, href, }: navLi) => {
     setHasInteracted(false)
     toggleMenu()
   }
-  console.log(pathName)
   return (
     <li className=" border-b pb-[0.8rem] border-b-navLiBorder lg:pb-0 lg:border-b-0">
       <Link to={href} onClick={closeModal}>

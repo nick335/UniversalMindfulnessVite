@@ -16,7 +16,8 @@ const ItemDescriptionImages = () => {
     setIndex(idx)
   }
   const slideControls = Images.map((each, idx) => {
-    return <ImagesSlideControl 
+    return <ImagesSlideControl
+              key={each} 
               activeIdx={index}
               setIndex={SetIndex}
               index={idx}

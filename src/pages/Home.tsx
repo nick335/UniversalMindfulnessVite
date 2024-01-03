@@ -1,4 +1,4 @@
-import Hero from '../components/home/Hero'
+import Hero from '../components/home/hero/Hero'
 import Blogs from '../components/home/blogs/Blogs'
 import CustomerReviews from '../components/home/reviews/CustomerReviews'
 import OurServices from '../components/home/services/OurServices'

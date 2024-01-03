@@ -3,7 +3,7 @@ import MobileFooter from "./MobileFooter"
 
 const Footer = () => {
   return (
-    <footer className="mt-12 bg-footerBg text-footerText  py-6 lg:pt-12 flexCenter">
+    <footer className="mt-12 bg-footerBg text-footerText  py-6 lg:pt-12 flexCenter font-lato">
       <MobileFooter />
       <DesktopFooter />
     </footer>

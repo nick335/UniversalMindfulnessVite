@@ -17,22 +17,25 @@ const CustomerReviews = () => {
       <div className='mt-4 lg:mt-10'>
         <ReviewSliderController 
           activeIdx={index}
-          ArrayLength={4}
+          ArrayLength={8}
           slideLeft={LeftSlide}
           slideRight={RightSlide}
         />
-        <div className='max-w-full lg:max-w-[90%] lg:mx-auto  overflow-hidden relative'>
-          <div  className='w-full flex flex-nowrap whitespace-nowrap transition-all ease-linear duration-500' style={{
-          transform : `${
-         index === 0 ? `translate3d(0, 0, 0)` : `translate3d(calc((100% * ${-index})), 0, 0)`
-         }`
-         }}>
-          <CustomerReview />
-          <CustomerReview />
-          <CustomerReview />
-          <CustomerReview />
+        <div className='lg:max-w-[90%] mx-auto'>
+          <div className='max-w-full  w-full overflow-hidden '>
+            <div  className='w-full flex flex-nowrap  whitespace-nowrap transition-all ease-linear duration-500' style={{ transform: `translate3d(${-index * 100}%, 0, 0)` }}>
+              <CustomerReview />
+              <CustomerReview />
+              <CustomerReview />
+              <CustomerReview />
+              <CustomerReview />
+              <CustomerReview />
+              <CustomerReview />
+              <CustomerReview />
+            </div>
           </div>
         </div>
+        
       </div>
     </section>
   )

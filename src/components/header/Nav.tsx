@@ -4,12 +4,28 @@ import { IoIosSearch } from "react-icons/io";
 import Menu from './Menu';
 import { useMenuStore } from '../../store/useMenuStore';
 import { useCartStore } from '../../store/useCartStore';
+import { useEffect } from 'react';
 
 const Nav = () => {
-  const {  toggleMenu} = useMenuStore()
+  const {  toggleMenu, isOpen} = useMenuStore()
   const { noOfCartItem, toggleCart } = useCartStore()
+
+  useEffect(() => {
+    // Set or remove body scroll based on the menu state
+    if (isOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'auto';
+    }
+
+    // Clean up: reset body scroll when the component is unmounted
+    return () => {
+      document.body.style.overflow = 'auto';
+    };
+  }, [isOpen]);
+
   return (
-    <nav className='bg-bgNav navLayout py-6 rounded-[0.459rem] flex items-center justify-between sticky top-0 left-0 z-20 lg:rounded-none'>
+    <nav className=' sticky top-0 bg-bgNav navLayout py-6 rounded-[0.459rem] flex items-center justify-between  z-20 lg:rounded-none mt-[1.38rem] lg:mt-10 font-lato text-textSecondary'>
       <div className='w-fit h-fit lg:hidden' onClick={toggleMenu}>
        <IoIosMenu className='text-textPrimary w-[1.418rem] h-[1.418rem]' /> 
       </div>

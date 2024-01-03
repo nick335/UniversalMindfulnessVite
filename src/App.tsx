@@ -6,14 +6,14 @@ import CartModal from './components/cart/CartModal'
 function App() {
 
   return (
-    <main className=' font-lato text-textSecondary h-screen'>
+    <>
       <Header />
-      <div className=''>
+      <main className='font-lato text-textSecondary min-h-screen'>
         <Outlet />
-      </div>
+      </main>
       <Footer />
       <CartModal />
-    </main>
+    </>
   )
 }
 

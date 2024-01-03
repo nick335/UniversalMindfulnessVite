@@ -1,7 +1,19 @@
 import chevronRight from '../../../assets/utilty/icons/chevron-right.svg'
+import { motion, } from "framer-motion";
 const Service = () => {
+
+  const childVariants = {
+    hidden: {
+      scale: 0,
+      opacity: 0
+    },
+    show: {
+      scale: 1,
+      opacity: 1,
+    },
+  };
   return (
-    <div className=" mt-10 ">
+    <motion.div variants={childVariants} transition={{ease: "easeInOut", duration: 0.5}}   className=" mt-10 ">
       <div className='w-full aspect-video rounded-[0.32875rem] bg-red-400 shadow-service'>
 
       </div>
@@ -14,7 +26,7 @@ const Service = () => {
           </span>
          </button>
       </div>
-    </div>
+    </motion.div>
   )
 }
 
