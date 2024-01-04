@@ -16,6 +16,8 @@ import Shop from './pages/Shop.tsx'
 import ShopItemDescription from './pages/ShopItemDescription.tsx'
 import About from './pages/About.tsx'
 import WhatWeOffer from './pages/WhatWeOffer.tsx'
+import { AnimatePresence } from 'framer-motion'
+import { nanoid } from 'nanoid'
 
 
 const router = createBrowserRouter([
@@ -66,6 +68,8 @@ const router = createBrowserRouter([
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
-    <RouterProvider router={router} />
+    <AnimatePresence mode='wait' key={nanoid()}>
+      <RouterProvider router={router} />
+    </AnimatePresence>
   </React.StrictMode>,
 )

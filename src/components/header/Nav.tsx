@@ -11,18 +11,25 @@ const Nav = () => {
   const { noOfCartItem, toggleCart } = useCartStore()
 
   useEffect(() => {
-    // Set or remove body scroll based on the menu state
-    if (isOpen) {
-      document.body.style.overflow = 'hidden';
-    } else {
-      document.body.style.overflow = 'auto';
-    }
+    const handleBodyScroll = () => {
+      const screenWidth = window.innerWidth;
+      const shouldHideBody = isOpen && screenWidth <= 1024;
 
-    // Clean up: reset body scroll when the component is unmounted
+      document.body.style.overflow = shouldHideBody ? 'hidden' : 'auto';
+    };
+
+    // Call the function on mount
+    handleBodyScroll();
+
+    // Attach the function to the resize event to update the scroll behavior dynamically
+    window.addEventListener('resize', handleBodyScroll);
+
+    // Clean up: remove the event listener when the component is unmounted
     return () => {
       document.body.style.overflow = 'auto';
+      window.removeEventListener('resize', handleBodyScroll);
     };
-  }, [isOpen]);
+  }, [isOpen])
 
   return (
     <nav className=' sticky top-0 bg-bgNav navLayout py-6 rounded-[0.459rem] flex items-center justify-between  z-20 lg:rounded-none mt-[1.38rem] lg:mt-10 font-lato text-textSecondary'>

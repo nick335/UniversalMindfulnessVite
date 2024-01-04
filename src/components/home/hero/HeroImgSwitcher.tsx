@@ -20,7 +20,7 @@ const HeroImgSwitcher = ({images}: ImageSwitcherProps) => {
         key={currentIndex}
         initial={{ opacity: 0, y: 100 }}
         animate={{ opacity: 1, y: 0 }}
-        exit={{ opacity: 0, y: 100 }}
+        exit={{ opacity: 0, y: 100, transition: { opacity: { duration: 0.2, delay: 0.3 } } }}
         transition={{ duration: 0.5 }}
         src={images[currentIndex]}
         className=' object-cover w-full h-full rounded-lg imgFocus'

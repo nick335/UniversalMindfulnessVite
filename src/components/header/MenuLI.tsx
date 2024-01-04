@@ -14,7 +14,7 @@ const MenuLI = ({ name, href, }: navLi) => {
     toggleMenu()
   }
   return (
-    <li className=" border-b pb-[0.8rem] border-b-navLiBorder lg:pb-0 lg:border-b-0">
+    <li className=" border-b pb-[0.8rem] border-b-navLiBorder lg:pb-0 lg:border-b-0 select-none">
       <Link to={href} onClick={closeModal}>
         <h3 className={`relative w-fit z-[2] capitalize ${active ? 'font-bold' : 'font-semibold'}`}>
           {name}

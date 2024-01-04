@@ -17,14 +17,7 @@ const Blog = () => {
     hovered: { opacity: 0.5 },
   };
 
-  // const handleHoverStart = () => {
-  //   controls.start("hovered");
-  // };
-
-  // const handleHoverEnd = () => {
-  //   controls.start("normal");
-  // };
-  return (
+   return (
     <div className="font-inter">
       <motion.div className='w-full aspect-square relative overflow-hidden rounded-xl cursor-pointer'
         ref={hoverRef}
