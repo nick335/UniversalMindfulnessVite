@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import hero from '../../../assets/home/hero.png';
 import hero2 from '../../../assets/home/hero2.png'; 
 import HeroImgSwitcher from './HeroImgSwitcher';
@@ -11,7 +12,7 @@ const Hero = () => {
             We offer mindfulness and emotional intelligence 
             Our belief is that everyone has the right to a happy and positive life and we each have the capabilities within us to achieve that. Our aim is to empower you to develop the appropriate emotional intelligence skills so you can fulfil your potential. We help develop resilience, manage stress and build self-esteem in people of all ages.training for children, teenagers, parents, teachers, and businesses.
             </p>
-            <button className="mt-[0.43rem] lg:mt-6 btn h-12 flex items-center justify-center w-4/5 max-w-[13.5rem] font-bold text-[0.8645rem] ">Contact Us</button>
+            <button className="mt-[0.43rem] lg:mt-6 btn h-12 flex items-center justify-center w-4/5 max-w-[13.5rem] font-bold text-[0.8645rem] "><Link to='/contactus'>Contact Us</Link></button>
         </div>
         <div className='mt-6 aspect-[1/1.000001] lg:h-[46.75rem]  lg:aspect-[0] lg:flex-1 z-10 relative lg:w-[100%] lg:-mt-[3.0625rem] lg:rotate-[4.458deg] rounded-lg lg:overflow-hidden'>
             <HeroImgSwitcher images={img} />

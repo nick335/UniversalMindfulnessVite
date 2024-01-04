@@ -1,4 +1,4 @@
-import { Outlet } from 'react-router-dom'
+import { Outlet, ScrollRestoration } from 'react-router-dom'
 import Header from './components/header/Header'
 import Footer from './components/footer/Footer'
 import CartModal from './components/cart/CartModal'
@@ -13,6 +13,7 @@ function App() {
       </main>
       <Footer />
       <CartModal />
+      <ScrollRestoration />
     </>
   )
 }

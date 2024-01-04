@@ -18,6 +18,8 @@ import About from './pages/About.tsx'
 import WhatWeOffer from './pages/WhatWeOffer.tsx'
 import { AnimatePresence } from 'framer-motion'
 import { nanoid } from 'nanoid'
+import BlogDetails from './pages/BlogDetails.tsx'
+
 
 
 const router = createBrowserRouter([
@@ -61,6 +63,10 @@ const router = createBrowserRouter([
       {
         path: '/whatweoffer',
         element: <WhatWeOffer />
+      },
+      {
+        path: 'blogs/content',
+        element: <BlogDetails />
       }
     ]
   }
