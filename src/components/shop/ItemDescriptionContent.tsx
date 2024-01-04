@@ -1,6 +1,15 @@
 import { Link } from "react-router-dom"
+import { useState } from "react";
+import { AnimatePresence } from "framer-motion";
+import PageTransition from "../utility/motion/PageTransition";
+import ItemDesc from "./ItemDesc";
+import ItemShippingDetails from "./ItemShippingDetails";
 
 const ItemDescriptionContent = () => {
+  const [currentSection, setCurrentSection] = useState('desc');
+  const switchToSection = (section: string) => {
+    setCurrentSection(section);
+  };
   return (
     <div>
       <div className="text-center mt-6">
@@ -18,6 +27,23 @@ const ItemDescriptionContent = () => {
       <div className="mt-6">
         <button className="btn w-full h-[3.4375rem] text-textPrimary">Add to Cart</button>
         <button className="mt-6 btn3 w-full h-[3.4375rem] text-headerSecondary border-navLiBorder"><Link to='/shop'>Back to Shopping</Link></button>
+      </div>
+      <div>
+        <div className="text-[0.667rem] leading-[0.83375rem] tracking-[0.01331rem] capitalize flex justify-center gap-x-[0.77rem] mt-6 mb-0">
+          <h3 className="cursor-pointer" onClick={() => switchToSection('desc')}>Description</h3>
+          <h3 className="cursor-pointer" onClick={() => switchToSection('ship')}>Shipping & Returns</h3>
+        </div>
+        <AnimatePresence mode="wait">
+          {
+            currentSection === 'desc' ? 
+            <PageTransition key='desc' layout="">
+              <ItemDesc />
+            </PageTransition> :
+            <PageTransition key={'ship'} layout="">
+              <ItemShippingDetails />
+            </PageTransition>
+          }
+        </AnimatePresence>
       </div>
     </div>
   )

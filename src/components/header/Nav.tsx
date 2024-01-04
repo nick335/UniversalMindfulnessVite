@@ -36,7 +36,7 @@ const Nav = () => {
       <Menu />
       <div className='flex items-center gap-x-1 text-textPrimary'>
         <h3 className='font-semibold'>({noOfCartItem})</h3>
-        <img src={cart} alt='cart' className='object-fit w-[1.37694rem] h-[1.37694rem]' onClick={toggleCart} />
+        <img src={cart} alt='cart' className='object-fit w-[1.37694rem] h-[1.37694rem] cursor-pointer' onClick={toggleCart} />
       </div>
     </nav>
   )

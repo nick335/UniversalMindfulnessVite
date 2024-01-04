@@ -6,7 +6,7 @@ import { navLi } from '../../types/navTypes'
 
 
 const MenuLI = ({ name, href, }: navLi) => {
-  const { toggleMenu, setHasInteracted } = useMenuStore()
+  const { toggleMenu, setHasInteracted} = useMenuStore()
   const pathName = useLocation().pathname
   const active  = pathName === href ? true : false
   const closeModal = () => {
