@@ -1,10 +1,20 @@
 import Subheader from '../../utility/subHeaders/Subheader'
 import Service from './Service'
 import { motion } from "framer-motion";
+import data from './serviceData';
 // import chevronRight from '../../../assets/utilty/icons/chevron-right.svg'
 
 
+
 const OurServices = () => {
+  const services = data.map((each, idx) => {
+    return <Service 
+            key={idx}
+            img={each.img}
+            header={each.header}
+            para={each.para}
+          />
+  })
   const parentVariants = {
     hidden: {
       opacity: 0,
@@ -28,10 +38,7 @@ const OurServices = () => {
           {/* {items.map((each) => {
             return <motion.div key={each} variants={listItem} className='w-40 h-40 bg-red-50'>{each}</motion.div>
           })} */}
-          <Service />
-          <Service />
-          <Service />
-          <Service />
+          {services}
         </motion.div>
     </section>
   )

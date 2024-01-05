@@ -1,5 +1,5 @@
 import quote from '../../../assets/utilty/icons/quote.svg'
-import demoImg from '../../../assets/home/hero.png'
+import demoImg from '../../../assets/home/review.png'
 
 
 
