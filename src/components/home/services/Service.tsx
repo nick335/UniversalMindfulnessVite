@@ -1,13 +1,23 @@
 import chevronRight from '../../../assets/utilty/icons/chevron-right.svg'
-import { motion, } from "framer-motion";
+import { motion,AnimationControls } from "framer-motion";
+import { useEffect } from 'react';
 
 interface props {
   img: string,
   header: string,
   para: string,
-}
-const Service = ({img, header, para}: props) => {
+  isVisible: boolean;
+  controls: AnimationControls;
+  onComplete: () => void;
 
+}
+const Service = ({img, header, para, isVisible, controls, onComplete}: props) => {
+  console.log(isVisible, header)
+  useEffect(() => {
+    if (isVisible) {
+      controls.start("show").then(onComplete);
+    }
+  }, [isVisible, controls, onComplete])
   const childVariants = {
     hidden: {
       scale: 0,
@@ -19,7 +29,7 @@ const Service = ({img, header, para}: props) => {
     },
   };
   return (
-    <motion.div variants={childVariants} transition={{ease: "easeInOut", duration: 0.5}}   className=" mt-10 ">
+    <motion.div variants={childVariants} transition={{ease: [0.645, 0.045, 0.355, 1], duration: 0.3}}   className=" mt-10 ">
       <div className='w-full aspect-video rounded-lg '>
         <img src={img} className='imgFocus object-cover shadow-service w-full h-full object-center rounded-lg '/>
       </div>
