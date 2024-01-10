@@ -16,7 +16,7 @@ const Nav = () => {
 
   useEffect(() => {
     const handleBodyScroll = () => {
-      const shouldHideBody = isOpen && width <= 1024;
+      const shouldHideBody = isOpen && width < 1024;
 
       document.body.style.overflow = shouldHideBody ? 'hidden' : 'auto';
     };

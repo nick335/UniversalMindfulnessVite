@@ -42,7 +42,7 @@ const DesktopWhatWeOffer = () => {
     </Fragment>
   })
   return (
-    <section className='mt-16'>
+    <section className='mt-16 mb-32'>
       <div className='ml-[5%] flex gap-x-5'>
         <Nav 
           data={data}
