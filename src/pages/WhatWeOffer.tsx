@@ -1,8 +1,11 @@
 import PageTransition from '../components/utility/motion/PageTransition'
 import PageHeaderSection from '../components/utility/subHeaders/PageHeaderSection'
 import Subheader from '../components/utility/subHeaders/Subheader'
+import DesktopWhatWeOffer from '../components/whatweoffer/DesktopWhatWeOffer'
 import MobileWhatWeOffer from '../components/whatweoffer/MobileWhatWeOffer'
+import useWindowDimensions from '../hooks/UseWindowDimensions'
 const WhatWeOffer = () => {
+  const { width } = useWindowDimensions()
   return (
     <PageTransition layout='none'>
       <div className='layout'>
@@ -14,7 +17,7 @@ const WhatWeOffer = () => {
         />
       </div>
       
-      <MobileWhatWeOffer />
+      { width < 1024 ?  <MobileWhatWeOffer /> : <DesktopWhatWeOffer />  }
     </PageTransition>
   )
 }

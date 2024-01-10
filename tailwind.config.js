@@ -37,6 +37,7 @@ export default {
         inputBorder: 'rgba(255, 255, 255, 0.08)',
         formBorder: 'rgba(3, 33, 37, 0.10)',
         navLiBorder: '#527BBD',
+        navSubSections: '#F2F7FF',
         formLabel: '#032125',
         eventText: '#060809',
         border: "hsl(var(--border))",

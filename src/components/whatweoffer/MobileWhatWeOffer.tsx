@@ -4,9 +4,9 @@ import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "..
 import data from './WWOData'
 import Demo from '../../assets/about/demo.png'
 const MobileWhatWeOffer = () => {
-  const [openAccordion, setOpenAccordion] = useState<undefined | string>();
+  const [openAccordion, setOpenAccordion] = useState<undefined | string | null>();
   const handleAccordionToggle = (value:string) => {
-    setOpenAccordion((prevOpenAccordion: string | undefined)  => (prevOpenAccordion === value ? undefined : value));
+    setOpenAccordion((prevOpenAccordion: string | undefined | null)   => (prevOpenAccordion === value ? null : value));
   };
   const items = data.map((each, idx) => {
     return <AccordionItem key={idx} value={each.header} className="mb-8">
@@ -37,8 +37,8 @@ const MobileWhatWeOffer = () => {
         navData={data}
         handleAccordionToggle={handleAccordionToggle}
       />
-      <div className="mt-[2.4rem]">
-        <Accordion value={openAccordion} type="single" className=" bg-bgDisclosure pt-12 pb-1 rounded-lg px-[1rem] " collapsible>
+      <div className="mt-[2.4rem] mx-4">
+        <Accordion value={openAccordion as string | undefined} type="single" className=" bg-bgDisclosure pt-12 pb-1 rounded-lg px-[1rem] " collapsible>
           <div>
           {items}
           </div> 

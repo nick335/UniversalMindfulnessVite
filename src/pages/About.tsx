@@ -1,9 +1,12 @@
 import CustomAboutAccordion from "../components/about/CustomAboutAccordion"
+import DesktopAbout from "../components/about/DesktopAbout"
 import PageTransition from "../components/utility/motion/PageTransition"
 import PageHeaderSection from "../components/utility/subHeaders/PageHeaderSection"
 import Subheader from "../components/utility/subHeaders/Subheader"
+import useWindowDimensions from "../hooks/UseWindowDimensions"
 
 const About = () => {
+  const { width }  = useWindowDimensions()
   return (
     <PageTransition layout="none">
       <Subheader header='About Us' />
@@ -13,7 +16,7 @@ const About = () => {
         max="41.75"
       />
       <section className="mt-[2.43rem]">
-       <CustomAboutAccordion />
+      { width < 1024 ? <CustomAboutAccordion /> : <DesktopAbout />}
       </section>
     </PageTransition>
   )

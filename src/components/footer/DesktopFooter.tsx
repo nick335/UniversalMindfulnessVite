@@ -2,6 +2,7 @@ import FooterBottom from "./FooterBottom"
 import FooterNewsLetter from "./FooterNewsLetter"
 import FooterSocials from "./FooterSocials"
 import FooterSponsorLogo from "./FooterSponsorLogo"
+import { Link } from "react-router-dom"
 
 const DesktopFooter = () => {
 
@@ -13,13 +14,13 @@ const DesktopFooter = () => {
           <FooterSponsorLogo />
         </div>
         <ul className=" lg:flex lg:flex-col lg:gap-y-4">
-          <li>Solutions</li>
-          <li>About</li>
-          <li>What we offer</li>
-          <li>Events</li>
-          <li>MindFulness Blog</li>
-          <li>Shop</li>
-          <li>Contact</li>
+        <li><Link to='/'>Solutions</Link></li>
+          <li><Link to='/about'>About</Link></li>
+          <li><Link to='/whatweoffer'>What we offer</Link></li>
+          <li><Link to='/events'>Events</Link></li>
+          <li><Link to='/blog'>Mindfulness Blog</Link></li>
+          <li><Link to='/shop'>Shops</Link></li>
+          <li><Link to='/contact'>Contact</Link></li>
         </ul>
         <FooterSocials />
       </div>

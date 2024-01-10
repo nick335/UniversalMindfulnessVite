@@ -58,7 +58,9 @@ const CartModal = () => {
                       </>
           }
         </div>
-        <button className='btn mt-6 h-[3.4375rem] w-full text-textPrimary font-semibold text-sm '>Continue To checkout</button>
+        <button className='btn mt-6 h-[3.4375rem] w-full text-textPrimary font-semibold text-sm'>
+          <Link to='/shop/checkout'>Continue To checkout</Link>
+        </button>
         <h4 className='mt-[1.83rem] text-headerSecondary text-center' onClick={closeModal}>
           <Link to={'/shop'}>Continue to Shopping</Link>
         </h4>

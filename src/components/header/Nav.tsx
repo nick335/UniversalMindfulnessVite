@@ -6,10 +6,12 @@ import { useMenuStore } from '../../store/useMenuStore';
 import { useCartStore } from '../../store/useCartStore';
 import { useEffect } from 'react';
 import useWindowDimensions from '../../hooks/UseWindowDimensions';
+import { useSearchStore } from '../../store/useSearchStore';
 
 const Nav = () => {
   const {  toggleMenu, isOpen} = useMenuStore()
   const { noOfCartItem, toggleCart } = useCartStore()
+  const { toggleSearchVisibility } = useSearchStore()
   const { width } = useWindowDimensions()
 
   useEffect(() => {
@@ -29,7 +31,7 @@ const Nav = () => {
       <div className='w-fit h-fit lg:hidden' onClick={toggleMenu}>
        <IoIosMenu className='text-textPrimary w-[1.418rem] h-[1.418rem]' /> 
       </div>
-      <div className='w-fit h-fit hidden lg:block' onClick={toggleMenu}>
+      <div className='w-fit h-fit hidden lg:block cursor-pointer' onClick={toggleSearchVisibility}>
        <IoIosSearch className='text-textPrimary w-[1.418rem] h-[1.418rem]' /> 
       </div>
       
