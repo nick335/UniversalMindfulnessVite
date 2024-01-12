@@ -20,6 +20,7 @@ import { AnimatePresence } from 'framer-motion'
 import { nanoid } from 'nanoid'
 import BlogDetails from './pages/BlogDetails.tsx'
 import Checkout from './components/checkout/Checkout.tsx'
+import Testimonial from './pages/Testimonial.tsx'
 
 
 
@@ -72,6 +73,10 @@ const router = createBrowserRouter([
       {
         path: 'shop/checkout',
         element: <Checkout />
+      },
+      {
+        path:'/testimonials',
+        element: <Testimonial/>
       }
     ]
   }

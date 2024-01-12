@@ -56,7 +56,9 @@ const DesktopWhatWeOffer = () => {
         </div>
       </div>
       <div>
-        {bottomSections}
+        <AnimatePresence mode='sync'>
+          {bottomSections}
+        </AnimatePresence>
       </div>
     </section>
   )

@@ -33,6 +33,10 @@ const MenuLIDropdown = () => {
           name='Our Team'
           href="/meettheteam"
         />
+        <MenuDropdownLi 
+          name="Testimonials"
+          href="/testimonials"
+        />
       </ul>
     </div>
   )
