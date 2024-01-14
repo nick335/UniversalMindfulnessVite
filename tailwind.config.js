@@ -86,10 +86,10 @@ export default {
         },
         Dropdown: {
           '0%': { height: '2.6125rem' },
-          '100%': { height: '10.125rem' }
+          '100%': { height: '14rem' }
         },
         GoBackUp: {
-          '0%': { height: '10.125rem' },
+          '0%': { height: '14rem' },
           '100%': { height: '2.6125rem' }
         },
         menuComeOut: {
