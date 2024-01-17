@@ -92,6 +92,12 @@
   .btn3{
     @apply outline-none font-inter rounded-[0.32419rem] border;
   }
+  .adminGridLayout1{
+    @apply grid grid-cols-3 mt-10 gap-10;
+  }
+  .adminSectionsGridLayout{
+    @apply grid grid-cols-1 gap-y-8 pb-28;
+  }
 }
 
 *{

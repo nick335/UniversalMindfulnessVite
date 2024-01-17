@@ -33,7 +33,9 @@ export default {
         bgDisclosure: '#F2F7FF',
         bgImageSlideControl: '#D9D9D9',
         bgActiveImageSlideControl: '#527BBD',
+        bgAdminNav: '#152848',
         btnPrimary: '#527BBD',
+        btnAdmin: '#152848',
         inputBorder: 'rgba(255, 255, 255, 0.08)',
         formBorder: 'rgba(3, 33, 37, 0.10)',
         navLiBorder: '#527BBD',
@@ -118,6 +120,8 @@ export default {
       },
       boxShadow: {
         'service': '0px 2.63px 15.122px 0px rgba(151, 151, 151, 0.25)',
+        'adminNav': '0px 4px 23px 0px rgba(151, 151, 151, 0.25)',
+        'sectionBody': '0px 4px 23px 0px rgba(151, 151, 151, 0.25)'
       },
       screens: {
         'xsm': '576px'

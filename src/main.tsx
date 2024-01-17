@@ -21,6 +21,11 @@ import { nanoid } from 'nanoid'
 import BlogDetails from './pages/BlogDetails.tsx'
 import Checkout from './components/checkout/Checkout.tsx'
 import Testimonial from './pages/Testimonial.tsx'
+import Layout from './components/admin/Layout/Layout.tsx'
+import AdminHome from './components/admin/home/Home.tsx'
+import AdminTestimonial from './pages/AdminTestimonial.tsx'
+import AdminEvents from './pages/AdminEvents.tsx'
+import AdminBlog from './pages/AdminBlog.tsx'
 
 
 
@@ -77,7 +82,30 @@ const router = createBrowserRouter([
       {
         path:'/testimonials',
         element: <Testimonial/>
-      }
+      },
+    ]
+  },
+  {
+    path: '/admin/dashboard',
+    element: <Layout />,
+    errorElement: <ErrorPage />,
+    children:[
+      {
+        path: '/admin/dashboard',
+        element: <AdminHome />
+      },
+      {
+        path: '/admin/dashboard/testimonial',
+        element: <AdminTestimonial />
+      },
+      {
+        path: '/admin/dashboard/events',
+        element: <AdminEvents />
+      },
+      {
+        path: '/admin/dashboard/blog',
+        element: <AdminBlog />
+      },
     ]
   }
 ])
