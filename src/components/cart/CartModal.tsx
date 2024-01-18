@@ -17,7 +17,7 @@ const CartModal = () => {
   }
   useEffect(() => {
     const handleBodyScroll = () => {
-      const shouldHideBody = isCartOpen && width >= 1024;
+      const shouldHideBody = isCartOpen;
 
       document.body.style.overflow = shouldHideBody ? 'hidden' : 'auto';
     };
@@ -36,8 +36,8 @@ const CartModal = () => {
   }
   const isEmpty = noOfCartItem === 0 ? true : false
   return (
-    <div className={`h-screen w-screen max-h-screen overflow-auto bg-white fixed z-[1000] top-0 left-0     ${ isCartOpen ? 'block lg:flex lg:justify-center lg:items-center' : 'hidden'} lg:bg-black/40`} onClick={closeModal}>
-      <div className="pt-[2.92rem] px-[1.8rem] lg:bg-white lg:max-w-[24rem] lg:min-w-[24rem] lg:max-h-[30.96775rem] lg:min-h-[80%] lg:overflow-y-auto"
+    <div className={`h-screen w-screen max-h-screen overflow-auto bg-white pb-8 lg:pb-0 fixed z-[1000] top-0 left-0     ${ isCartOpen ? 'block lg:flex lg:justify-center lg:items-center' : 'hidden'} lg:bg-black/40`} onClick={closeModal}>
+      <div className="pt-[2.92rem] px-[1.8rem] lg:bg-white lg:max-w-[24rem] lg:min-w-[24rem] lg:max-h-[30.96775rem] lg:min-h-[80%] lg:overflow-y-auto lg:pb-8"
         onClick={width >=1024 ? stopPropagation : () => {}}
       >
         <div className='pb-[0.84rem] border-b flex justify-between items-center'>
@@ -58,6 +58,11 @@ const CartModal = () => {
                       </>
           }
         </div>
+        { isEmpty ? <></> : <div className='flex items-center text-[0.84456rem] mt-2'>
+          <h3 className='font-inter'>Subtotal</h3>
+          <div className=' w-full h-1 border-b-2 border-dotted border-textSecondary'></div>
+          <h3 className='text-headerPrimary ml-2 font-bold'>£750</h3>
+        </div>}
         <button className='btn mt-6 h-[3.4375rem] w-full text-textPrimary font-semibold text-sm'>
           <Link to='/shop/checkout'>Continue To checkout</Link>
         </button>
