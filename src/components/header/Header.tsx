@@ -4,7 +4,7 @@ const Header = () => {
   return (
     <>
       <div className='w-full flexCenter mt-3 lg:mt-6 '>
-        <img src={Logo} alt='logo' className='object-fit w-[7.05675rem] h-[4.48606rem]' />
+        <img src={Logo} alt='logo' className='object-fit w-[11.05675rem] h-[7.48606rem]' />
       </div>
           <Nav />
     </>

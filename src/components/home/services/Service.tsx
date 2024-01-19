@@ -13,7 +13,6 @@ interface props {
 
 }
 const Service = ({img, header, para, isVisible, controls, onComplete}: props) => {
-  console.log(isVisible, header)
   useEffect(() => {
     if (isVisible) {
       controls.start("show").then(onComplete);

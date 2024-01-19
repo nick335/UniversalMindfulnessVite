@@ -31,7 +31,6 @@ const OurServices = () => {
       const nextChildRef = parentRef.current ? parentRef.current.children[nextChildIndex] : null;
   
       if (nextChildRef) {
-        console.log('show')
         controls.start("show");
       }
     };
