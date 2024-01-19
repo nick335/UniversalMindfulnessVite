@@ -26,6 +26,12 @@ import AdminHome from './components/admin/home/Home.tsx'
 import AdminTestimonial from './pages/AdminTestimonial.tsx'
 import AdminEvents from './pages/AdminEvents.tsx'
 import AdminBlog from './pages/AdminBlog.tsx'
+import AdminAbout from './pages/AdminAbout.tsx'
+import AboutSections from './components/admin/about/AboutSections.tsx'
+import AdminMeetTheTeam from './pages/AdminMeetTheTeam.tsx'
+import AdminWhatWeOffer from './pages/AdminWhatWeOffer.tsx'
+import AdminShop from './pages/AdminShop.tsx'
+import AdminContact from './pages/AdminContact.tsx'
 
 
 
@@ -106,6 +112,32 @@ const router = createBrowserRouter([
         path: '/admin/dashboard/blog',
         element: <AdminBlog />
       },
+      {
+        path: '/admin/dashboard/whatweoffer',
+        element: <AdminWhatWeOffer />
+      },
+      {
+        path: '/admin/dashboard/shop',
+        element: <AdminShop />
+      },
+      {
+        path: '/admin/dashboard/contact',
+        element: <AdminContact />
+      },
+      {
+        path: '/admin/dashboard/about',
+        element: <AdminAbout />,
+        children: [
+          {
+            path: '/admin/dashboard/about',
+            element: <AboutSections />
+          },
+          {
+            path: '/admin/dashboard/about/meettheteam',
+            element: <AdminMeetTheTeam />
+          }
+        ]
+      }
     ]
   }
 ])

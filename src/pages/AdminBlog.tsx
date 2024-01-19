@@ -1,14 +1,14 @@
-import ContentDisplay2 from "../components/utility/admin/contentdisplay/ContentDisplay2"
 import AddBlog from '../components/admin/blog/AddBlog'
+import ContentDisplay4 from "../components/utility/admin/contentdisplay/ContentDisplay4"
 
 const AdminBlog = () => {
   return (
     <div className="adminSectionsGridLayout">
       <AddBlog />
-      <ContentDisplay2 />
-      <ContentDisplay2 />
-      <ContentDisplay2 />
-      <ContentDisplay2 />
+      <ContentDisplay4 />
+      <ContentDisplay4 />
+      <ContentDisplay4 />
+      <ContentDisplay4 />
     </div>
   )
 }

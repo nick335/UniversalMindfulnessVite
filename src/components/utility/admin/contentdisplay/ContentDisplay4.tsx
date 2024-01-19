@@ -8,7 +8,7 @@ import bin from '../../../../assets/admin/bin.svg'
 //   btnName: string,
 // }
 
-const ContentDisplay2 = () => {
+const ContentDisplay4 = () => {
   return (
     <SectionBody>
       <SectionHeader 
@@ -24,6 +24,9 @@ const ContentDisplay2 = () => {
           <h3 className='font-semibold'>Header: Emotional Intelligence & Mindful Parents & Guardian with Me </h3>
           <p className='mt-2'>Body: Mindfulness is a valuable life skill that can help us direct our attention to the present moment with open-minded curiosity and acceptance. Rather than worrying about the past or what might happen in the future, Mindfulness trains us to respond skilfully to whatever is happening right now, without judgment. 
           In essence, Mindfulness is a way of paying attention to, and seeing what is happening in our lives with clarity. But why is this important?</p>
+
+          <h4 className='font-semibold mt-2'>Writer: Mary Oshell</h4>
+          <h4 className='font-semibold mt-2'>Category: Money</h4>
           <div className="mt-8 flex items-center justify-end">
             <button className='flex items-center gap-x-2'>
               <span className=' capitalize text-[#8692A6] hover:text-[#FF8080] transition-all ease-in duration-100'>delete</span>
@@ -37,4 +40,4 @@ const ContentDisplay2 = () => {
   )
 }
 
-export default ContentDisplay2
+export default ContentDisplay4

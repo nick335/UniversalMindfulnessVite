@@ -17,7 +17,7 @@ const data = [
   },
   {
     name: 'about us',
-    routeName: 'aboutus',
+    routeName: 'about',
     img: aboutUs
   },
   {
