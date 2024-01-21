@@ -39,6 +39,7 @@ import BlogAdd from './pages/add/BlogAdd.tsx'
 import MeettheTeamAdd from './pages/add/MeettheTeamAdd.tsx'
 import ChildrenTestimonialAdd from './pages/add/ChildrenTestimonialAdd.tsx'
 import ParentTestimonialAdd from './pages/add/ParentTestimonialAdd.tsx'
+import Login from './components/Login/Login.tsx'
 
 
 
@@ -174,6 +175,10 @@ const router = createBrowserRouter([
         ]
       }
     ]
+  },
+  {
+    path: '/admin',
+    element: <Login />
   }
 ])
 
