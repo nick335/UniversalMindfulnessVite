@@ -8,6 +8,7 @@ const AddBlog = () => {
         <SectionHeader 
           header='create Blog'
           btnName='add'
+          routePath='/admin/dashboard/blog/add'
         />
       </div>   
     </SectionBody >

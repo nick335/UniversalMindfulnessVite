@@ -32,6 +32,13 @@ import AdminMeetTheTeam from './pages/AdminMeetTheTeam.tsx'
 import AdminWhatWeOffer from './pages/AdminWhatWeOffer.tsx'
 import AdminShop from './pages/AdminShop.tsx'
 import AdminContact from './pages/AdminContact.tsx'
+import HeroCarouselAdd from './pages/add/HeroCarouselAdd.tsx'
+import VoiceOfCustomerAdd from './pages/add/VoiceofCustomerAdd.tsx'
+import EventsAdd from './pages/add/EventsAdd.tsx'
+import BlogAdd from './pages/add/BlogAdd.tsx'
+import MeettheTeamAdd from './pages/add/MeettheTeamAdd.tsx'
+import ChildrenTestimonialAdd from './pages/add/ChildrenTestimonialAdd.tsx'
+import ParentTestimonialAdd from './pages/add/ParentTestimonialAdd.tsx'
 
 
 
@@ -123,6 +130,34 @@ const router = createBrowserRouter([
       {
         path: '/admin/dashboard/contact',
         element: <AdminContact />
+      },
+      {
+        path: '/admin/dashboard/herocarouselimages/add',
+        element: <HeroCarouselAdd />
+      },
+      {
+        path: '/admin/dashboard/voiceofthecustomer/add',
+        element: <VoiceOfCustomerAdd />
+      },
+      {
+        path: '/admin/dashboard/events/add',
+        element: <EventsAdd />
+      },
+      {
+        path: '/admin/dashboard/blog/add',
+        element: <BlogAdd />
+      },
+      {
+        path: '/admin/dashboard/about/meettheteam/add',
+        element: <MeettheTeamAdd />
+      },
+      {
+        path: '/admin/dashboard/testimonial/parent/add',
+        element: <ParentTestimonialAdd />
+      },
+      {
+        path: '/admin/dashboard/testimonial/children/add',
+        element: <ChildrenTestimonialAdd />
       },
       {
         path: '/admin/dashboard/about',

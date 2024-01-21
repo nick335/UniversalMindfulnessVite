@@ -37,6 +37,8 @@ export default {
         btnPrimary: '#527BBD',
         btnAdmin: '#152848',
         inputBorder: 'rgba(255, 255, 255, 0.08)',
+        adminInputInactive: '#8692A6',
+        adminInputActive: '#333',
         formBorder: 'rgba(3, 33, 37, 0.10)',
         navLiBorder: '#527BBD',
         navSubSections: '#F2F7FF',

@@ -9,6 +9,7 @@ const AboutGallery = () => {
       <SectionHeader 
         header='Happy Memories gallery'
         btnName='Add Images'
+        routePath='/'
       />
       <div className="adminGridLayout1">
         <ImageDisplay rounded={true} img={demo} />

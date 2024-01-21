@@ -1,7 +1,7 @@
 import SectionBody from '../section/sectionBody'
 import SectionHeader from '../header/sectionHeader'
 import demo from '../../../../assets/admin/demo.png'
-import bin from '../../../../assets/admin/bin.svg'
+import ContentDisplayDelete from './ContentDisplayDelete'
 
 // interface props {
 //   header: string,
@@ -28,10 +28,7 @@ const ContentDisplay4 = () => {
           <h4 className='font-semibold mt-2'>Writer: Mary Oshell</h4>
           <h4 className='font-semibold mt-2'>Category: Money</h4>
           <div className="mt-8 flex items-center justify-end">
-            <button className='flex items-center gap-x-2'>
-              <span className=' capitalize text-[#8692A6] hover:text-[#FF8080] transition-all ease-in duration-100'>delete</span>
-              <img src={bin} alt='bin' className='w-[0.90419rem] h-[0.90419rem] object-fill ' />
-            </button>
+            <ContentDisplayDelete />
           </div>
         </div>
         

@@ -1,6 +1,6 @@
 import pencil from '../../../../assets/admin/pencil.svg'
-import bin from '../../../../assets/admin/bin.svg'
 import demo from '../../../../assets/shop/bracelet.png'
+import ContentDisplayDelete from './ContentDisplayDelete'
 
 const ContentDisplay5 = () => {
   return (
@@ -20,10 +20,7 @@ const ContentDisplay5 = () => {
           <span className=' capitalize underline text-headerPrimary'>edit</span>
           <img src={pencil} alt="pencil" className='w-6 h-6 object-fill' />
         </button>
-        <button className='flex items-center gap-x-2'>
-          <span className=' capitalize text-[#8692A6] hover:text-[#FF8080] transition-all ease-in duration-100'>delete</span>
-          <img src={bin} alt='bin' className='w-[0.90419rem] h-[0.90419rem] object-fill ' />
-        </button>
+        <ContentDisplayDelete />
       </div>
     </div>
   )

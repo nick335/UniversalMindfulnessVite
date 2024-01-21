@@ -98,6 +98,12 @@
   .adminSectionsGridLayout{
     @apply grid grid-cols-1 gap-y-8 pb-28;
   }
+  .adminBtns{
+    @apply mt-8 flex gap-x-8;
+  }
+  .adminForm{
+    @apply grid grid-cols-1 gap-y-10
+  }
 }
 
 *{

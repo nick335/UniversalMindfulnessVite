@@ -9,6 +9,7 @@ const SponsorImages = () => {
       <SectionHeader 
         header='sponsor images'
         btnName='add images'
+        routePath="/admin/dashboard"
       />
       <div className="adminGridLayout1">
         <ImageDisplay rounded={false} img={demo} />

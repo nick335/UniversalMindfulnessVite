@@ -8,6 +8,7 @@ const HeroCarouselImages = () => {
       <SectionHeader 
         header='Hero Carousel Images'
         btnName="add images"
+        routePath="/admin/dashboard/herocarouselimages/add"
       />
       <div className="adminGridLayout1">
         <ImageDisplay rounded={true} img={demo} />

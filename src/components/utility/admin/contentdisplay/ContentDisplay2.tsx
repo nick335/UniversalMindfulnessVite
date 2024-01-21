@@ -1,7 +1,7 @@
 import SectionBody from '../section/sectionBody'
 import SectionHeader from '../header/sectionHeader'
 import demo from '../../../../assets/admin/demo.png'
-import bin from '../../../../assets/admin/bin.svg'
+import ContentDisplayDelete from './ContentDisplayDelete'
 
 // interface props {
 //   header: string,
@@ -14,6 +14,7 @@ const ContentDisplay2 = () => {
       <SectionHeader 
         header='Emotional Intellgence & Mindful Parents & Guardian with Me'
         btnName='edit'
+        routePath='admin/dashboard'
       />
 
       <div className='mt-[1.13rem] font-inter'>
@@ -25,10 +26,7 @@ const ContentDisplay2 = () => {
           <p className='mt-2'>Body: Mindfulness is a valuable life skill that can help us direct our attention to the present moment with open-minded curiosity and acceptance. Rather than worrying about the past or what might happen in the future, Mindfulness trains us to respond skilfully to whatever is happening right now, without judgment. 
           In essence, Mindfulness is a way of paying attention to, and seeing what is happening in our lives with clarity. But why is this important?</p>
           <div className="mt-8 flex items-center justify-end">
-            <button className='flex items-center gap-x-2'>
-              <span className=' capitalize text-[#8692A6] hover:text-[#FF8080] transition-all ease-in duration-100'>delete</span>
-              <img src={bin} alt='bin' className='w-[0.90419rem] h-[0.90419rem] object-fill ' />
-            </button>
+            <ContentDisplayDelete />
           </div>
         </div>
         

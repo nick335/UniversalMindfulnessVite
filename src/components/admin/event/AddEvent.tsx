@@ -8,6 +8,7 @@ const AddEvent = () => {
         <SectionHeader 
           header='create Event'
           btnName='add'
+          routePath='/admin/dashboard/events/add'
         />
       </div>   
     </SectionBody>
