@@ -7,6 +7,7 @@ const AdminContact = () => {
       <SectionHeader 
         header='Contact Us'
         btnName='Edit details'
+        routePath='admin/dashboard'
       />
       <div className='font-inter mt-5 pb-8 leading-[1.4375rem] text-sm tracking-[-0.018rem]'>
         <h4>Phone:  087865565</h4>
