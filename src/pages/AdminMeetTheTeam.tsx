@@ -10,6 +10,7 @@ const AdminMeetTheTeam = () => {
         <SectionHeader 
           header="meet the team"
           btnName="add"
+          routePath="/admin/dashboard/about/meettheteam/add"
         />
         <div className="adminGridLayout1">
           <ContentDisplay3 />

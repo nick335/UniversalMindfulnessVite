@@ -40,7 +40,7 @@ import MeettheTeamAdd from './pages/add/MeettheTeamAdd.tsx'
 import ChildrenTestimonialAdd from './pages/add/ChildrenTestimonialAdd.tsx'
 import ParentTestimonialAdd from './pages/add/ParentTestimonialAdd.tsx'
 import Login from './components/Login/Login.tsx'
-
+import 'react-toastify/dist/ReactToastify.css';
 
 
 const router = createBrowserRouter([

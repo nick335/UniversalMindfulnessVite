@@ -14,6 +14,7 @@ const ContentDisplay4 = () => {
       <SectionHeader 
         header='Emotional Intellgence & Mindful Parents & Guardian with Me'
         btnName='edit'
+        routePath='/admin/dashboard'
       />
 
       <div className='mt-[1.13rem] font-inter'>

@@ -8,6 +8,7 @@ const MainTestimonial = () => {
       <SectionHeader 
         header='First Section Header Content'
         btnName='Edit'
+        routePath='admin/dashboard'
       />
 
       <MainTestimonialContent />

@@ -8,6 +8,7 @@ const Children = () => {
       <SectionHeader 
         header='children testimonial'
         btnName='add'
+        routePath='/admin/dashboard/testimonial/children/add'
       />
       <div className='adminGridLayout1'>
         <ContentDisplay1 />

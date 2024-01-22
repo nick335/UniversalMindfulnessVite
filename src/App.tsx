@@ -4,6 +4,8 @@ import Footer from './components/footer/Footer'
 import CartModal from './components/cart/CartModal'
 import SearchModal from './components/search/SearchModal'
 
+
+
 function App() {
 
   return (

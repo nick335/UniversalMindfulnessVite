@@ -8,6 +8,7 @@ const AdminShop = () => {
       <SectionHeader 
         header='Shop'
         btnName='Add item'
+        routePath='admin/dashboard'
       />
       <div className="adminGridLayout1">
         <ContentDisplay5 />

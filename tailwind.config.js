@@ -44,6 +44,7 @@ export default {
         navSubSections: '#F2F7FF',
         formLabel: '#032125',
         eventText: '#060809',
+        error: '#EB5757',
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",
