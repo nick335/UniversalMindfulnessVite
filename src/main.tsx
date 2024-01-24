@@ -40,6 +40,7 @@ import ChildrenTestimonialAdd from './pages/add/ChildrenTestimonialAdd.tsx'
 import ParentTestimonialAdd from './pages/add/ParentTestimonialAdd.tsx'
 import Login from './components/Login/Login.tsx'
 import 'react-toastify/dist/ReactToastify.css';
+import SponsorImagesAdd from './pages/add/SponsorImagesAdd.tsx'
 
 
 const router = createBrowserRouter([
@@ -154,6 +155,10 @@ const router = createBrowserRouter([
       {
         path: '/admin/dashboard/testimonial/children/add',
         element: <ChildrenTestimonialAdd />
+      },
+      {
+        path: '/admin/dashboard/sponsorsimage/add',
+        element: <SponsorImagesAdd />
       },
       {
         path: '/admin/dashboard/about',

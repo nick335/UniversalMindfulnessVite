@@ -5,12 +5,59 @@ import InputDesc from "../../components/utility/form/InputDesc"
 import InputImage from "../../components/utility/form/InputImage"
 import Update from '../../components/utility/admin/buttons/Update'
 import Delete from '../../components/utility/admin/buttons/delete'
-
+import { z } from "zod"
+import { SubmitHandler, useForm } from "react-hook-form"
+import { zodResolver } from '@hookform/resolvers/zod'
+import { validateImages } from '../../utilsFunction/ValidateImages'
+import showToast from '../../utilsFunction/showToast'
+import { useState } from "react"
 
 const BlogAdd = () => {
+  const [PreviewImage, setPreviewImage] = useState<string>('')
+  const [blogContent, setBlogContent] = useState<string>('')
+
+  type FormSchemaType = z.infer<typeof formSchema>
+  const formSchema = z.object({
+    title: z.string().min(1, 'name is required'),
+    blogContent: z.string().min(1, 'testimony is required'),
+    image: z.string().min(1, 'an image is required'),
+    writtenBy: z.string().min(1, 'written by is required'),
+    category: z.string().min(1, 'category is required')
+  })
+
+  const {
+    register,
+    handleSubmit,
+    setValue,
+    formState: {errors,}
+  } = useForm<FormSchemaType>({
+    resolver: zodResolver(formSchema)
+  })
+  const handleSummaryChange= (newContent: string) => {
+    setBlogContent(newContent)
+    setValue('blogContent', newContent)
+  }
+  const onImageChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const file = event.target.files && event.target.files[0];
+  
+    if (file && validateImages(file)) {
+      const imgUrl = URL.createObjectURL(file);
+      setValue("image", imgUrl);
+      setPreviewImage(imgUrl);
+    } else {
+      showToast('Only jpeg, jpg, png, and gif images are allowed, and file size must not exceed the maximum limit of 1.5MB', 'error');
+    }
+  };
+  const deleteImg = () => {
+    setPreviewImage('')
+    setValue('image', '')
+  }
+  const onSubmit : SubmitHandler<FormSchemaType> = (data) => {
+    console.log(data)
+  }
   return (
     <div>
-      <form className='adminForm'>
+      <form className='adminForm' onSubmit={handleSubmit(onSubmit)}>
         <FormRow>
           <InputDesc 
             inputLabel="title"
@@ -18,6 +65,10 @@ const BlogAdd = () => {
           />
           <FormTextInput 
             label="title"
+            inputName='title'
+            register={register}
+            error={errors.title}
+            errorMessage={errors.title?.message}
           />
         </FormRow>
         <FormRow>
@@ -27,6 +78,10 @@ const BlogAdd = () => {
           />
           <FormTextInput  
             label="category"
+            inputName='category'
+            register={register}
+            error={errors.category}
+            errorMessage={errors.category?.message}
           />
         </FormRow>
         <FormRow>
@@ -36,6 +91,10 @@ const BlogAdd = () => {
           />
           <FormQuillInput  
             label="body"
+            value={blogContent}
+            error={errors.blogContent}
+            onChange={handleSummaryChange}
+            errorMessage={errors.blogContent?.message}
           />
         </FormRow>
         <FormRow>
@@ -43,7 +102,13 @@ const BlogAdd = () => {
             inputLabel='upload image'
             inputDescInfo='Image uploaded must be a .png or jpeg file of the dimension 584px(w) * 950px(h) below. '
           />
-          <InputImage />
+          <InputImage 
+            image={PreviewImage}
+            error={errors.image}
+            errorMessage={errors.image?.message}
+            onImageChange={onImageChange}
+            deleteImg={deleteImg}
+          />
         </FormRow>
         <FormRow>
           <InputDesc 
@@ -52,6 +117,10 @@ const BlogAdd = () => {
           />
           <FormTextInput  
             label="written by"
+            inputName='writtenBy'
+            register={register}
+            error={errors.writtenBy}
+            errorMessage={errors.writtenBy?.message}
           />
         </FormRow>
         <div className='adminBtns'>

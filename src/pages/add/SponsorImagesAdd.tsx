@@ -1,16 +1,17 @@
-import Update from '../../components/utility/admin/buttons/Update'
-import Delete from '../../components/utility/admin/buttons/delete'
-import FormRow from '../../components/utility/form/FormRow'
-import InputDesc from '../../components/utility/form/InputDesc'
-import InputMultipleImage from '../../components/utility/form/InputMultipleImage'
+import React from 'react'
+import showToast from '../../utilsFunction/showToast'
 import { z} from "zod"
 import { SubmitHandler, useForm } from "react-hook-form"
 import { zodResolver } from '@hookform/resolvers/zod'
 import { validateImages } from '../../utilsFunction/ValidateImages'
 import { useState } from 'react'
-import showToast from '../../utilsFunction/showToast'
+import FormRow from '../../components/utility/form/FormRow'
+import InputDesc from '../../components/utility/form/InputDesc'
+import InputMultipleImage from '../../components/utility/form/InputMultipleImage'
+import Delete from '../../components/utility/admin/buttons/delete'
+import Update from '../../components/utility/admin/buttons/Update'
 
-const HeroCarouselAdd = () => {
+const SponsorImagesAdd = () => {
   const [PreviewImages, setPreviewImages] = useState<string[]>([])
   type FormSchemaType = z.infer<typeof formSchema>
   const formSchema = z.object({
@@ -45,16 +46,16 @@ const HeroCarouselAdd = () => {
         setPreviewImages(prevImages => [...prevImages, ...imgUrls])
       } 
     }else{
-      showToast('Only jpeg, jpg, png, and gif images are allowed and File size must not exceed the maximum limit of 1.5MB','error')  
-    }
-    }    
+      showToast('Only jpeg, jpg, png, and gif images are allowed and File size must not exceed the maximum limit of 1.5MB','error')
+    } 
+  }     
   return (
     <div>
       <form className='flex flex-col gap-y-8' onSubmit={handleSubmit(onSubmit)}>
         <FormRow>
           <InputDesc 
             inputLabel='upload image'
-            inputDescInfo='Image uploaded must be a .png or jpeg file of the dimension 584px(w) * 950px(h) below. '
+            inputDescInfo='Image uploaded must be a .png or jpeg file of the dimension 584px(w) * 950px(h) below.'
           />
           <InputMultipleImage 
             onImageChange={onImageChange}
@@ -74,4 +75,4 @@ const HeroCarouselAdd = () => {
   )
 }
 
-export default HeroCarouselAdd
+export default SponsorImagesAdd

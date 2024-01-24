@@ -5,18 +5,63 @@ import FormTextInput from '../../components/utility/form/FormTextInput'
 import FormTextArea from '../../components/utility/form/FormTextArea'
 import Update from '../../components/utility/admin/buttons/Update'
 import Delete from '../../components/utility/admin/buttons/delete'
+import { z } from "zod"
+import { SubmitHandler, useForm } from "react-hook-form"
+import { zodResolver } from '@hookform/resolvers/zod'
+import { validateImages } from '../../utilsFunction/ValidateImages'
+import showToast from '../../utilsFunction/showToast'
+import { useState } from "react"
 
 const ChildrenTestimonialAdd = () => {
+  const [PreviewImage, setPreviewImage] = useState<string>('')
+  type FormSchemaType = z.infer<typeof formSchema>
+  const formSchema = z.object({
+    name: z.string().min(1, 'name is required'),
+    caption: z.string().min(1, 'caption is required'),
+    shortNote: z.string().min(1, 'testimony is required'),
+    image: z.string().min(1, 'an image is required')
+  })
+  const {
+    register,
+    handleSubmit,
+    setValue,
+    formState: {errors,}
+  } = useForm<FormSchemaType>({
+    resolver: zodResolver(formSchema)
+  })
+
+  const onImageChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const file = event.target.files && event.target.files[0];
+  
+    if (file && validateImages(file)) {
+      const imgUrl = URL.createObjectURL(file);
+      setValue("image", imgUrl);
+      setPreviewImage(imgUrl);
+    } else {
+      showToast('Only jpeg, jpg, png, and gif images are allowed, and file size must not exceed the maximum limit of 1.5MB', 'error');
+    }
+  };
+  const deleteImg = () => {
+    setPreviewImage('')
+    setValue('image', '')
+  }
+  const onSubmit : SubmitHandler<FormSchemaType> = (data) => {
+    console.log(data)
+  }
   return (
     <div>
-      <form className='adminForm'>
+      <form className='adminForm' onSubmit={handleSubmit(onSubmit)}>
         <FormRow>
           <InputDesc 
-            inputLabel='name of child'
+            inputLabel='name of child' 
             inputDescInfo='This refers to the name of the child you want to publish.'
           />
           <FormTextInput 
             label='name of child'
+            inputName="name"
+            register={register}
+            error={errors.name}
+            errorMessage={errors.name?.message}
           />
         </FormRow>
         <FormRow>
@@ -26,6 +71,10 @@ const ChildrenTestimonialAdd = () => {
           />
           <FormTextArea 
             label='child testimony'
+            inputName="shortNote"
+            register={register}
+            error={errors.shortNote}
+            errorMessage={errors.shortNote?.message}
           />
         </FormRow>
           <FormRow>
@@ -33,7 +82,13 @@ const ChildrenTestimonialAdd = () => {
             inputLabel='upload customer image'
             inputDescInfo='Image uploaded must be a .png or jpeg. '
           />
-          <InputImage />
+          <InputImage 
+            image={PreviewImage}
+            error={errors.image}
+            errorMessage={errors.image?.message}
+            onImageChange={onImageChange}
+            deleteImg={deleteImg}
+          />
         </FormRow>
         <FormRow>
           <InputDesc 
@@ -42,6 +97,10 @@ const ChildrenTestimonialAdd = () => {
           />
           <FormTextInput 
             label='captions'
+            inputName="caption"
+            register={register}
+            error={errors.caption}
+            errorMessage={errors.caption?.message}
           />
         </FormRow>
         <div className='adminBtns'>

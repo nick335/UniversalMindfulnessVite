@@ -23,7 +23,7 @@ const InputMultipleImage = ({errorMessage, error, onImageChange, images, deleteI
   return (
     <div className='font-inter min-w-[25rem] max-w-[25rem]'>
       <h3 className='text-base font-medium text-[#8692A6]'>Upload Images</h3>
-      <div className={`mt-3 transition-all du ease-in w-full border border-adminInputInactive rounded-md h-12 flex items-center justify-center cursor-pointer ${
+      <div className={`mt-3 transition-all duration-100 ease-in w-full border border-adminInputInactive rounded-md h-12 flex items-center justify-center cursor-pointer ${
         error ? 'border-error' : ''
       }`} onClick={handleButtonClick}>
         <AiOutlineCloudUpload className='h-6 w-6' />

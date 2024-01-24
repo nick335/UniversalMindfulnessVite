@@ -5,11 +5,57 @@ import FormQuillInput from '../../components/utility/form/FormQuillInput'
 import InputImage from '../../components/utility/form/InputImage'
 import Update from '../../components/utility/admin/buttons/Update'
 import Delete from '../../components/utility/admin/buttons/delete'
+import { z } from "zod"
+import { SubmitHandler, useForm } from "react-hook-form"
+import { zodResolver } from '@hookform/resolvers/zod'
+import { validateImages } from '../../utilsFunction/ValidateImages'
+import showToast from '../../utilsFunction/showToast'
+import { useState } from "react"
 
 const EventsAdd = () => {
+  const [PreviewImage, setPreviewImage] = useState<string>('')
+  const [EventSummary, setEventSummary] = useState<string>('')
+
+  type FormSchemaType = z.infer<typeof formSchema>
+  const formSchema = z.object({
+    name: z.string().min(1, 'name is required'),
+    eventSummary: z.string().min(1, 'testimony is required'),
+    image: z.string().min(1, 'an image is required')
+  })
+   const {
+    register,
+    handleSubmit,
+    setValue,
+    formState: {errors,}
+  } = useForm<FormSchemaType>({
+    resolver: zodResolver(formSchema)
+  })
+
+  const handleSummaryChange= (newContent: string) => {
+    setEventSummary(newContent)
+    setValue('eventSummary', newContent)
+  }
+  const onImageChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const file = event.target.files && event.target.files[0];
+  
+    if (file && validateImages(file)) {
+      const imgUrl = URL.createObjectURL(file);
+      setValue("image", imgUrl);
+      setPreviewImage(imgUrl);
+    } else {
+      showToast('Only jpeg, jpg, png, and gif images are allowed, and file size must not exceed the maximum limit of 1.5MB', 'error');
+    }
+  };
+  const deleteImg = () => {
+    setPreviewImage('')
+    setValue('image', '')
+  }
+  const onSubmit : SubmitHandler<FormSchemaType> = (data) => {
+    console.log(data)
+  }
   return (
     <div>
-      <form className='adminForm' >
+      <form className='adminForm' onSubmit={handleSubmit(onSubmit)}>
         <FormRow>
           <InputDesc 
             inputLabel='name of event'
@@ -17,6 +63,10 @@ const EventsAdd = () => {
           />
           <FormTextInput 
             label='event name'
+            inputName='name'
+            register={register}
+            error={errors.name}
+            errorMessage={errors.name?.message}
           />
         </FormRow>
         <FormRow>
@@ -26,6 +76,11 @@ const EventsAdd = () => {
           />
           <FormQuillInput 
             label='event description'
+            value={EventSummary}
+            error={errors.eventSummary}
+            onChange={handleSummaryChange}
+            errorMessage={errors.eventSummary?.message}
+
           />
         </FormRow>
         <FormRow>
@@ -33,7 +88,13 @@ const EventsAdd = () => {
             inputLabel='upload image'
             inputDescInfo='Image uploaded must be a .png or jpeg file of the dimension 584px(w) * 950px(h) below. '
           />
-          <InputImage />
+          <InputImage 
+            image={PreviewImage}
+            error={errors.image}
+            errorMessage={errors.image?.message}
+            onImageChange={onImageChange}
+            deleteImg={deleteImg}
+          />
         </FormRow>
         <div className='adminBtns'>
           <Delete />
