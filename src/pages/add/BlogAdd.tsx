@@ -11,6 +11,7 @@ import { zodResolver } from '@hookform/resolvers/zod'
 import { validateImages } from '../../utilsFunction/ValidateImages'
 import showToast from '../../utilsFunction/showToast'
 import { useState } from "react"
+import FormRow2 from "../../components/utility/form/FormRow2"
 
 const BlogAdd = () => {
   const [PreviewImage, setPreviewImage] = useState<string>('')
@@ -84,7 +85,7 @@ const BlogAdd = () => {
             errorMessage={errors.category?.message}
           />
         </FormRow>
-        <FormRow>
+        <FormRow2>
           <InputDesc 
             inputLabel="body"
             inputDescInfo="This refers to the Content related to the of the article you want to publish."
@@ -96,7 +97,7 @@ const BlogAdd = () => {
             onChange={handleSummaryChange}
             errorMessage={errors.blogContent?.message}
           />
-        </FormRow>
+        </FormRow2>
         <FormRow>
           <InputDesc 
             inputLabel='upload image'

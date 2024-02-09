@@ -17,4 +17,4 @@ const AdminContact = () => {
   )
 }
 
-export default AdminContact
+export default AdminContact;

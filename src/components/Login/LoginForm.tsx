@@ -2,9 +2,23 @@ import { z} from "zod"
 import { SubmitHandler, useForm } from "react-hook-form"
 import { zodResolver } from '@hookform/resolvers/zod'
 import ErrorMessage from "../utility/Error/ErrorMessage"
+import { useMutation} from "@tanstack/react-query"
+import { Login } from "../../api/login"
+import Cookies from 'js-cookie';
+import { useNavigate } from "react-router-dom"
+import { Icon } from '@iconify/react';
 
 
 const LoginForm = () => {
+  const navigate = useNavigate()
+
+  const mutation = useMutation(Login, {
+    onSuccess: (response) => {
+      console.log(response.data)
+      Cookies.set('adminToken', response.data.token)
+      navigate('dashboard')
+    }
+  })
 
   type FormSchemaType = z.infer<typeof formSchema>
   const formSchema = z.object({
@@ -19,8 +33,15 @@ const LoginForm = () => {
     resolver: zodResolver(formSchema)
   })
 
-  const onSubmit: SubmitHandler<FormSchemaType> = (data) => {
-    console.log(data)
+  const onSubmit: SubmitHandler<FormSchemaType> = async (data) => {
+    try{
+      await mutation.mutateAsync({
+        email: data.email,
+        password: data.password
+      })
+    }catch(error){
+      console.log(error)
+    } 
   }
   return (
     <div className="max-w-[26.625rem] mt-10">
@@ -39,7 +60,11 @@ const LoginForm = () => {
           }`} {...register("password")} />
           {errors.password && <ErrorMessage message={errors.password.message} />}
         </div>
-        <button type="submit" disabled={isSubmitting} className="w-full cursor-pointer bg-[#FC5704] text-textPrimary rounded-[0.375rem] py-3.5 capitalize">sign in</button>
+        <button type="submit" disabled={isSubmitting} className="w-full cursor-pointer bg-[#FC5704] text-textPrimary rounded-[0.375rem] py-3.5 capitalize flexCenter">
+          {
+            mutation.isLoading ? <Icon icon="line-md:loading-loop" className="text-2xl" /> : 'sign up'
+          }
+        </button>
       </form>
     </div>
   )

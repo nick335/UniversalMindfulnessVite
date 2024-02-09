@@ -13,4 +13,4 @@ const AdminBlog = () => {
   )
 }
 
-export default AdminBlog
+export default AdminBlog;

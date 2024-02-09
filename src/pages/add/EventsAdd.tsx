@@ -11,6 +11,7 @@ import { zodResolver } from '@hookform/resolvers/zod'
 import { validateImages } from '../../utilsFunction/ValidateImages'
 import showToast from '../../utilsFunction/showToast'
 import { useState } from "react"
+import FormRow2 from '../../components/utility/form/FormRow2'
 
 const EventsAdd = () => {
   const [PreviewImage, setPreviewImage] = useState<string>('')
@@ -69,7 +70,7 @@ const EventsAdd = () => {
             errorMessage={errors.name?.message}
           />
         </FormRow>
-        <FormRow>
+        <FormRow2>
           <InputDesc 
             inputLabel='event description'
             inputDescInfo='This refers to the description of the event you want to publish.'
@@ -80,9 +81,8 @@ const EventsAdd = () => {
             error={errors.eventSummary}
             onChange={handleSummaryChange}
             errorMessage={errors.eventSummary?.message}
-
           />
-        </FormRow>
+        </FormRow2>
         <FormRow>
           <InputDesc 
             inputLabel='upload image'
