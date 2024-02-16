@@ -105,7 +105,7 @@ const ChildrenTestimonialAdd = () => {
         </FormRow>
         <div className='adminBtns'>
           <Delete />
-          <Update />
+          <Update isLoading={false} />
         </div>
       </form>
     </div>

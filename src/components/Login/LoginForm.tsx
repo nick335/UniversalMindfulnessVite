@@ -14,7 +14,6 @@ const LoginForm = () => {
 
   const mutation = useMutation(Login, {
     onSuccess: (response) => {
-      console.log(response.data)
       Cookies.set('adminToken', response.data.token)
       navigate('dashboard')
     }

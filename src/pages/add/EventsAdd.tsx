@@ -98,7 +98,7 @@ const EventsAdd = () => {
         </FormRow>
         <div className='adminBtns'>
           <Delete />
-          <Update />
+          <Update isLoading={false} />
         </div>
       </form>
     </div>

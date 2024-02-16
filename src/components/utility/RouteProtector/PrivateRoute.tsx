@@ -8,7 +8,6 @@ interface props {
 
 const PrivateRoute = ({ children }: props) => {
   const isLoggedIn = Cookies.get('adminToken')
-  console.log(isLoggedIn)
   if(!isLoggedIn) {
     return <Navigate to='/admin' replace/>
   }

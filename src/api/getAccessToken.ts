@@ -1,10 +1,14 @@
 import Cookies from "js-cookie"
+import showToast from "../utilsFunction/showToast"
 
 export const getAccessToken = async () => {
-  const Token = Cookies.get('admin')
+  const Token = Cookies.get('adminToken')
 
   if(Token){
-    const AdminToken = JSON.parse(Token)
-    return AdminToken.accessToken
+    return Token
+  }
+  else {
+    showToast('session expired log in again', 'error')
+    return null
   }
 }

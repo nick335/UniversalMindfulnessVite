@@ -4,8 +4,8 @@ export function validateImages(images: FileList | File | File[] | null): boolean
     return false;
   }
 
-  const allowedTypes: string[] = ['image/jpeg', 'image/jpg', 'image/png', 'image/gif'];
-  const maxFileSizeMB: number = 1.5;
+  const allowedTypes: string[] = ['image/jpeg', 'image/jpg', 'image/png', 'image/gif', 'image/svg'];
+  const maxFileSizeMB: number = 5;
 
   // Convert FileList to an array
   const imageArray = 'length' in images ? Array.from(images) : [images];

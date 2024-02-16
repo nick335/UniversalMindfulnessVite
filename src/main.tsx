@@ -7,22 +7,12 @@ import {
   RouterProvider,
 } from "react-router-dom"
 import ErrorPage from './pages/ErrorPage.tsx'
-import Home from './pages/Home.tsx'
-import ContactUs from './pages/ContactUs.tsx'
-import MeetTheTeam from './pages/MeetTheTeam.tsx'
-import Events from './pages/Events.tsx'
 import PrivateRoute from "./components/utility/RouteProtector/PrivateRoute";
-import Shop from './pages/Shop.tsx'
-import ShopItemDescription from './pages/ShopItemDescription.tsx'
-import About from './pages/About.tsx'
-import WhatWeOffer from './pages/WhatWeOffer.tsx'
 import { AnimatePresence } from 'framer-motion'
 import { nanoid } from 'nanoid'
-import BlogDetails from './pages/BlogDetails.tsx'
 import Checkout from './components/checkout/Checkout.tsx'
 import Testimonial from './pages/Testimonial.tsx'
 import Layout from './components/admin/Layout/Layout.tsx'
-import Login from './components/Login/Login.tsx'
 import {
   QueryClient,
   QueryClientProvider,
@@ -31,8 +21,18 @@ import adminAddRoutes from './Routes/adminAddRoutes.tsx'
 import PageLoader from './components/utility/Loader/PageLoader.tsx'
 import adminRoutes from './Routes/adminRoutes.tsx'
 
+// user routes
+const ShopItemDescription = lazy(() => import('./pages/ShopItemDescription.tsx'))
+const Login = lazy(() => import('./components/Login/Login.tsx'))
+const BlogDetails = lazy(() => import('./pages/About.tsx'))
+const About = lazy(() => import('./pages/About.tsx'))
 const Blog = lazy(() => import('./pages/Blog.tsx'))
-
+const Home = lazy(() => import('./pages/Home.tsx'))
+const ContactUs = lazy(() => import('./pages/ContactUs.tsx'))
+const MeetTheTeam = lazy(() => import('./pages/MeetTheTeam.tsx'))
+const Events = lazy(() => import('./pages/Events.tsx'))
+const Shop = lazy(() => import('./pages/Shop.tsx'))
+const WhatWeOffer =lazy(() => import('./pages/WhatWeOffer.tsx'))
 const queryClient = new QueryClient()
 
 const router = createBrowserRouter([
@@ -43,19 +43,19 @@ const router = createBrowserRouter([
     children: [
       {
         path: '/',
-        element: <Home />
+        element: <Suspense fallback={<PageLoader />}><Home /></Suspense>
       },
       {
         path: '/contactus',
-        element: <ContactUs />
+        element: <Suspense fallback={<PageLoader />}><ContactUs /></Suspense>
       },
       {
         path: '/meettheteam',
-        element: <MeetTheTeam />,
+        element: <Suspense fallback={<PageLoader />}><MeetTheTeam /></Suspense>,
       },
       {
         path: '/events',
-        element: <Events />
+        element: <Suspense fallback={<PageLoader />}><Events /></Suspense>
       },
       {
         path: '/blog',
@@ -63,31 +63,31 @@ const router = createBrowserRouter([
       },
       {
         path:'/shop',
-        element: <Shop />
+        element: <Suspense fallback={<PageLoader />}><Shop /></Suspense>
       },
       {
         path:'/shop/bracelet',
-        element: <ShopItemDescription />
+        element: <Suspense fallback={<PageLoader />}><ShopItemDescription /></Suspense>
       },
       {
         path:'/about',
-        element: <About />
+        element: <Suspense fallback={<PageLoader />}><About /></Suspense>
       },
       {
         path: '/whatweoffer',
-        element: <WhatWeOffer />
+        element: <Suspense fallback={<PageLoader />}><WhatWeOffer /></Suspense>
       },
       {
         path: 'blog/content',
-        element: <BlogDetails />
+        element: <Suspense fallback={<PageLoader />}><BlogDetails /></Suspense>
       },
       {
         path: 'shop/checkout',
-        element: <Checkout />
+        element: <Suspense fallback={<PageLoader />}><Checkout /></Suspense>
       },
       {
         path:'/testimonials',
-        element: <Testimonial/>
+        element: <Suspense fallback={<PageLoader />}><Testimonial /></Suspense>
       },
     ]
   },
@@ -123,6 +123,5 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
         <RouterProvider router={router} />
       </AnimatePresence>
     </QueryClientProvider>
-    
   </React.StrictMode>,
 )

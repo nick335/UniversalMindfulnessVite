@@ -9,9 +9,20 @@ import { zodResolver } from '@hookform/resolvers/zod'
 import { validateImages } from '../../utilsFunction/ValidateImages'
 import { useState } from 'react'
 import showToast from '../../utilsFunction/showToast'
+import { useMutation } from '@tanstack/react-query'
+import { postImages } from '../../api/images/postImages'
+import { AxiosError } from 'axios'
 
 const HeroCarouselAdd = () => {
+  const [imgFiles, setImgFiles] = useState<Blob[]>([])
   const [PreviewImages, setPreviewImages] = useState<string[]>([])
+  const mutation = useMutation(postImages, {
+    onSuccess: () => {
+      setImgFiles([])
+      setPreviewImages([])
+      showToast('uploaded Successfully', 'success')
+    }
+  })
   type FormSchemaType = z.infer<typeof formSchema>
   const formSchema = z.object({
     images: z.array(z.string())
@@ -21,13 +32,25 @@ const HeroCarouselAdd = () => {
     handleSubmit,
     formState: { errors,   },
     setValue,
-    // getValues,
   } = useForm<FormSchemaType>({
     resolver: zodResolver(formSchema)
   })
 
-  const onSubmit: SubmitHandler<FormSchemaType> = (data) => {
-    console.log(data)
+  const onSubmit: SubmitHandler<FormSchemaType> = async () => {
+    
+    try {
+      await mutation.mutateAsync({
+        title: 'test',
+        images: imgFiles
+      })
+    }catch(error){
+      if(error instanceof AxiosError ){
+        const message = error.response?.data.message || error.message
+        showToast(message, 'error')
+      }else{
+        showToast('something went wrong try again', 'error')
+      }
+    }
   }
   const onDeleteImage = (index: number) => {
     const currentImages = [...PreviewImages]
@@ -40,6 +63,7 @@ const HeroCarouselAdd = () => {
     const files = event.target.files;
     if(validateImages(files)){
       if(files){
+        setImgFiles(prevImgFiles => [...prevImgFiles, ...files])
         const imgUrls = Array.from(files).map((file) => URL.createObjectURL(file))
         setValue("images", [...PreviewImages, ...imgUrls]);
         setPreviewImages(prevImages => [...prevImages, ...imgUrls])
@@ -67,7 +91,7 @@ const HeroCarouselAdd = () => {
 
         <div className='adminBtns'>
           <Delete />
-          <Update />
+          <Update isLoading={mutation.isLoading} />
         </div>
       </form>
     </div>
