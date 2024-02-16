@@ -17,6 +17,6 @@ export const axiosInstance2 = axios.create({
   baseURL:API_BASE_URL,
   headers: {
     "Content-Type": "multipart/form-data",
-    "Authorization": `Bearer ${await getAccessToken()}`
+    "Authorization": `Bearer ${getAccessToken()}`
   },
 }) 

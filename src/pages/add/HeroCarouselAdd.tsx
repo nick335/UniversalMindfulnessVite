@@ -44,6 +44,7 @@ const HeroCarouselAdd = () => {
         images: imgFiles
       })
     }catch(error){
+      console.log(error)
       if(error instanceof AxiosError ){
         const message = error.response?.data.message || error.message
         showToast(message, 'error')

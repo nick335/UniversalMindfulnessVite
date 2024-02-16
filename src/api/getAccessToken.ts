@@ -1,7 +1,7 @@
 import Cookies from "js-cookie"
 import showToast from "../utilsFunction/showToast"
 
-export const getAccessToken = async () => {
+export const getAccessToken =  () => {
   const Token = Cookies.get('adminToken')
 
   if(Token){
