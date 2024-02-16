@@ -17,6 +17,12 @@ export const axiosInstance2 = axios.create({
   baseURL:API_BASE_URL,
   headers: {
     "Content-Type": "multipart/form-data",
-    "Authorization": `Bearer ${getAccessToken()}`
   },
 }) 
+
+axiosInstance2.interceptors.request.use( (config) => {
+  // Fetch new access token for each request
+  const accessToken = getAccessToken();
+  config.headers.Authorization = `Bearer ${accessToken}`;
+  return config;
+});
