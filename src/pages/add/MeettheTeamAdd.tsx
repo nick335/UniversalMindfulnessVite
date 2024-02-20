@@ -11,9 +11,21 @@ import { SubmitHandler, useForm } from "react-hook-form"
 import { zodResolver } from '@hookform/resolvers/zod'
 import { validateImages } from '../../utilsFunction/ValidateImages'
 import showToast from '../../utilsFunction/showToast'
+import { useMutation } from "@tanstack/react-query"
+import { postContent } from "../../api/content/postContent"
+import ErrorHandler from "../../utilsFunction/ErrorHandler"
 
 const MeettheTeamAdd = () => {
+  const [imgFile, setImgFile] = useState<Blob>()
   const [PreviewImage, setPreviewImage] = useState<string>('')
+
+  const mutation = useMutation(postContent, {
+    onSuccess: () => {
+      setPreviewImage('')
+      reset()
+      showToast('Content uploaded Successfully', 'success')
+    }
+  })
   type FormSchemaType = z.infer<typeof formSchema>
   const formSchema = z.object({
     name: z.string().min(1, 'email is required'),
@@ -26,6 +38,7 @@ const MeettheTeamAdd = () => {
     register,
     handleSubmit,
     setValue,
+    reset,
     formState: {errors,}
   } = useForm<FormSchemaType>({
     resolver: zodResolver(formSchema)
@@ -38,6 +51,7 @@ const MeettheTeamAdd = () => {
       const imgUrl = URL.createObjectURL(file);
       setValue("image", imgUrl);
       setPreviewImage(imgUrl);
+      setImgFile(file)
     } else {
       showToast('Only jpeg, jpg, png, and gif images are allowed, and file size must not exceed the maximum limit of 1.5MB', 'error');
     }
@@ -46,8 +60,18 @@ const MeettheTeamAdd = () => {
     setPreviewImage('')
     setValue('image', '')
   }
-  const onSubmit : SubmitHandler<FormSchemaType> = (data) => {
-    console.log(data)
+  const onSubmit : SubmitHandler<FormSchemaType> = async (data) => {
+    try{
+      await mutation.mutateAsync({
+        section: 'teamtest',
+        title: data.name,
+        header: data.role,
+        body1: data.shortNote,
+        image1: imgFile,
+      })
+    }catch(error){
+      ErrorHandler(error)
+    }
   }
   return (
     <div>
@@ -106,7 +130,7 @@ const MeettheTeamAdd = () => {
         </FormRow>
         <div className='adminBtns'>
           <Delete />
-          <Update isLoading={false} />
+          <Update isLoading={mutation.isLoading} />
         </div>
       </form>
     </div>

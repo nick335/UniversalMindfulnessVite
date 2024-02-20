@@ -1,11 +1,15 @@
 import Team from "../components/meettheteam/Team"
 import PageTransition from "../components/utility/motion/PageTransition"
+import SEOPageHeader from "../components/utility/seo/SEOPageHeader"
 import PageHeaderSection from "../components/utility/subHeaders/PageHeaderSection"
 import Subheader from "../components/utility/subHeaders/Subheader"
 
 const MeetTheTeam = () => {
   return (
     <PageTransition layout='layout'>
+      <SEOPageHeader 
+        page='The Team'
+      />
       <Subheader header='Meet the Team' />
       <PageHeaderSection 
         header='Meet the Team: The right skills, the right people.'

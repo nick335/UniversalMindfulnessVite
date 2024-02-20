@@ -11,7 +11,7 @@ import { useState } from 'react'
 import showToast from '../../utilsFunction/showToast'
 import { useMutation } from '@tanstack/react-query'
 import { postImages } from '../../api/images/postImages'
-import { AxiosError } from 'axios'
+import ErrorHandler from '../../utilsFunction/ErrorHandler'
 
 const AdminAboutGallery = () => {
   const [imgFiles, setImgFiles] = useState<Blob[]>([])
@@ -19,6 +19,7 @@ const AdminAboutGallery = () => {
   const mutation = useMutation(postImages, {
     onSuccess: () => {
       setImgFiles([])
+      reset()
       setPreviewImages([])
       showToast('uploaded Successfully', 'success')
     }
@@ -31,6 +32,7 @@ const AdminAboutGallery = () => {
     handleSubmit,
     formState: { errors,   },
     setValue,
+    reset,
   } = useForm<FormSchemaType>({
     resolver: zodResolver(formSchema)
   })
@@ -60,12 +62,7 @@ const AdminAboutGallery = () => {
         images: imgFiles
       })
     }catch(error){
-      if(error instanceof AxiosError ){
-        const message = error.response?.data.message || error.message
-        showToast(message, 'error')
-      }else{
-        showToast('something went wrong try again', 'error')
-      }
+      ErrorHandler(error)
     }
   }
   return (

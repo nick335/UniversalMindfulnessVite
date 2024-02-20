@@ -2,11 +2,15 @@ import Form from "../components/contactUs/Form"
 import PageTransition from "../components/utility/motion/PageTransition"
 import Subheader from "../components/utility/subHeaders/Subheader"
 import styles from '../components/contactUs/contactUs.module.css'
+import SEOPageHeader from "../components/utility/seo/SEOPageHeader"
 
 const ContactUs = () => {
   return (
     <PageTransition layout="layout">
       <div className="lg:mb-32">
+        <SEOPageHeader 
+          page="Contact Us"
+        />
         <Subheader header='Contact Us' />
         <section className="mt-8 lg:flex lg:gap-x-32 xl:gap-x-40 lg:mt-10">
           <div className="font-inter text-base leading-[1.70675rem] lg:flex-1 lg:mt-8 lg:text-lg xl:text-xl">

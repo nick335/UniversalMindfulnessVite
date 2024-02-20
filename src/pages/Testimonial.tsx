@@ -2,12 +2,16 @@ import ChildrenTestimonial from "../components/testimonials/ChildrenTestimonial"
 import MainTestimonial from "../components/testimonials/MainTestimonial"
 import ParentTestimonials from "../components/testimonials/ParentTestimonials"
 import PageTransition from "../components/utility/motion/PageTransition"
+import SEOPageHeader from "../components/utility/seo/SEOPageHeader"
 import PageHeaderSection from "../components/utility/subHeaders/PageHeaderSection"
 import Subheader from "../components/utility/subHeaders/Subheader"
 
 const Testimonial = () => {
   return (
     <PageTransition layout="layout">
+      <SEOPageHeader 
+        page="Testimonials"
+      />
       <Subheader header="Testimonials" />
       <PageHeaderSection
         para="We offer a hand, a toolkit, and a supportive community to help you navigate the messy masterpiece of life. But don't just take our word for it." 

@@ -1,4 +1,5 @@
 import PageTransition from '../components/utility/motion/PageTransition'
+import SEOPageHeader from '../components/utility/seo/SEOPageHeader'
 import PageHeaderSection from '../components/utility/subHeaders/PageHeaderSection'
 import Subheader from '../components/utility/subHeaders/Subheader'
 import DesktopWhatWeOffer from '../components/whatweoffer/DesktopWhatWeOffer'
@@ -8,6 +9,9 @@ const WhatWeOffer = () => {
   const { width } = useWindowDimensions()
   return (
     <PageTransition layout='none'>
+      <SEOPageHeader 
+        page='What we offer'
+      />
       <div className='layout'>
         <Subheader header='What we Offer' />
         <PageHeaderSection 

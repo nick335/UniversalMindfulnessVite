@@ -11,7 +11,7 @@ import { useState } from 'react'
 import showToast from '../../utilsFunction/showToast'
 import { useMutation } from '@tanstack/react-query'
 import { postImages } from '../../api/images/postImages'
-import { AxiosError } from 'axios'
+import ErrorHandler from '../../utilsFunction/ErrorHandler'
 
 const HeroCarouselAdd = () => {
   const [imgFiles, setImgFiles] = useState<Blob[]>([])
@@ -19,8 +19,9 @@ const HeroCarouselAdd = () => {
   const mutation = useMutation(postImages, {
     onSuccess: () => {
       setImgFiles([])
+      reset()
       setPreviewImages([])
-      showToast('uploaded Successfully', 'success')
+      showToast('Images uploaded Successfully', 'success')
     }
   })
   type FormSchemaType = z.infer<typeof formSchema>
@@ -32,25 +33,19 @@ const HeroCarouselAdd = () => {
     handleSubmit,
     formState: { errors,   },
     setValue,
+    reset,
   } = useForm<FormSchemaType>({
     resolver: zodResolver(formSchema)
   })
 
   const onSubmit: SubmitHandler<FormSchemaType> = async () => {
-    
     try {
       await mutation.mutateAsync({
         title: 'test',
         images: imgFiles
       })
     }catch(error){
-      console.log(error)
-      if(error instanceof AxiosError ){
-        const message = error.response?.data.message || error.message
-        showToast(message, 'error')
-      }else{
-        showToast('something went wrong try again', 'error')
-      }
+      ErrorHandler(error)
     }
   }
   const onDeleteImage = (index: number) => {

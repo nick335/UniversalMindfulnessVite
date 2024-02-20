@@ -12,10 +12,22 @@ import { validateImages } from '../../utilsFunction/ValidateImages'
 import showToast from '../../utilsFunction/showToast'
 import { useState } from "react"
 import FormRow2 from '../../components/utility/form/FormRow2'
-
+import { useMutation } from '@tanstack/react-query'
+import { postContent } from '../../api/content/postContent'
+;
+import ErrorHandler from '../../utilsFunction/ErrorHandler'
 const EventsAdd = () => {
+  const [imgFile, setImgFile] = useState<Blob>()
   const [PreviewImage, setPreviewImage] = useState<string>('')
   const [EventSummary, setEventSummary] = useState<string>('')
+
+  const mutation = useMutation(postContent, {
+    onSuccess: () => {
+      setPreviewImage('')
+      reset()
+      showToast('Content uploaded Successfully', 'success')
+    }
+  })
 
   type FormSchemaType = z.infer<typeof formSchema>
   const formSchema = z.object({
@@ -27,6 +39,7 @@ const EventsAdd = () => {
     register,
     handleSubmit,
     setValue,
+    reset,
     formState: {errors,}
   } = useForm<FormSchemaType>({
     resolver: zodResolver(formSchema)
@@ -40,6 +53,7 @@ const EventsAdd = () => {
     const file = event.target.files && event.target.files[0];
   
     if (file && validateImages(file)) {
+      setImgFile(file)
       const imgUrl = URL.createObjectURL(file);
       setValue("image", imgUrl);
       setPreviewImage(imgUrl);
@@ -51,8 +65,18 @@ const EventsAdd = () => {
     setPreviewImage('')
     setValue('image', '')
   }
-  const onSubmit : SubmitHandler<FormSchemaType> = (data) => {
-    console.log(data)
+  const onSubmit : SubmitHandler<FormSchemaType> = async (data) => {
+    try{
+      await mutation.mutateAsync({
+        section: 'eventtest',
+        title: data.name,
+        body1: data.eventSummary,
+        image1: imgFile,
+        header: data.name,
+      })
+    }catch(error){
+      ErrorHandler(error)
+    }
   }
   return (
     <div>
@@ -98,7 +122,7 @@ const EventsAdd = () => {
         </FormRow>
         <div className='adminBtns'>
           <Delete />
-          <Update isLoading={false} />
+          <Update isLoading={mutation.isLoading} />
         </div>
       </form>
     </div>

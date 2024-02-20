@@ -3,6 +3,7 @@ import { lazy } from "react";
 import PrivateRoute from "../components/utility/RouteProtector/PrivateRoute";
 import { Suspense } from "react";
 import PageLoader from "../components/utility/Loader/PageLoader";
+import AdminMeetTheTeam from "../pages/AdminMeetTheTeam";
 const AboutSections = lazy(() => import('../components/admin/about/AboutSections'))
 const AdminHome = lazy(() => import('../components/admin/home/Home'))
 const AdminAbout = lazy(() => import('../pages/AdminAbout'))
@@ -53,7 +54,7 @@ const adminRoutes = [
       },
       {
         path: '/admin/dashboard/about/meettheteam',
-        element: <Suspense fallback={<PageLoader />}><PrivateRoute children={<AboutSections />} /></Suspense> 
+        element: <Suspense fallback={<PageLoader />}><PrivateRoute children={<AdminMeetTheTeam />} /></Suspense> 
       }
     ]
   }, 

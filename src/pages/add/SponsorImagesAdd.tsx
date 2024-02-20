@@ -12,7 +12,7 @@ import Delete from '../../components/utility/admin/buttons/delete'
 import Update from '../../components/utility/admin/buttons/Update'
 import { useMutation } from '@tanstack/react-query'
 import { postImages } from '../../api/images/postImages'
-import { AxiosError } from 'axios'
+import ErrorHandler from '../../utilsFunction/ErrorHandler'
 
 
 const SponsorImagesAdd = () => {
@@ -21,6 +21,7 @@ const SponsorImagesAdd = () => {
   const mutation = useMutation(postImages, {
     onSuccess: () => {
       setImgFiles([])
+      reset()
       setPreviewImages([])
       showToast('uploaded Successfully', 'success')
     }
@@ -32,6 +33,7 @@ const SponsorImagesAdd = () => {
 
   const {
     handleSubmit,
+    reset,
     formState: { errors,   },
     setValue,
   } = useForm<FormSchemaType>({
@@ -45,12 +47,7 @@ const SponsorImagesAdd = () => {
         images: imgFiles
       })
     }catch(error){
-      if(error instanceof AxiosError ){
-        const message = error.response?.data.message || error.message
-        showToast(message, 'error')
-      }else{
-        showToast('something went wrong try again', 'error')
-      }
+      ErrorHandler(error)
     }
   }
   const onDeleteImage = (index: number) => {

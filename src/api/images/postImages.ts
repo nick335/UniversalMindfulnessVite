@@ -8,6 +8,7 @@ export const postImages = async (payload: postImagePayload) => {
   payload.images.forEach((file, index) => {
     formData.append(`images[${index}]`, file);
   })
+
   formData.append('title', payload.title)
   const response = await axiosInstance2.post('images', formData)
 

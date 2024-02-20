@@ -2,6 +2,7 @@ import AboutGallery from "../components/about/AboutGallery"
 import CustomAboutAccordion from "../components/about/CustomAboutAccordion"
 import DesktopAbout from "../components/about/DesktopAbout"
 import PageTransition from "../components/utility/motion/PageTransition"
+import SEOPageHeader from "../components/utility/seo/SEOPageHeader"
 import PageHeaderSection from "../components/utility/subHeaders/PageHeaderSection"
 import Subheader from "../components/utility/subHeaders/Subheader"
 import useWindowDimensions from "../hooks/UseWindowDimensions"
@@ -10,6 +11,9 @@ const About = () => {
   const { width }  = useWindowDimensions()
   return (
     <PageTransition layout="none">
+      <SEOPageHeader 
+        page="About us"
+      />
       <Subheader header='About Us' />
       <PageHeaderSection 
         header='The world’s destination for emotional intelligence'
