@@ -7,9 +7,10 @@ import { teamResponseType } from "../types/api/response"
 import { nanoid } from "nanoid"
 import AdminContentLoader from "../components/utility/Loader/AdminContentLoader"
 import NoContent from "../components/utility/admin/contentdisplay/NoContent"
+import ErrorMessage2 from "../components/utility/Error/ErrorMessage2"
 
 const AdminMeetTheTeam = () => {
-  const { data, isLoading } = useQuery(['team'], () => getContent({section: 'team'}))
+  const { data, isLoading, error } = useQuery(['team'], () => getContent({section: 'team'}))
 
   const contentArr: teamResponseType[] = data?.data.data || []
 
@@ -24,6 +25,7 @@ const AdminMeetTheTeam = () => {
             link1={each.link1}
           />
   })
+  if(error) return <ErrorMessage2 error={error} />
   return (
     <div className="pb-12">
       <SectionBody>

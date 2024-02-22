@@ -2,7 +2,6 @@ import { Link, Outlet, useLocation } from "react-router-dom"
 
 const AdminAbout = () => {
   const location = useLocation().pathname
-  console.log(location)
   return (
     <div >
       <div>

@@ -6,9 +6,10 @@ import { blogResponseType, } from '../types/api/response'
 import { nanoid } from 'nanoid'
 import AdminContentLoader from '../components/utility/Loader/AdminContentLoader'
 import NoContent from '../components/utility/admin/contentdisplay/NoContent'
+import ErrorMessage2 from '../components/utility/Error/ErrorMessage2'
 
 const AdminBlog = () => {
-  const { data, isLoading,  } = useQuery(['blogs'], () => getContent({section: 'blogs'}))
+  const { data, isLoading, error  } = useQuery(['blogs'], () => getContent({section: 'blogs'}))
   const contentArr: blogResponseType[] = data?.data.data || []
 
   const contentDisplay = contentArr.map((each) => {
@@ -22,6 +23,7 @@ const AdminBlog = () => {
             body2={each.body2}
           />
   })
+  if(error) return <ErrorMessage2 error={error} />
   return (
     <div className="adminSectionsGridLayout">
       <AddBlog />

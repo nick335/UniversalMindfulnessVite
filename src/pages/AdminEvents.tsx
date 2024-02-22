@@ -6,9 +6,10 @@ import { eventResponseType } from "../types/api/response"
 import { nanoid } from "nanoid"
 import AdminContentLoader from "../components/utility/Loader/AdminContentLoader"
 import NoContent from "../components/utility/admin/contentdisplay/NoContent"
+import ErrorMessage2 from "../components/utility/Error/ErrorMessage2"
 
 const AdminEvents = () => {
-  const { data, isLoading } = useQuery(['events'], () => getContent({section: 'event'}))
+  const { data, isLoading, error } = useQuery(['events'], () => getContent({section: 'event'}))
 
   const contentArr: eventResponseType[] = data?.data.data || []
 
@@ -21,7 +22,7 @@ const AdminEvents = () => {
             title={each.title}
           />
   })
-
+  if(error) return <ErrorMessage2 error={error} />
   return (
     <div className="adminSectionsGridLayout">
       <AddEvent />

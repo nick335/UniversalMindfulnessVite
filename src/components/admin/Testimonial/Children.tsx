@@ -7,8 +7,9 @@ import { testimonialResponseType } from '../../../types/api/response'
 import { nanoid } from 'nanoid'
 import AdminContentLoader from '../../utility/Loader/AdminContentLoader'
 import NoContent from '../../utility/admin/contentdisplay/NoContent'
+import ErrorMessage2 from '../../utility/Error/ErrorMessage2'
 const Children = () => {
-  const { data, isLoading } = useQuery(['childrenTestimonial'], () => getContent({section: 'childrentest'}))
+  const { data, isLoading, error } = useQuery(['childrenTestimonial'], () => getContent({section: 'childrentest'}))
 
   const contentArr: testimonialResponseType[] = data?.data.data || []
 
@@ -24,7 +25,7 @@ const Children = () => {
           />
   })
 
-  console.log(data)
+  if(error) return <ErrorMessage2 error={error} />
   return (
     <SectionBody>
       <SectionHeader 

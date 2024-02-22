@@ -6,13 +6,16 @@ import { getImages } from "../../../api/images/getImages"
 import { imageResponseType } from "../../../types/api/response"
 import { nanoid } from "nanoid"
 import AdminContentLoader from "../../utility/Loader/AdminContentLoader"
+import NoContent from "../../utility/admin/contentdisplay/NoContent"
+import ErrorMessage2 from "../../utility/Error/ErrorMessage2"
 const SponsorImages = () => {
-  const { data, isLoading } = useQuery(['SponsorImages'], () => getImages({ section: 'test'}))
+  const { data, isLoading, error } = useQuery(['SponsorImages'], () => getImages({ section: 'test'}))
   const Images: imageResponseType[] = data?.data.data || []
 
   const imagesDisplay = Images.map((each) => {
     return <ImageDisplay section={each.title} id={each.id} key={nanoid()} rounded={false}  img={each.link} />
   })
+  if(error) return <ErrorMessage2 error={error} />
   return (
     <SectionBody>
       <SectionHeader 
@@ -22,7 +25,8 @@ const SponsorImages = () => {
       />
       <div className="adminGridLayout1">
         {
-          isLoading ? <AdminContentLoader /> : imagesDisplay
+          isLoading ? <AdminContentLoader /> : imagesDisplay.length === 0 ?
+          <NoContent /> : imagesDisplay
         }
       </div>
     </SectionBody>
