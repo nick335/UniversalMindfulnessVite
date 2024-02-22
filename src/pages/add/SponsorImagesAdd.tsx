@@ -69,6 +69,11 @@ const SponsorImagesAdd = () => {
     }else{
       showToast('Only jpeg, jpg, png, and gif images are allowed and File size must not exceed the maximum limit of 1.5MB','error')
     } 
+  }
+  function handleDelete(){
+    reset()
+    setPreviewImages([])
+    setImgFiles([])
   }     
   return (
     <div>
@@ -88,7 +93,7 @@ const SponsorImagesAdd = () => {
         </FormRow>
 
         <div className='adminBtns'>
-          <Delete />
+        <Delete isLoading={mutation.isLoading} handleDelete={handleDelete} />
           <Update isLoading={mutation.isLoading} />
         </div>
       </form>

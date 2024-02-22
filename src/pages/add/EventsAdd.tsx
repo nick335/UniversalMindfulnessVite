@@ -25,6 +25,7 @@ const EventsAdd = () => {
     onSuccess: () => {
       setPreviewImage('')
       reset()
+      setEventSummary('')
       showToast('Content uploaded Successfully', 'success')
     }
   })
@@ -68,15 +69,19 @@ const EventsAdd = () => {
   const onSubmit : SubmitHandler<FormSchemaType> = async (data) => {
     try{
       await mutation.mutateAsync({
-        section: 'eventtest',
+        section: 'event',
         title: data.name,
         body1: data.eventSummary,
         image1: imgFile,
-        header: data.name,
       })
     }catch(error){
       ErrorHandler(error)
     }
+  }
+  function handleDelete(){
+    reset()
+    setPreviewImage('')
+    setEventSummary('')
   }
   return (
     <div>
@@ -121,7 +126,7 @@ const EventsAdd = () => {
           />
         </FormRow>
         <div className='adminBtns'>
-          <Delete />
+        <Delete isLoading={mutation.isLoading} handleDelete={handleDelete} />
           <Update isLoading={mutation.isLoading} />
         </div>
       </form>

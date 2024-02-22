@@ -11,3 +11,8 @@ export type postContentPayloadType = {
   image3?: Blob
   sub_section?: string 
 }
+
+export type getContentPayloadType = {
+  section: string,
+  sub_section?: string,
+}

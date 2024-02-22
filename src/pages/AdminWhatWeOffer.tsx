@@ -1,12 +1,9 @@
-import ContentDisplay2 from '../components/utility/admin/contentdisplay/ContentDisplay2'
+import NoContent from "../components/utility/admin/contentdisplay/NoContent"
 
 const AdminWhatWeOffer = () => {
   return (
     <div className='adminSectionsGridLayout'>
-      <ContentDisplay2 />
-      <ContentDisplay2 />
-      <ContentDisplay2 />
-      <ContentDisplay2 />
+      <NoContent />
     </div>
   )
 }

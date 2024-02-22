@@ -63,7 +63,7 @@ const MeettheTeamAdd = () => {
   const onSubmit : SubmitHandler<FormSchemaType> = async (data) => {
     try{
       await mutation.mutateAsync({
-        section: 'teamtest',
+        section: 'team',
         title: data.name,
         header: data.role,
         body1: data.shortNote,
@@ -72,6 +72,10 @@ const MeettheTeamAdd = () => {
     }catch(error){
       ErrorHandler(error)
     }
+  }
+  function handleDelete(){
+    reset()
+    setPreviewImage('')
   }
   return (
     <div>
@@ -129,7 +133,7 @@ const MeettheTeamAdd = () => {
           />
         </FormRow>
         <div className='adminBtns'>
-          <Delete />
+        <Delete isLoading={mutation.isLoading} handleDelete={handleDelete} />
           <Update isLoading={mutation.isLoading} />
         </div>
       </form>

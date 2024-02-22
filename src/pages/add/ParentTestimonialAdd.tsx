@@ -69,6 +69,10 @@ const ParentTestimonialAdd = () => {
       ErrorHandler(error)
     }
   }
+  function handleDelete(){
+    reset()
+    setPreviewImage('')
+  }
   return (
     <div>
       <form className='adminForm' onSubmit={handleSubmit(onSubmit)}>
@@ -125,7 +129,7 @@ const ParentTestimonialAdd = () => {
           />
         </FormRow>
         <div className='adminBtns'>
-          <Delete />
+        <Delete isLoading={mutation.isLoading} handleDelete={handleDelete} />
           <Update isLoading={mutation.isLoading} />
         </div>
       </form>

@@ -23,6 +23,7 @@ const BlogAdd = () => {
   const mutation = useMutation(postContent, {
     onSuccess: () => {
       setPreviewImage('')
+      setBlogContent('')
       reset()
       showToast('Content uploaded Successfully', 'success')
     }
@@ -68,7 +69,7 @@ const BlogAdd = () => {
   const onSubmit : SubmitHandler<FormSchemaType> = async (data) => {
     try{
       await mutation.mutateAsync({
-        section: 'eventtest',
+        section: 'blogTest',
         title: data.title,
         body1: data.blogContent,
         image1: imgFile,
@@ -78,6 +79,11 @@ const BlogAdd = () => {
     }catch(error){
       ErrorHandler(error)
     }
+  }
+  function handleDelete(){
+    reset()
+    setPreviewImage('')
+    setBlogContent('')
   }
   return (
     <div>
@@ -148,7 +154,7 @@ const BlogAdd = () => {
           />
         </FormRow>
         <div className='adminBtns'>
-          <Delete />
+        <Delete isLoading={mutation.isLoading} handleDelete={handleDelete} />
           <Update isLoading={mutation.isLoading} />
         </div>
       </form>

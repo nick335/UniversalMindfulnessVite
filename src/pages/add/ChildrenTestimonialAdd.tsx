@@ -19,6 +19,7 @@ const ChildrenTestimonialAdd = () => {
   const [imgFile, setImgFile] = useState<Blob>()
   const [PreviewImage, setPreviewImage] = useState<string>('')
 
+
   const mutation = useMutation(postContent, {
     onSuccess: () => {
       setPreviewImage('')
@@ -71,6 +72,10 @@ const ChildrenTestimonialAdd = () => {
     }catch(error){
       ErrorHandler(error)
     }
+  }
+  function handleDelete(){
+    reset()
+    setPreviewImage('')
   }
   return (
     <div>
@@ -128,7 +133,7 @@ const ChildrenTestimonialAdd = () => {
           />
         </FormRow>
         <div className='adminBtns'>
-          <Delete />
+        <Delete isLoading={mutation.isLoading} handleDelete={handleDelete} />
           <Update isLoading={mutation.isLoading} />
         </div>
       </form>

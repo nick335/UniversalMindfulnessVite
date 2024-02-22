@@ -1,15 +1,15 @@
 import pencil from '../../../../assets/admin/pencil.svg'
-import demo from '../../../../assets/admin/demo.png'
 import ContentDisplayDelete from './ContentDisplayDelete'
-const ContentDisplay3 = () => {
+import { teamResponseType } from '../../../../types/api/response'
+const ContentDisplay3 = ({ id, title, header, body1, link1, section}: teamResponseType) => {
   return (
     <div className="font-inter leading-[1.4375rem] text-sm tracking-[-0.018rem]">
       <div className='w-full aspect-[1.11/1]'>
-        <img src={demo} alt='demo' className='imgFocus object-cover' />
+        <img src={`https://myserver.universalmindfulness.co.uk/images/${link1}`} alt='demo' className='imgFocus object-cover' />
       </div>
-      <h4 className='font-semibold mt-[1.3rem]'>Mary Morrall, Founder</h4>
-      <p className="font-semibold mt-[1.3rem]">
-        Universal Mindfulness helped me seamlessly pivot my practice to the virtual space and has completely shifted my practice for the long term. It's perfect to have such a wonderful and accessible tool for clinicians and clients alike.
+      <h4 className='font-semibold mt-[1.3rem]'>{title}, {header}</h4>
+      <p className="font-semibold mt-[1.3rem] line-clamp-6">
+        {body1}
       </p>
       <div className="mt-8 flex items-center justify-between">
         <button className='flex items-center gap-x-2'>
