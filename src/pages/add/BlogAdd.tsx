@@ -69,7 +69,7 @@ const BlogAdd = () => {
   const onSubmit : SubmitHandler<FormSchemaType> = async (data) => {
     try{
       await mutation.mutateAsync({
-        section: 'blogTest',
+        section: 'blogs',
         title: data.title,
         body1: data.blogContent,
         image1: imgFile,

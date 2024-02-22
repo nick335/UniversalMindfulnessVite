@@ -9,7 +9,7 @@ import NoContent from "../components/utility/admin/contentdisplay/NoContent"
 import ErrorMessage2 from "../components/utility/Error/ErrorMessage2"
 
 const AdminEvents = () => {
-  const { data, isLoading, error } = useQuery(['events'], () => getContent({section: 'event'}))
+  const { data, isLoading, error } = useQuery(['event'], () => getContent({section: 'event'}))
 
   const contentArr: eventResponseType[] = data?.data.data || []
 
@@ -20,6 +20,7 @@ const AdminEvents = () => {
             body1={each.body1}
             link1={each.link1}
             title={each.title}
+            section={each.section}
           />
   })
   if(error) return <ErrorMessage2 error={error} />

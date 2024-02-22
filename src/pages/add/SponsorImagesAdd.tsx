@@ -43,7 +43,7 @@ const SponsorImagesAdd = () => {
   const onSubmit: SubmitHandler<FormSchemaType> = async () => {
     try {
       await mutation.mutateAsync({
-        title: 'test',
+        title: 'SponsorImages',
         images: imgFiles
       })
     }catch(error){

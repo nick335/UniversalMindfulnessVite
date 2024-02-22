@@ -16,3 +16,7 @@ export type getContentPayloadType = {
   section: string,
   sub_section?: string,
 }
+
+export type deleteContentPayloadType = {
+  id: number
+}

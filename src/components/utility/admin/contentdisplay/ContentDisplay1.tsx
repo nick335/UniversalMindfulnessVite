@@ -1,10 +1,11 @@
 import pencil from '../../../../assets/admin/pencil.svg'
 import ContentDisplayDelete from './ContentDisplayDelete'
 import { testimonialResponseType } from '../../../../types/api/response'
+import { deleteContent } from '../../../../api/content/deleteContent'
 
 
 
-const ContentDisplay1 = ({ id, title, body1, header, section, link1  }: testimonialResponseType) => {
+const ContentDisplay1 = ({ id, title, body1, header,link1,section  }: testimonialResponseType) => {
   return (
     <div className="font-inter leading-[1.4375rem] text-sm tracking-[-0.018rem]">
       <div className='w-full aspect-[1.11/1]'>
@@ -25,7 +26,7 @@ const ContentDisplay1 = ({ id, title, body1, header, section, link1  }: testimon
           <span className=' capitalize underline text-headerPrimary'>edit</span>
           <img src={pencil} alt="pencil" className='w-6 h-6 object-fill' />
         </button>
-        <ContentDisplayDelete />
+        <ContentDisplayDelete deleteFunc={deleteContent} queryKey={section} payload={{id: id}} />
       </div>
     </div>
   )

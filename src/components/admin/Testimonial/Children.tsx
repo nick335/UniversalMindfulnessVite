@@ -9,7 +9,7 @@ import AdminContentLoader from '../../utility/Loader/AdminContentLoader'
 import NoContent from '../../utility/admin/contentdisplay/NoContent'
 import ErrorMessage2 from '../../utility/Error/ErrorMessage2'
 const Children = () => {
-  const { data, isLoading, error } = useQuery(['childrenTestimonial'], () => getContent({section: 'childrentest'}))
+  const { data, isLoading, error } = useQuery(['childrenTestimonial'], () => getContent({section: 'childrenTestimonial'}))
 
   const contentArr: testimonialResponseType[] = data?.data.data || []
 
@@ -20,8 +20,8 @@ const Children = () => {
             title={each.title}
             header={each.header}
             body1={each.body1}
-            section={each.section}
             link1={each.link1}
+            section={each.section}
           />
   })
 

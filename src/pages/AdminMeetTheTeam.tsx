@@ -21,8 +21,8 @@ const AdminMeetTheTeam = () => {
             title={each.title}
             header={each.header}
             body1={each.body1}
-            section={each.section}
             link1={each.link1}
+            section={each.section}
           />
   })
   if(error) return <ErrorMessage2 error={error} />

@@ -58,7 +58,7 @@ const AdminAboutGallery = () => {
   const onSubmit: SubmitHandler<FormSchemaType> = async () => {
     try {
       await mutation.mutateAsync({
-        title: 'test',
+        title: 'aboutGallery',
         images: imgFiles
       })
     }catch(error){

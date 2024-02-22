@@ -3,9 +3,10 @@ import SectionHeader from '../header/sectionHeader'
 import { eventResponseType } from '../../../../types/api/response'
 import DOMPurify from 'dompurify';
 import ContentDisplayDelete from './ContentDisplayDelete';
+import { deleteContent } from '../../../../api/content/deleteContent';
 
 
-const ContentDisplay2 = ({ id, title, body1, link1}: eventResponseType) => {
+const ContentDisplay2 = ({ id, title, body1, link1, section}: eventResponseType) => {
   const sanitizedHtml = DOMPurify.sanitize(body1);
   return (
     <SectionBody>
@@ -25,7 +26,7 @@ const ContentDisplay2 = ({ id, title, body1, link1}: eventResponseType) => {
           </div>
         </div>
         <div className="mt-8 flex items-center justify-end">
-            <ContentDisplayDelete />
+            <ContentDisplayDelete queryKey={section} deleteFunc={deleteContent} payload={{id: id}} />
         </div>
       </div>
     </SectionBody>

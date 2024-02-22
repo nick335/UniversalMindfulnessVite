@@ -59,7 +59,7 @@ const ParentTestimonialAdd = () => {
   const onSubmit : SubmitHandler<FormSchemaType> = async (data) => {
     try{
       await mutation.mutateAsync({
-        section: 'parentTest',
+        section: 'parentTestimonial',
         title: data.name,
         body1: data.shortNote,
         image1: imgFile,

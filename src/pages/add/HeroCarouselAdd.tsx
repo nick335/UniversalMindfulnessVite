@@ -41,7 +41,7 @@ const HeroCarouselAdd = () => {
   const onSubmit: SubmitHandler<FormSchemaType> = async () => {
     try {
       await mutation.mutateAsync({
-        title: 'test',
+        title: 'HeroCarouselImages',
         images: imgFiles
       })
     }catch(error){

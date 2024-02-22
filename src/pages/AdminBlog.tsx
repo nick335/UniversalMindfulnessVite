@@ -21,6 +21,7 @@ const AdminBlog = () => {
             link1={each.link1}
             body1={each.body1}
             body2={each.body2}
+            section={each.section}
           />
   })
   if(error) return <ErrorMessage2 error={error} />

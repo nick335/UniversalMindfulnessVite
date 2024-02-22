@@ -1,3 +1,4 @@
+import { deleteContent } from '../../../../api/content/deleteContent'
 import pencil from '../../../../assets/admin/pencil.svg'
 import demo from '../../../../assets/shop/bracelet.png'
 import ContentDisplayDelete from './ContentDisplayDelete'
@@ -20,7 +21,7 @@ const ContentDisplay5 = () => {
           <span className=' capitalize underline text-headerPrimary'>edit</span>
           <img src={pencil} alt="pencil" className='w-6 h-6 object-fill' />
         </button>
-        <ContentDisplayDelete />
+        <ContentDisplayDelete queryKey='test' deleteFunc={deleteContent} payload={{id: 123}} />
       </div>
     </div>
   )

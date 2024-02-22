@@ -10,11 +10,11 @@ import NoContent from '../../utility/admin/contentdisplay/NoContent'
 import ErrorMessage2 from '../../utility/Error/ErrorMessage2'
 
 const AboutGallery = () => {
-  const { data, isLoading, error } = useQuery(['aboutGallery'], () => getImages({ section: 'test'}))
+  const { data, isLoading, error } = useQuery(['aboutGallery'], () => getImages({ section: 'aboutGallery'}))
   const Images: imageResponseType[] = data?.data.data || []
 
   const imagesDisplay = Images.map((each) => {
-    return <ImageDisplay section={each.title} id={each.id} key={nanoid()} rounded={true}  img={each.link} />
+    return <ImageDisplay section={each.section} id={each.id} key={nanoid()} rounded={true}  img={each.link} />
   })
   if(error) return <ErrorMessage2 error={error} />
   return (

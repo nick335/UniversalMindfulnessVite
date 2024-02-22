@@ -2,6 +2,7 @@ export type imageResponseType = {
   id: number
   title: string
   link: string // image href
+  section: string
 }
 
 export type testimonialResponseType = {
@@ -9,7 +10,7 @@ export type testimonialResponseType = {
   title: string, // as testimonial owner name
   body1: string, // as testimony
   header: string // as testimonial caption
-  section: string // as section
+  section: string
   link1: string // as image 
 }
 
@@ -18,14 +19,15 @@ export type teamResponseType = {
   title: string // as team member name
   header: string // as team member role
   body1: string // as team member short introduction
+  section: string
   link1: string // as team member image
-  section: string // as section
 }
 
 export type eventResponseType = {
   id: number,
   title: string // as event title
   body1: string // as event body
+  section: string
   link1: string // as image link
 }
 
@@ -35,5 +37,6 @@ export type blogResponseType = {
   header: string // as blog category
   body1: string // as blog content
   body2: string // as blog author
+  section: string
   link1: string // as image link
 }
