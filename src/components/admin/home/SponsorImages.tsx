@@ -9,7 +9,7 @@ import AdminContentLoader from "../../utility/Loader/AdminContentLoader"
 import NoContent from "../../utility/admin/contentdisplay/NoContent"
 import ErrorMessage2 from "../../utility/Error/ErrorMessage2"
 const SponsorImages = () => {
-  const { data, isLoading, error } = useQuery(['SponsorImages'], () => getImages({ section: 'SponsorImages'}))
+  const { data, isLoading, error } = useQuery(['SponsorImages'], () => getImages({ title: 'SponsorImages'}))
   const Images: imageResponseType[] = data?.data.data || []
 
   const imagesDisplay = Images.map((each) => {

@@ -10,7 +10,7 @@ import InputDesc from '../../components/utility/form/InputDesc'
 import InputMultipleImage from '../../components/utility/form/InputMultipleImage'
 import Delete from '../../components/utility/admin/buttons/delete'
 import Update from '../../components/utility/admin/buttons/Update'
-import { useMutation } from '@tanstack/react-query'
+import { useMutation, useQueryClient } from '@tanstack/react-query'
 import { postImages } from '../../api/images/postImages'
 import ErrorHandler from '../../utilsFunction/ErrorHandler'
 
@@ -18,12 +18,14 @@ import ErrorHandler from '../../utilsFunction/ErrorHandler'
 const SponsorImagesAdd = () => {
   const [imgFiles, setImgFiles] = useState<Blob[]>([])
   const [PreviewImages, setPreviewImages] = useState<string[]>([])
+  const queryClient = useQueryClient()
   const mutation = useMutation(postImages, {
     onSuccess: () => {
       setImgFiles([])
       reset()
       setPreviewImages([])
       showToast('uploaded Successfully', 'success')
+      queryClient.invalidateQueries(['SponsorImages'])
     }
   })
   type FormSchemaType = z.infer<typeof formSchema>

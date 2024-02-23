@@ -11,19 +11,20 @@ import { SubmitHandler, useForm } from "react-hook-form"
 import { zodResolver } from '@hookform/resolvers/zod'
 import { validateImages } from '../../utilsFunction/ValidateImages'
 import showToast from '../../utilsFunction/showToast'
-import { useMutation } from "@tanstack/react-query"
+import { useMutation, useQueryClient } from "@tanstack/react-query"
 import { postContent } from "../../api/content/postContent"
 import ErrorHandler from "../../utilsFunction/ErrorHandler"
 
 const MeettheTeamAdd = () => {
   const [imgFile, setImgFile] = useState<Blob>()
   const [PreviewImage, setPreviewImage] = useState<string>('')
-
+  const queryClient = useQueryClient()
   const mutation = useMutation(postContent, {
     onSuccess: () => {
       setPreviewImage('')
       reset()
       showToast('Content uploaded Successfully', 'success')
+      queryClient.invalidateQueries(['team'])
     }
   })
   type FormSchemaType = z.infer<typeof formSchema>

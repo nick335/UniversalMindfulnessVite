@@ -11,20 +11,21 @@ import { zodResolver } from '@hookform/resolvers/zod'
 import { validateImages } from '../../utilsFunction/ValidateImages'
 import showToast from '../../utilsFunction/showToast'
 import { useState } from "react"
-import { useMutation } from '@tanstack/react-query'
+import { useMutation, useQueryClient } from '@tanstack/react-query'
 import { postContent } from '../../api/content/postContent'
 import ErrorHandler from '../../utilsFunction/ErrorHandler'
 
 const ChildrenTestimonialAdd = () => {
   const [imgFile, setImgFile] = useState<Blob>()
   const [PreviewImage, setPreviewImage] = useState<string>('')
-
+  const queryClient = useQueryClient()
 
   const mutation = useMutation(postContent, {
     onSuccess: () => {
       setPreviewImage('')
       reset(),
       showToast('Content uploaded Successfully', 'success')
+      queryClient.invalidateQueries(['childrenTestimonial'])
     }
   })
   type FormSchemaType = z.infer<typeof formSchema>

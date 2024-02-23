@@ -9,19 +9,21 @@ import { zodResolver } from '@hookform/resolvers/zod'
 import { validateImages } from '../../utilsFunction/ValidateImages'
 import { useState } from 'react'
 import showToast from '../../utilsFunction/showToast'
-import { useMutation } from '@tanstack/react-query'
+import { useMutation, useQueryClient } from '@tanstack/react-query'
 import { postImages } from '../../api/images/postImages'
 import ErrorHandler from '../../utilsFunction/ErrorHandler'
 
 const HeroCarouselAdd = () => {
   const [imgFiles, setImgFiles] = useState<Blob[]>([])
   const [PreviewImages, setPreviewImages] = useState<string[]>([])
+  const queryClient = useQueryClient()
   const mutation = useMutation(postImages, {
     onSuccess: () => {
       setImgFiles([])
       reset()
       setPreviewImages([])
       showToast('Images uploaded Successfully', 'success')
+      queryClient.invalidateQueries(['HeroCarouselImages'])
     }
   })
   type FormSchemaType = z.infer<typeof formSchema>

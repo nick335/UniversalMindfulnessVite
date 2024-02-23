@@ -12,7 +12,7 @@ import { validateImages } from '../../utilsFunction/ValidateImages'
 import showToast from '../../utilsFunction/showToast'
 import { useState } from "react"
 import FormRow2 from "../../components/utility/form/FormRow2"
-import { useMutation } from "@tanstack/react-query"
+import { useMutation, useQueryClient } from "@tanstack/react-query"
 import { postContent } from "../../api/content/postContent"
 import ErrorHandler from "../../utilsFunction/ErrorHandler"
 
@@ -20,12 +20,14 @@ const BlogAdd = () => {
   const [imgFile, setImgFile] = useState<Blob>()
   const [PreviewImage, setPreviewImage] = useState<string>('')
   const [blogContent, setBlogContent] = useState<string>('')
+  const queryClient = useQueryClient()
   const mutation = useMutation(postContent, {
     onSuccess: () => {
       setPreviewImage('')
       setBlogContent('')
       reset()
       showToast('Content uploaded Successfully', 'success')
+      queryClient.invalidateQueries(['blogs'])
     }
   })
   type FormSchemaType = z.infer<typeof formSchema>

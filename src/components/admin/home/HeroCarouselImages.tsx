@@ -10,7 +10,7 @@ import NoContent from "../../utility/admin/contentdisplay/NoContent"
 import ErrorMessage2 from "../../utility/Error/ErrorMessage2"
 
 const HeroCarouselImages = () => {
-  const {  data, isLoading, error}  = useQuery(['HeroCarouselImages'], () => getImages({ section: 'HeroCarouselImages'}) )
+  const {  data, isLoading, error}  = useQuery(['HeroCarouselImages'], () => getImages({ title: 'HeroCarouselImages'}) )
   const Images: imageResponseType[] =  data?.data.data || []
 
   const imagesDisplay = Images.map((each) => {

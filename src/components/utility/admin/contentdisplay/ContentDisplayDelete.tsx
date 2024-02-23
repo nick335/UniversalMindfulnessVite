@@ -30,6 +30,7 @@ const ContentDisplayDelete = ({deleteFunc, payload, queryKey}: props) => {
       setIsOpen(false)
       showToast('content deleted successfully', 'success')
       queryClient.invalidateQueries([queryKey])
+      queryClient.refetchQueries([queryKey])
     }
   })
 

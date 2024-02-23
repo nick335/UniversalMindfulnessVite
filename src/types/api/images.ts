@@ -1,5 +1,5 @@
 export type getImagePayload = {
-  section: string,
+  title: string,
 }
 
 export type postImagePayload = {
