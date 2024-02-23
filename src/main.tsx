@@ -20,6 +20,7 @@ import {
 import adminAddRoutes from './Routes/adminAddRoutes.tsx'
 import PageLoader from './components/utility/Loader/PageLoader.tsx'
 import adminRoutes from './Routes/adminRoutes.tsx'
+import PrivacyPolicy from './components/privacypolicy/PrivacyPolicy.tsx'
 
 // user routes
 const ShopItemDescription = lazy(() => import('./pages/ShopItemDescription.tsx'))
@@ -89,6 +90,10 @@ const router = createBrowserRouter([
         path:'/testimonials',
         element: <Suspense fallback={<PageLoader />}><Testimonial /></Suspense>
       },
+      {
+        path: '/privacy-policy',
+        element: <Suspense fallback={<PageLoader />}><PrivacyPolicy /></Suspense>
+      }
     ]
   },
   {

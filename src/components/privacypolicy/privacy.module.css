@@ -1,0 +1,12 @@
+.main h2 {
+  @apply text-[28px] mb-8
+}
+.main h3 {
+  @apply mt-4 font-semibold text-[15px];
+}
+.main p {
+  @apply mt-2
+}
+.main ul {
+  @apply list-inside list-disc text-base ml-10 mt-2 grid grid-cols-1 gap-y-2; 
+}
