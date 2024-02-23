@@ -10,12 +10,32 @@ import { SubmitHandler, useForm } from "react-hook-form"
 import { zodResolver } from '@hookform/resolvers/zod'
 import { validateImages } from '../../utilsFunction/ValidateImages'
 import showToast from '../../utilsFunction/showToast'
-import { useState } from "react"
-import { useMutation, useQueryClient } from '@tanstack/react-query'
+import { useEffect, useState } from "react"
+import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query'
 import { postContent } from '../../api/content/postContent'
 import ErrorHandler from '../../utilsFunction/ErrorHandler'
+import { getContent } from '../../api/content/getContent'
+import { testimonialResponseType } from '../../types/api/response'
+import ErrorMessage2 from '../../components/utility/Error/ErrorMessage2'
+import AdminContentLoader from '../../components/utility/Loader/AdminContentLoader'
 
 const MainTestimonial = () => {
+  const [pageLoading, setPageLoading] = useState(true)
+  const { data, isLoading, error} = useQuery(['mainTestimonial'], () => getContent({section: 'mainTestimonial'}))
+
+  useEffect(() => {
+    if(!isLoading && !error){
+      const content: testimonialResponseType[] = data?.data.data || []
+      const actualContent = content[0]
+      setValue('caption', actualContent.header)
+      setValue('name', actualContent.title)
+      setValue('shortNote', actualContent.body1)
+      setPageLoading(false)
+    }
+    if(error){
+      setPageLoading(false)
+    }
+  }, [isLoading, error])
   const [imgFile, setImgFile] = useState<Blob>()
   const [PreviewImage, setPreviewImage] = useState<string>('')
   const queryClient = useQueryClient()
@@ -76,7 +96,9 @@ const MainTestimonial = () => {
   function handleDelete(){
     reset()
     setPreviewImage('')
-  }  
+  }
+  if(isLoading || pageLoading) return <AdminContentLoader />
+  if(error) return <ErrorMessage2 error={error} />  
   return (
     <div>
       <form className='adminForm' onSubmit={handleSubmit(onSubmit)}>

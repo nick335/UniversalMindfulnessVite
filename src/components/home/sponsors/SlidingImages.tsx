@@ -1,9 +1,13 @@
-import data from "./sponsorsData"
 import Marquee from 'react-fast-marquee';
+import imgBaseUrl from '../../../store/ImgBaseUrl';
 
-const SlidingImages = () => {
-  const slidingImages = data.map((each, idx) => {
-    return <img key={idx} src={each.img} alt="sponsorImg" className={`${each.style} object-fill mr-14`} />
+interface props {
+  images: string[]
+}
+
+const SlidingImages = ({images}: props) => {
+  const slidingImages = images.map((each, idx) => {
+    return <img key={idx} src={`${imgBaseUrl}${each}`} alt="sponsorImg" className={`max-h-[5.125rem] aspect-auto h-auto object-fill mr-14`} />
   })  
   return (
     <Marquee

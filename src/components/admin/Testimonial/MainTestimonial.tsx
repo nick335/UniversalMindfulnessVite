@@ -28,7 +28,7 @@ const MainTestimonial = () => {
       <SectionHeader 
         header='Main Testimonial'
         btnName='Edit'
-        routePath='admin/dashboard/testimonial/edit'
+        routePath='/admin/dashboard/testimonial/main/edit'
       />
       {
         isLoading ? <AdminContentLoader /> : error ? <ErrorMessage2 error={error} />: contentDisplay.length === 0 ? <NoContent /> : contentDisplay

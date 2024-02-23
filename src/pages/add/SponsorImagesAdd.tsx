@@ -26,6 +26,7 @@ const SponsorImagesAdd = () => {
       setPreviewImages([])
       showToast('uploaded Successfully', 'success')
       queryClient.invalidateQueries(['SponsorImages'])
+      queryClient.refetchQueries(['SponsorImages'])
     }
   })
   type FormSchemaType = z.infer<typeof formSchema>

@@ -1,7 +1,6 @@
 import home from '../../../assets/admin/nav/home.svg'
 import events from '../../../assets/admin/nav/events.svg'
 import blog from '../../../assets/admin/nav/blog.svg'
-import contact from '../../../assets/admin/nav/contact.svg'
 import wwo from '../../../assets/admin/nav/wwo.svg'
 import shop from '../../../assets/admin/nav/shop.svg'
 import aboutUs from '../../../assets/admin/nav/aboutUs.svg'
@@ -39,11 +38,6 @@ const data = [
     name: 'shop',
     routeName: 'shop',
     img: shop
-  },
-  {
-    name: 'contact',
-    routeName: 'contact',
-    img: contact
   },
   {
     name: 'testimonial',

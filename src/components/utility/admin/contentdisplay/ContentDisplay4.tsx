@@ -18,7 +18,7 @@ const ContentDisplay4 = ({id, title, header, body1, body2, link1, section}: blog
 
       <div className='mt-[1.13rem] font-inter'>
         <div className='w-full aspect-[4/1]'>
-          <img src={`https://myserver.universalmindfulness.co.uk/images/${link1}`}alt='demo' className='imgFocus object-cover' />
+          <img src={`https://myserver.universalmindfulness.co.uk/images/${link1}`}alt={title} className='imgFocus object-cover' />
         </div>
         <div className=' mt-5 pb-8 leading-[1.4375rem] text-sm tracking-[-0.018rem]'>
           <h3 className='font-semibold'>Header: {title}</h3>

@@ -24,6 +24,7 @@ const AdminAboutGallery = () => {
       setPreviewImages([])
       showToast('uploaded Successfully', 'success')
       queryClient.invalidateQueries(['aboutGallery'])
+      queryClient.refetchQueries(['aboutGallery'])
     }
   })
   type FormSchemaType = z.infer<typeof formSchema>

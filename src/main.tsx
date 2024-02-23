@@ -21,6 +21,7 @@ import adminAddRoutes from './Routes/adminAddRoutes.tsx'
 import PageLoader from './components/utility/Loader/PageLoader.tsx'
 import adminRoutes from './Routes/adminRoutes.tsx'
 import PrivacyPolicy from './components/privacypolicy/PrivacyPolicy.tsx'
+import adminEditRoutes from './Routes/adminEditRoutes.tsx'
 
 // user routes
 const ShopItemDescription = lazy(() => import('./pages/ShopItemDescription.tsx'))
@@ -108,7 +109,8 @@ const router = createBrowserRouter([
     errorElement: <ErrorPage />,
     children: [
       ...adminRoutes,
-      ...adminAddRoutes
+      ...adminAddRoutes,
+      ...adminEditRoutes
     ]
   },
   {

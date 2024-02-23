@@ -24,6 +24,7 @@ const HeroCarouselAdd = () => {
       setPreviewImages([])
       showToast('Images uploaded Successfully', 'success')
       queryClient.invalidateQueries(['HeroCarouselImages'])
+      queryClient.refetchQueries(['HeroCarouselImages'])
     }
   })
   type FormSchemaType = z.infer<typeof formSchema>
