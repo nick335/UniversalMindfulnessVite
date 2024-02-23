@@ -1,0 +1,3 @@
+.desc ul {
+  @apply list-inside list-disc text-base; 
+}
