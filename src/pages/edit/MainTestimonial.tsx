@@ -6,21 +6,23 @@ import FormTextArea from '../../components/utility/form/FormTextArea'
 import Update from '../../components/utility/admin/buttons/Update'
 import Delete from '../../components/utility/admin/buttons/delete'
 import { z } from "zod"
-import { SubmitHandler, useForm } from "react-hook-form"
+import { SubmitHandler,  useForm } from "react-hook-form"
 import { zodResolver } from '@hookform/resolvers/zod'
 import { validateImages } from '../../utilsFunction/ValidateImages'
 import showToast from '../../utilsFunction/showToast'
 import { useEffect, useState } from "react"
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query'
-import { postContent } from '../../api/content/postContent'
 import ErrorHandler from '../../utilsFunction/ErrorHandler'
 import { getContent } from '../../api/content/getContent'
 import { testimonialResponseType } from '../../types/api/response'
 import ErrorMessage2 from '../../components/utility/Error/ErrorMessage2'
 import AdminContentLoader from '../../components/utility/Loader/AdminContentLoader'
+import { editContent } from '../../api/content/editContent'
+import imgBaseUrl from '../../store/ImgBaseUrl'
 
 const MainTestimonial = () => {
   const [pageLoading, setPageLoading] = useState(true)
+  const [contentId, setContentId] = useState('')
   const { data, isLoading, error} = useQuery(['mainTestimonial'], () => getContent({section: 'mainTestimonial'}))
 
   useEffect(() => {
@@ -30,7 +32,11 @@ const MainTestimonial = () => {
       setValue('caption', actualContent.header)
       setValue('name', actualContent.title)
       setValue('shortNote', actualContent.body1)
+      setValue('image', actualContent.link1)
+      setPreviewImage(`${imgBaseUrl}${actualContent.link1}`)
       setPageLoading(false)
+      const id = `${actualContent.id}`
+      setContentId(id)
     }
     if(error){
       setPageLoading(false)
@@ -40,10 +46,8 @@ const MainTestimonial = () => {
   const [PreviewImage, setPreviewImage] = useState<string>('')
   const queryClient = useQueryClient()
 
-  const mutation = useMutation(postContent, {
+  const mutation = useMutation(editContent, {
     onSuccess: () => {
-      setPreviewImage('')
-      reset(),
       showToast('Content uploaded Successfully', 'success')
       queryClient.invalidateQueries(['mainTestimonial'])
     }
@@ -82,13 +86,28 @@ const MainTestimonial = () => {
   }
   const onSubmit : SubmitHandler<FormSchemaType> = async (data) => {
     try{
-      await mutation.mutateAsync({
-        section: 'mainTestimonial',
-        title: data.name,
-        body1: data.shortNote,
-        image1: imgFile,
-        header: data.caption,
-      })
+      if(imgFile){
+        await mutation.mutateAsync({
+          id: contentId,
+          payload: {
+            section: 'mainTestimonial',
+            title: data.name,
+            body1: data.shortNote,
+            image1: imgFile,
+            header: data.caption
+          }
+        })
+      }else{
+        await mutation.mutateAsync({
+          id: contentId,
+          payload: {
+            section: 'mainTestimonial',
+            title: data.name,
+            body1: data.shortNote,
+            header: data.caption
+          }
+        })
+      }
     }catch(error){
       ErrorHandler(error)
     }

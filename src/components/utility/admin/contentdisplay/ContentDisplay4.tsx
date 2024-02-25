@@ -6,7 +6,7 @@ import DOMPurify from 'dompurify'
 import { deleteContent } from '../../../../api/content/deleteContent'
 
 
-const ContentDisplay4 = ({id, title, header, body1, body2, link1, section}: blogResponseType) => {
+const ContentDisplay4 = ({id, title, header, body1, sub_section, link1, section}: blogResponseType) => {
   const sanitizedHtml = DOMPurify.sanitize(body1);
   return (
     <SectionBody>
@@ -24,8 +24,8 @@ const ContentDisplay4 = ({id, title, header, body1, body2, link1, section}: blog
           <h3 className='font-semibold'>Header: {title}</h3>
           <div className='mt-2 line-clamp-5' dangerouslySetInnerHTML={{__html: sanitizedHtml}}>
           </div>
-          <h4 className='font-semibold mt-2'>Writer: {body2}</h4>
-          <h4 className='font-semibold mt-2'>Category: {header}</h4>
+          <h4 className='font-semibold mt-2 capitalize'>Writer: {header}</h4>
+          <h4 className='font-semibold mt-2 capitalize'>Category: {sub_section}</h4>
           <div className="mt-8 flex items-center justify-end">
             <ContentDisplayDelete queryKey={section} deleteFunc={deleteContent} payload={{id: id}} />
           </div>

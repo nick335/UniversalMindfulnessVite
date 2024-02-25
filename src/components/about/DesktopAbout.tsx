@@ -1,9 +1,14 @@
+import { aboutSectionResponseType } from '../../types/api/response'
 import DesktopAboutSubSections from './DesktopAboutSubSections'
 
-const DesktopAbout = () => {
+interface props {
+  data: aboutSectionResponseType[]
+}
+
+const DesktopAbout = ({ data }: props) => {
   return (
     <section>
-      <DesktopAboutSubSections />
+      <DesktopAboutSubSections data={data} />
     </section>
   )
 }

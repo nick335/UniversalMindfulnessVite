@@ -1,0 +1,3 @@
+.para {
+  @apply list-inside list-disc text-base ml-3; 
+}

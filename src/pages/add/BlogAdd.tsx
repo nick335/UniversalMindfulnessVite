@@ -15,6 +15,7 @@ import FormRow2 from "../../components/utility/form/FormRow2"
 import { useMutation, useQueryClient } from "@tanstack/react-query"
 import { postContent } from "../../api/content/postContent"
 import ErrorHandler from "../../utilsFunction/ErrorHandler"
+import FormSelect from "../../components/utility/form/FormSelect"
 
 const BlogAdd = () => {
   const [imgFile, setImgFile] = useState<Blob>()
@@ -75,8 +76,8 @@ const BlogAdd = () => {
         title: data.title,
         body1: data.blogContent,
         image1: imgFile,
-        header: data.category,
-        body2: data.writtenBy
+        sub_section: data.category,
+        header: data.writtenBy
       })
     }catch(error){
       ErrorHandler(error)
@@ -86,6 +87,9 @@ const BlogAdd = () => {
     reset()
     setPreviewImage('')
     setBlogContent('')
+  }
+  function handleCategoryChange(category: string){
+    setValue('category', category)
   }
   return (
     <div>
@@ -108,13 +112,11 @@ const BlogAdd = () => {
             inputLabel="category"
             inputDescInfo="This refers to the category of the article you want to publish."
           />
-          <FormTextInput  
-            label="category"
-            inputName='category'
-            register={register}
+          <FormSelect 
+            handleCategoryChange={handleCategoryChange}
             error={errors.category}
             errorMessage={errors.category?.message}
-          />
+           />
         </FormRow>
         <FormRow2>
           <InputDesc 

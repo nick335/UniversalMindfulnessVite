@@ -34,9 +34,17 @@ export type eventResponseType = {
 export type blogResponseType = {
   id: number,
   title: string // as blog title
-  header: string // as blog category
+  sub_section: string // as blog category
   body1: string // as blog content
-  body2: string // as blog author
+  header: string // as blog author
   section: string
   link1: string // as image link
+  created_at?: string // as time when blog was created
+}
+
+export type aboutSectionResponseType = {
+  id: number
+  title: string
+  body1: string
+  link1:string
 }

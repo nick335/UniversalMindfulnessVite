@@ -1,3 +1,4 @@
+import { Outlet } from "react-router-dom"
 import BlogLists from "../components/blogs/BlogLists"
 import MainBlog from "../components/blogs/MainBlog"
 import MostPopularBlogs from "../components/blogs/MostPopularBlogs"
@@ -17,7 +18,7 @@ const Blog = () => {
           <MainBlog />
           <MostPopularBlogs />
         </div>
-        <BlogLists />
+        <Outlet />
       </section>
     </PageTransition>
   )

@@ -1,23 +1,32 @@
 
 import SectionBody from '../section/sectionBody'
 import SectionHeader from '../header/sectionHeader'
-import demo from '../../../../assets/admin/demo.png'
+import imgBaseUrl from '../../../../store/ImgBaseUrl'
+import DOMPurify from 'dompurify'
 
-const ContentDisplay6 = () => {
+interface props {
+  title: string
+  body: string
+  id: number
+  img: string
+}
+
+const ContentDisplay6 = ({ title, body, id, img}: props) => {
+  const sanitizedHtml = DOMPurify.sanitize(body)
   return (
     <SectionBody>
       <SectionHeader 
-        header='What is NLC'
+        header={title}
         btnName='edit'
-        routePath='/admin/dashboard'
+        routePath={`/admin/dashboard/about/edit/${id}`}
       />
       <div className='mt-[1.13rem] font-inter'>
         <div className='w-full aspect-[4/1]'>
-          <img src={demo} alt='demo' className='imgFocus object-cover' />
+          <img src={`${imgBaseUrl}${img}`} alt={title} className='imgFocus object-cover' />
         </div>
         <div className=' mt-5 pb-8 leading-[1.4375rem] text-sm tracking-[-0.018rem]'>
-          <h3 className='font-semibold mb-2'>Header: What is NLC</h3>
-          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Natus nam iure dicta, rem corporis tenetur sapiente esse, dignissimos saepe quae omnis. Molestias dolor ea placeat libero et sit rerum recusandae. Lorem ipsum dolor sit amet consectetur, adipisicing elit. Debitis atque quam delectus provident sapiente officia repellendus, excepturi iusto libero esse, tempora natus. Consequuntur saepe ducimus atque. Harum officia voluptas quae.</p>
+          <h3 className='font-semibold mb-2'>Header: {title}</h3>
+          <div className='line-clamp-5' dangerouslySetInnerHTML={{__html: sanitizedHtml}}></div>
         </div>
       </div>
     </SectionBody>

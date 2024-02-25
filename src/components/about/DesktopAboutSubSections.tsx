@@ -1,26 +1,37 @@
 import { Fragment, useState } from 'react'
 import Nav from '../utility/subSections/Nav'
-import data from './AboutData'
 import SubSectionContent from './SubSectionContent'
 import SectionTransitionMotion from '../utility/motion/SectionTransitionMotion'
 import { AnimatePresence } from 'framer-motion'
 import { nanoid } from 'nanoid'
+import { aboutSectionResponseType } from '../../types/api/response'
+import { aboutNavLi } from '../../types/navTypes'
 
-const DesktopAboutSubSections = () => {
-  const [activeNav, setActiveNav] = useState(data[0].header)
+interface props {
+  data: aboutSectionResponseType[]
+}
+const DesktopAboutSubSections = ({ data} : props) => {
+  const [activeNav, setActiveNav] = useState(data[0].title)
 
   function switchSection (header: string){
     setActiveNav(header)
   }
+  const navData: aboutNavLi[] = data.map((each) => {
+    return {
+      header: each.title,
+      para: each.body1
+    }
+  })
   const sections = data.map((each, idx) => {
     return <Fragment key={nanoid()}>
             {
-              activeNav === each.header && (
+              activeNav === each.title && (
                 <SectionTransitionMotion key={idx}>
                   <SubSectionContent 
                     key={nanoid()}
-                    para={each.para}
-                    header={each.header}
+                    para={each.body1}
+                    header={each.title}
+                    img={each.link1}
                   />
                 </SectionTransitionMotion>
               )
@@ -30,7 +41,7 @@ const DesktopAboutSubSections = () => {
   return (
     <div className='ml-[5%] flex gap-x-5'>
       <Nav 
-        data = {data}
+        data = {navData}
         active={activeNav}
         toggle={switchSection}
       />

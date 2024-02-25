@@ -20,8 +20,8 @@ const AdminBlog = () => {
             header={each.header}
             link1={each.link1}
             body1={each.body1}
-            body2={each.body2}
             section={each.section}
+            sub_section={each.sub_section}
           />
   })
   if(error) return <ErrorMessage2 error={error} />

@@ -22,6 +22,7 @@ import PageLoader from './components/utility/Loader/PageLoader.tsx'
 import adminRoutes from './Routes/adminRoutes.tsx'
 import PrivacyPolicy from './components/privacypolicy/PrivacyPolicy.tsx'
 import adminEditRoutes from './Routes/adminEditRoutes.tsx'
+import BlogLists from './components/blogs/BlogLists.tsx'
 
 // user routes
 const ShopItemDescription = lazy(() => import('./pages/ShopItemDescription.tsx'))
@@ -61,7 +62,17 @@ const router = createBrowserRouter([
       },
       {
         path: '/blog',
-        element: <Suspense fallback={<PageLoader />}><Blog /></Suspense>
+        element: <Suspense fallback={<PageLoader />}><Blog /></Suspense>,
+        children:[
+          {
+            path: '/blog/page/:id',
+            element: <Suspense fallback={<PageLoader />}><BlogLists /></Suspense>
+          },
+          {
+            path: '/blog',
+            element: <Suspense fallback={<PageLoader />}><BlogLists /></Suspense>
+          }
+        ]
       },
       {
         path:'/shop',
@@ -81,7 +92,7 @@ const router = createBrowserRouter([
       },
       {
         path: 'blog/content',
-        element: <Suspense fallback={<PageLoader />}><BlogDetails /></Suspense>
+        element: <Suspense fallback={<PageLoader />}><BlogDetails /></Suspense>,
       },
       {
         path: 'shop/checkout',
