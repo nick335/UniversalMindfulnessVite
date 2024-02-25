@@ -26,3 +26,7 @@ export type getContentPayloadType = {
 export type deleteContentPayloadType = {
   id: number
 }
+
+export type getContentByIdPayloadType = {
+  id?: number
+}

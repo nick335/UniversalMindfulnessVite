@@ -1,19 +1,11 @@
-
-const ContentText = () => {
+import DOMPurify from "dompurify"
+interface props {
+  body: string
+}
+const ContentText = ({ body }: props ) => {
+  const sanitizedHtml = DOMPurify.sanitize(body)
   return (
-    <div className="mt-6 font-medium text-base leading-[178.2%] flex flex-col gap-y-8">
-      <p>
-        All classes uses a variety of child friendly tools such as cooking, arts & crafts, musical instruments, drama, songs and games.We currently run these sessions every holiday in various locations as well as in after-school clubs in many state and private schools across Dorset and Hampshire.“Our children who have attended the after-school Universal Mindfulness sessions have thrived. At school, we have noticed their self-confidence grow and their positive mental attitude has benefitted friendships as well as learning. I would highly recommend all children to attend these sessions. They are taught valuable life skills to help them manage change and cope with difficult situations through creative, fun and engaging activities.” Deputy Headteacher.We also offer 1-1 consultations in Wimborne and Bournemouth for children or families.If you are interested in learning more about Universal Mindfulness for Children or offering our camps at your school, please Contact Us.If you’d like to book your child on to one of our holiday camps, please
-      </p>
-      <p>
-      Perfectionism isn’t about being perfect, it’s about feeling perfect.Perfectionism stems from a dissatisfaction of who we are. Perfectionists often set unrealistic goals for themselves and tend to dismiss positive facts about their performance. Achievement is linked to self-worth and so perfectionists fear making even the smallest mistakes as they feel that this will affect how people perceive them. They link their value to approval from others. As such perfectionists tend to stress more and achieve less than regular high achievers.Most people engage in perfectionist tendencies at some point in their lives. Have you ever heard yourself saying things like…‘People will think that’s a stupid question’“I’ve eaten a chocolate bar. I have no self-control’‘I can’t be a mum and a manager at work because I won’t do either job well’‘Why is everyone better/more successful/happier than me’.‘I should be better at this by now’
-      </p>
-      <p>
-        All classes uses a variety of child friendly tools such as cooking, arts & crafts, musical instruments, drama, songs and games.We currently run these sessions every holiday in various locations as well as in after-school clubs in many state and private schools across Dorset and Hampshire.“Our children who have attended the after-school Universal Mindfulness sessions have thrived. At school, we have noticed their self-confidence grow and their positive mental attitude has benefitted friendships as well as learning. I would highly recommend all children to attend these sessions. They are taught valuable life skills to help them manage change and cope with difficult situations through creative, fun and engaging activities.” Deputy Headteacher.We also offer 1-1 consultations in Wimborne and Bournemouth for children or families.If you are interested in learning more about Universal Mindfulness for Children or offering our camps at your school, please Contact Us.If you’d like to book your child on to one of our holiday camps, please
-      </p>
-      <p>
-      Perfectionism isn’t about being perfect, it’s about feeling perfect.Perfectionism stems from a dissatisfaction of who we are. Perfectionists often set unrealistic goals for themselves and tend to dismiss positive facts about their performance. Achievement is linked to self-worth and so perfectionists fear making even the smallest mistakes as they feel that this will affect how people perceive them. They link their value to approval from others. As such perfectionists tend to stress more and achieve less than regular high achievers.Most people engage in perfectionist tendencies at some point in their lives. Have you ever heard yourself saying things like…‘People will think that’s a stupid question’“I’ve eaten a chocolate bar. I have no self-control’‘I can’t be a mum and a manager at work because I won’t do either job well’‘Why is everyone better/more successful/happier than me’.‘I should be better at this by now’
-      </p>
+    <div className="mt-6 font-medium text-base leading-[178.2%] blogbody" dangerouslySetInnerHTML={{__html: sanitizedHtml}}>
     </div>
   )
 }

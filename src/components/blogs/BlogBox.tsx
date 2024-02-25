@@ -16,7 +16,7 @@ const BlogBox = ({ title, category, id,img}: props) => {
       </div>
       <h4 className="pl-[0.71rem] text-headerSecondary mt-3 font-dmSans text-[0.98731rem] leading-4 font-bold capitalize ">{category}</h4>
       <p className="pl-[0.71rem] font-semibold text-[1.12838rem] leading-[1.12838rem] mt-1.5 lg:mt-2 capitalize">
-        <Link to={`'/blog/content/${id}`}>
+        <Link to={`/blog/${id}`}>
           {title}
         </Link>
       </p>

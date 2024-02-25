@@ -27,7 +27,7 @@ import BlogLists from './components/blogs/BlogLists.tsx'
 // user routes
 const ShopItemDescription = lazy(() => import('./pages/ShopItemDescription.tsx'))
 const Login = lazy(() => import('./components/Login/Login.tsx'))
-const BlogDetails = lazy(() => import('./pages/About.tsx'))
+const BlogDetails = lazy(() => import('./pages/BlogDetails.tsx'))
 const About = lazy(() => import('./pages/About.tsx'))
 const Blog = lazy(() => import('./pages/Blog.tsx'))
 const Home = lazy(() => import('./pages/Home.tsx'))
@@ -91,7 +91,7 @@ const router = createBrowserRouter([
         element: <Suspense fallback={<PageLoader />}><WhatWeOffer /></Suspense>
       },
       {
-        path: 'blog/content',
+        path: 'blog/:id',
         element: <Suspense fallback={<PageLoader />}><BlogDetails /></Suspense>,
       },
       {
