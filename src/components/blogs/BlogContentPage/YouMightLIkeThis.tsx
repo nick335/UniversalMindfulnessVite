@@ -28,7 +28,7 @@ const YouMightLIkeThis = () => {
     <div className="mt-4">
       <h3 className="text-[2rem] lg:text-[3.525rem] font-semibold text-center text-headerPrimary mb-4 lg:mb-10">You Might Also Like</h3>
         {
-          isLoading ? <AdminContentLoader /> : error ? <ErrorMessage3 error={error} /> : contentDisplay.length === 0 ? <NoContent /> : contentDisplay 
+          isLoading ? <AdminContentLoader /> : error ? <ErrorMessage3 error={error} /> : contentDisplay.length === 0 ? <NoContent /> : <div className='md:grid md:grid-cols-2 md:gap-x-6 lg:grid-cols-3 xl:gap-x-12'>{contentDisplay}</div> 
         }
     </div>
   )
