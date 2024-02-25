@@ -1,5 +1,4 @@
 import { Outlet } from "react-router-dom"
-import BlogLists from "../components/blogs/BlogLists"
 import MainBlog from "../components/blogs/MainBlog"
 import MostPopularBlogs from "../components/blogs/MostPopularBlogs"
 import PageTransition from "../components/utility/motion/PageTransition"

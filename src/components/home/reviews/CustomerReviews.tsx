@@ -31,7 +31,7 @@ const CustomerReviews = () => {
     ...result[0].data?.data.data || [],
     ...result[1].data?.data.data || [],
   ] 
-  const shuffledArr = shuffleArray(data)
+  const shuffledArr: testimonialResponseType[] = shuffleArray(data)
   const contentData = shuffledArr.slice(0, 4)
   const contentDisplay = contentData.map((each) => {
     return <CustomerReview 

@@ -1,6 +1,5 @@
-import { testimonialResponseType } from "../types/api/response";
 
-function shuffleArray(array: testimonialResponseType[]): testimonialResponseType[] {
+function shuffleArray(array: any[]): any[]{
   // Make a copy of the original array to avoid mutating the original array
   const newArray = [...array];
   
