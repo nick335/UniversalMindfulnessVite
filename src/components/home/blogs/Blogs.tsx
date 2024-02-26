@@ -27,7 +27,7 @@ const Blogs = () => {
             />
   })
   const loadingUi = Array.from({length: 3}).map(() => {
-    return <HomeBlogSkeleton />
+    return <HomeBlogSkeleton key={nanoid()} />
   })
 
   return (

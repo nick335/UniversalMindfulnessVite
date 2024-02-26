@@ -11,9 +11,9 @@ interface props {
 const SubSectionContent = ({ header, para, img }: props) => {
   const sanitizedHtml = DOMPurify.sanitize(para)
   return (
-    <div>
-      <div className='w-fit h-fit'>
-        <img src={`${imgBaseUrl}${img}`} alt='image' className='w-full aspect-[2/1]' />
+    <div className='w-full'>
+      <div className='w-full  aspect-[2/1]'>
+        <img src={`${imgBaseUrl}${img}`} alt={header} className='w-full h-full' />
       </div>
       <div className=" mt-10 lg:mr-20 xl:mr-28">
         <h3 className="font-semibold text-[2.5rem] text-headerPrimary">

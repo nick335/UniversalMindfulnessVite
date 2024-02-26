@@ -23,6 +23,7 @@ const AboutSections = () => {
               title={each.title}
               body={each.body1}
               img={each.link1}
+              routePath={'/admin/dashboard/about/edit/'}
           />
   })
   return (

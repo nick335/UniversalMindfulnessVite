@@ -1,4 +1,3 @@
-import data from './WWOData'
 import Nav from '../utility/subSections/Nav'
 import { Fragment, useState } from 'react'
 import SectionTransitionMotion from '../utility/motion/SectionTransitionMotion'
@@ -6,10 +5,21 @@ import DesktopWWOSectionTopContent from './DesktopWWOSectionTopContent'
 import { AnimatePresence } from 'framer-motion'
 import { nanoid } from 'nanoid/non-secure'
 import DesktopWWOSectionBottomContent from './DesktopWWOSectionBottomContent'
+import { whatweofferSectionResponseType } from '../../types/api/response'
+import { wwoNavLi } from '../../types/navTypes'
 
-const DesktopWhatWeOffer = () => {
-  const [activeNav, setActiveNav] = useState(data[0].header)
+interface props {
+  data: whatweofferSectionResponseType[]
+}
 
+const DesktopWhatWeOffer = ({ data }: props) => {
+  const [activeNav, setActiveNav] = useState(data[0].title)
+  const navData: wwoNavLi[] = data.map((each) => {
+    return {
+      header: each.title,
+      para: each.body1,
+    }
+  })
   function switchSection (header: string){
     setActiveNav(header)
   }
@@ -17,13 +27,13 @@ const DesktopWhatWeOffer = () => {
   const topSections = data.map((each, idx) => {
     return <Fragment key={nanoid()}>
             {
-              activeNav === each.header && (
+              activeNav === each.title && (
                 <SectionTransitionMotion key={idx}>
                   <DesktopWWOSectionTopContent
                     key={idx} 
-                    header={each.header}
-                    para={each.para}
-                    ul={each.ul}
+                    header={each.title}
+                    para={each.body1}
+                    img={each.link1}
                   />
                 </SectionTransitionMotion>
               )
@@ -33,9 +43,14 @@ const DesktopWhatWeOffer = () => {
   const bottomSections = data.map((each, idx) => {
     return <Fragment key={nanoid()}>
             {
-              activeNav == each.header && (
+              activeNav == each.title && (
                 <SectionTransitionMotion key={idx}>
-                  <DesktopWWOSectionBottomContent />
+                  <DesktopWWOSectionBottomContent 
+                    title={each.title}
+                    body={each.body2}
+                    img2={each.link2}
+                    img3={each.link3}
+                  />
                 </SectionTransitionMotion>
               )
             }  
@@ -45,7 +60,7 @@ const DesktopWhatWeOffer = () => {
     <section className='mt-16 mb-32'>
       <div className='ml-[5%] flex gap-x-5'>
         <Nav 
-          data={data}
+          data={navData}
           toggle={switchSection}
           active={activeNav}
         />

@@ -1,27 +1,24 @@
-import Demo from '../../assets/about/demo.png'
-import { wwoNavLi } from '../../types/navTypes'
+import DOMPurify from 'dompurify'
+import styles from '../about/about.module.css'
+import imgBaseUrl from '../../store/ImgBaseUrl'
+interface props {
+  header: string,
+  para: string,
+  img: string
+}
 
-const DesktopWWOSectionTopContent = ({header, para, ul}: wwoNavLi) => {
-  const liElements = ul.map((each, idx) => {
-    return <li key={idx} >
-              {each}
-            </li>
-  })
+const DesktopWWOSectionTopContent = ({header, para, img}: props) => {
+  const sanitizedHtml = DOMPurify.sanitize(para)
   return (
     <div>
       <div>
-        <img src={Demo} alt='image' className='w-full object-fill aspect-[2/1]' />
+        <img src={`${imgBaseUrl}${img}`} alt='image' className='w-full object-fill aspect-[2/1]' />
       </div>
       <div className='mt-10 lg:mr-20 xl:mr-28'>
         <h3 className="font-semibold text-[2.5rem] text-headerPrimary">
           {header}
         </h3>
-        <p className="text-base leading-[1.782rem] mt-4 font-medium">
-          {para}
-        </p>
-        <ul className='mt-1 list-inside list-disc text-base leading-[1.782rem]'>
-          {liElements}
-        </ul>
+        <div className={styles.para} dangerouslySetInnerHTML={{__html: sanitizedHtml}}></div>
       </div>
     </div>
   )

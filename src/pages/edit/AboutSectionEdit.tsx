@@ -109,8 +109,7 @@ const AboutSectionEdit = () => {
     setSectionContent('')
   }
   const onSubmit : SubmitHandler<FormSchemaType> = async (data) => {
-    console.log(data)
-    try{
+      try{
       if(imgFile){
         await mutation.mutateAsync({
           id: contentId,

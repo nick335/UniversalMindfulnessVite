@@ -45,7 +45,7 @@ const DesktopAboutSubSections = ({ data} : props) => {
         active={activeNav}
         toggle={switchSection}
       />
-      <div>
+      <div className='w-full'>
         <AnimatePresence mode='sync'>
           {sections}
         </AnimatePresence>

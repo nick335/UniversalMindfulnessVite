@@ -9,16 +9,17 @@ interface props {
   body: string
   id: number
   img: string
+  routePath: string
 }
 
-const ContentDisplay6 = ({ title, body, id, img}: props) => {
+const ContentDisplay6 = ({ title, body, id, img, routePath}: props) => {
   const sanitizedHtml = DOMPurify.sanitize(body)
   return (
     <SectionBody>
       <SectionHeader 
         header={title}
         btnName='edit'
-        routePath={`/admin/dashboard/about/edit/${id}`}
+        routePath={`${routePath}${id}`}
       />
       <div className='mt-[1.13rem] font-inter'>
         <div className='w-full aspect-[4/1]'>

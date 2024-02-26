@@ -11,5 +11,4 @@ export type aboutNavLi = {
 export type wwoNavLi = {
   header: string,
   para: string,
-  ul: string[]
 }

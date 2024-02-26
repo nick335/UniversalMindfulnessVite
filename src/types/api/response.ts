@@ -48,3 +48,13 @@ export type aboutSectionResponseType = {
   body1: string
   link1:string
 }
+
+export type whatweofferSectionResponseType = {
+  id: number
+  title: string
+  body1: string
+  link1:string
+  link2: string
+  link3: string,
+  body2: string
+}
