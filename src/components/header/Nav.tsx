@@ -10,7 +10,8 @@ import { useSearchStore } from '../../store/useSearchStore';
 
 const Nav = () => {
   const {  toggleMenu, isOpen} = useMenuStore()
-  const { noOfCartItem, toggleCart } = useCartStore()
+  //toggle cart
+  const { noOfCartItem, } = useCartStore()
   const { toggleSearchVisibility } = useSearchStore()
   const { width } = useWindowDimensions()
 
@@ -38,7 +39,7 @@ const Nav = () => {
       <Menu />
       <div className='flex items-center gap-x-1 text-textPrimary'>
         <h3 className='font-semibold'>({noOfCartItem})</h3>
-        <img src={cart} alt='cart' className='object-fit w-[1.37694rem] h-[1.37694rem] cursor-pointer' onClick={toggleCart} />
+        <img src={cart} alt='cart' className='object-fit w-[1.37694rem] h-[1.37694rem] cursor-pointer'  />
       </div>
     </nav>
   )
