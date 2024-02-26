@@ -15,7 +15,6 @@ const WhatWeOffer = () => {
     section: 'whatweoffer'
   }))
   const content: whatweofferSectionResponseType[] = data?.data.data || []
-  console.log(content)
   const { width } = useWindowDimensions()
   return (
     <PageTransition layout='none'>
