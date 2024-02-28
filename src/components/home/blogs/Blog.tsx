@@ -32,7 +32,7 @@ const Blog = ({ img, createdAt, title, id }: props) => {
       <motion.div className='w-full aspect-square relative overflow-hidden rounded-xl cursor-pointer'
         ref={hoverRef}
       >
-        <motion.img src={`${imgBaseUrl}${img}`} className='object-fill w-full h-full rounded-xl' variants={imageVariants} initial='normal' transition={{ duration: 0.5, ease: [0.645, 0.045, 0.355, 1] }} animate={isHover ? 'hovered': 'normal'} />
+        <motion.img src={`${imgBaseUrl}${img}`} className='imgFocus object-cover w-full h-full rounded-xl' variants={imageVariants} initial='normal' transition={{ duration: 0.5, ease: [0.645, 0.045, 0.355, 1] }} animate={isHover ? 'hovered': 'normal'} />
         <motion.div variants={overlayVariants} initial='normal' animate={isHover ? 'hovered': 'normal'} transition={{ duration: 0.5, ease: [0.645, 0.045, 0.355, 1] }}  className=' absolute top-0 left-0 bg-black w-full h-full rounded-xl'></motion.div>
       </motion.div>
       <div className="flex flex-col gap-y-[0.84rem] w-[95%] mt-8">
