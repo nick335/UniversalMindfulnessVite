@@ -13,7 +13,7 @@ const ContentDisplay2 = ({ id, title, body1, link1, section}: eventResponseType)
       <SectionHeader 
         header={title}
         btnName='edit'
-        routePath='admin/dashboard'
+        routePath={`/admin/dashboard/events/edit/${id}`}
       />
 
       <div className='mt-[1.13rem] font-inter'>

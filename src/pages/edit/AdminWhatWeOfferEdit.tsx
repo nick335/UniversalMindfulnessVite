@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, {  useState } from 'react'
 import FormRow from '../../components/utility/form/FormRow'
 import InputDesc from '../../components/utility/form/InputDesc'
 import FormTextInput from '../../components/utility/form/FormTextInput'
@@ -30,19 +30,11 @@ const AdminWhatWeOfferEdit = () => {
   const [contentId, setContentId] = useState('')
   const { data, isLoading, error } = useQuery(['whatweoffer'], () => getContent({
     section: 'whatweoffer'
-  }))
-  const mutation = useMutation(editContent, {
+  }), {
     onSuccess: () => {
-      showToast('Content uploaded Successfully', 'success')
-      queryClient.invalidateQueries(['whatweoffer'])
-    }
-  })
-  useEffect(() => {
-    if(!isLoading && !error){
       const id = params.id
       const content: whatweofferSectionResponseType[] = data?.data.data || []
       const idExists = content.some(obj => `${obj.id}` === id)
-
       if(idExists){
         const foundObject= content.find(obj => `${obj.id}` === id);
         if(foundObject){
@@ -64,11 +56,17 @@ const AdminWhatWeOfferEdit = () => {
         setPageLoading(false)
         navigate('/404')
       }
+      if(error){
+        setPageLoading(false)
+      }
     }
-    if(error){
-      setPageLoading(false)
+  })
+  const mutation = useMutation(editContent, {
+    onSuccess: () => {
+      showToast('Content uploaded Successfully', 'success')
+      queryClient.invalidateQueries(['whatweoffer'])
     }
-  }, [isLoading, error])
+  })
   const [body1, setBody1] = useState('')
   const [body2, setBody2] = useState('')
   const [PreviewImage1, setPreviewImage1] = useState('')

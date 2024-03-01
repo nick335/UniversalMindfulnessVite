@@ -22,6 +22,7 @@ const Parents = () => {
             body1={each.body1}
             link1={each.link1}
             section={each.section}
+            routePath={`/admin/dashboard/testimonial/parent/edit/${each.id}`}
           />
   })
 

@@ -2,6 +2,7 @@ import pencil from '../../../../assets/admin/pencil.svg'
 import ContentDisplayDelete from './ContentDisplayDelete'
 import { teamResponseType } from '../../../../types/api/response'
 import { deleteContent } from '../../../../api/content/deleteContent'
+import { Link } from 'react-router-dom'
 const ContentDisplay3 = ({ id, title, header, body1, link1, section }: teamResponseType) => {
   return (
     <div className="font-inter leading-[1.4375rem] text-sm tracking-[-0.018rem]">
@@ -14,8 +15,10 @@ const ContentDisplay3 = ({ id, title, header, body1, link1, section }: teamRespo
       </p>
       <div className="mt-8 flex items-center justify-between">
         <button className='flex items-center gap-x-2'>
-          <span className=' capitalize underline text-headerPrimary'>edit</span>
-          <img src={pencil} alt="pencil" className='w-6 h-6 object-fill' />
+          <Link to={`/admin/dashboard/about/meettheteam/edit/${id}`} className='flex items-center gap-x-2'>
+            <span className=' capitalize underline text-headerPrimary'>edit</span>
+            <img src={pencil} alt="pencil" className='w-6 h-6 object-fill' />
+          </Link>
         </button>
        <ContentDisplayDelete queryKey={section} deleteFunc={deleteContent} payload={{id: id}} />
       </div>

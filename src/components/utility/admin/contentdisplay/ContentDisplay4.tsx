@@ -13,7 +13,7 @@ const ContentDisplay4 = ({id, title, header, body1, sub_section, link1, section}
       <SectionHeader 
         header={title}
         btnName='edit'
-        routePath='/admin/dashboard'
+        routePath={`/admin/dashboard/blog/edit/${id}`}
       />
 
       <div className='mt-[1.13rem] font-inter'>
