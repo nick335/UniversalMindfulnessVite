@@ -6,6 +6,7 @@ import imgBaseUrl from "../../store/ImgBaseUrl";
 import DOMPurify from "dompurify";
 import { wwoNavLi } from "../../types/navTypes";
 import styles from '../about/about.module.css'
+
 interface props {
   data: whatweofferSectionResponseType[]
 }
