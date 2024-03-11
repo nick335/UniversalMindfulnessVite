@@ -61,7 +61,7 @@ const CustomerReviews = () => {
         />
         <div className='lg:max-w-[90%] mx-auto'>
           <div className='max-w-full  w-full overflow-hidden '>
-            <div  className='w-full flex flex-nowrap  whitespace-nowrap transition-all ease-linear duration-500' style={{ transform: `translate3d(${-index * 100}%, 0, 0)` }}>
+            <div  className='w-full flex flex-nowrap  whitespace-nowrap transition-all ease-linear duration-500' style={{ transform: `translate3d(${-index * 100}%, 0, 0)`, WebkitFlexWrap: 'nowrap', flexWrap: 'nowrap' }}>
               {contentDisplay}
             </div>
           </div>

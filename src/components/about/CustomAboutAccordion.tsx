@@ -1,10 +1,10 @@
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "../../ShadComponent/ui/accordion"
-import Demo from '../../assets/about/demo.png'
 import Nav from "../utility/CustomAccordion/Nav";
 import { useState } from "react";
 import { aboutSectionResponseType } from "../../types/api/response";
 import DOMPurify from "dompurify";
 import { aboutNavLi } from "../../types/navTypes";
+import imgBaseUrl from "../../store/ImgBaseUrl";
 
 interface props {
   data: aboutSectionResponseType[]
@@ -29,7 +29,7 @@ const CustomAboutAccordion = ({ data }: props) => {
             
             <AccordionContent className="font-lato">
               <div className="w-full aspect-[1/1.25] mt-4">
-               <img src={Demo} alt="img" className="imgFocus object-cover rounded-lg"  /> 
+               <img src={`${imgBaseUrl}${each.link1}`} alt="img" className="imgFocus object-cover rounded-lg"  /> 
               </div>     
               <h3 className="font-semibold text-[1.80694rem] text-headerPrimary mt-6">{each.title}</h3>
               <div className="mt-[0.43rem] text-base font-medium leading-[1.782rem]" dangerouslySetInnerHTML={{__html: sanitizedHtml}}></div>
