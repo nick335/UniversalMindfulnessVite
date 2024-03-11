@@ -29,7 +29,7 @@ const CustomAboutAccordion = ({ data }: props) => {
             
             <AccordionContent className="font-lato">
               <div className="w-full aspect-[1/1.25] mt-4">
-               <img src={`${imgBaseUrl}${each.link1}`} alt="img" className="imgFocus object-cover rounded-lg"  /> 
+               <img src={`${imgBaseUrl}${each.link1}`} alt={each.title} className="imgFocus object-cover rounded-lg w-full h-full"  /> 
               </div>     
               <h3 className="font-semibold text-[1.80694rem] text-headerPrimary mt-6">{each.title}</h3>
               <div className="mt-[0.43rem] text-base font-medium leading-[1.782rem]" dangerouslySetInnerHTML={{__html: sanitizedHtml}}></div>
