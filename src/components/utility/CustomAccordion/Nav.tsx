@@ -22,12 +22,11 @@ const Nav = ({handleAccordionToggle, navData, active} : props) => {
   })
   return (
     <div className="bg-bgDisclosure pt-6 pb-3 px-6 rounded-lg  max-w-full overflow-x-hidden ml-4">
-      <div className="overflow-x-scroll pb-3">
+      <div className="overflow-x-scroll pb-3" style={{ WebkitOverflowScrolling: 'touch' }}>
         <ul className="flex items-center flex-nowrap gap-x-[1.19rem]">
           {liElements}
         </ul> 
       </div>
-      
     </div>
   )
 }
