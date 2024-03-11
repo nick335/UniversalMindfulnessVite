@@ -10,6 +10,7 @@ import { getContent } from '../api/content/getContent'
 import { whatweofferSectionResponseType } from '../types/api/response'
 import AdminContentLoader from '../components/utility/Loader/AdminContentLoader'
 import ErrorMessage3 from '../components/utility/Error/ErrorMessage3'
+import SEOPageDescription from '../components/utility/seo/SEOPageDescription'
 const WhatWeOffer = () => {
   const { data, isLoading, error } = useQuery(['whatweoffer'], () => getContent({
     section: 'whatweoffer'
@@ -20,6 +21,9 @@ const WhatWeOffer = () => {
     <PageTransition layout='none'>
       <SEOPageHeader 
         page='What we offer'
+      />
+      <SEOPageDescription 
+        desc='Unlock your true potential with Universal Mindfulness. Discover a transformative journey towards self-discovery and personal growth. Explore mindfulness practices that empower you to live a more fulfilling life. Start your journey today.'
       />
       <div className='layout'>
         <Subheader header='What we Offer' />

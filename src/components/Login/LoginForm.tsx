@@ -61,7 +61,7 @@ const LoginForm = () => {
         </div>
         <button type="submit" disabled={isSubmitting} className="w-full cursor-pointer bg-[#FC5704] text-textPrimary rounded-[0.375rem] py-3.5 capitalize flexCenter">
           {
-            mutation.isLoading ? <Icon icon="line-md:loading-loop" className="text-2xl" /> : 'sign up'
+            mutation.isLoading ? <Icon icon="line-md:loading-loop" className="text-2xl" /> : 'Login'
           }
         </button>
       </form>

@@ -10,17 +10,19 @@ import EventSkeleton from '../components/utility/skeletons/EventSkeleton'
 import { nanoid } from 'nanoid'
 import ErrorMessage3 from '../components/utility/Error/ErrorMessage3'
 import NoContent from '../components/utility/admin/contentdisplay/NoContent'
+import SEOPageDescription from '../components/utility/seo/SEOPageDescription'
 
 const Events = () => {
   const { data, isLoading, error } = useQuery(['event'], () => getContent({section: 'event'}))
 
   const contentArr: eventResponseType[] = data?.data.data || []
 
+  const latestContentArr = [...contentArr].reverse()
   const loadingUi = Array.from({length: 4}).map(() => {
     return <EventSkeleton key={nanoid()} />
   })
 
-  const contentDisplay = contentArr.map((each) => {
+  const contentDisplay = latestContentArr.map((each) => {
     return <Event 
             key={nanoid()}
             name={each.title}
@@ -33,6 +35,9 @@ const Events = () => {
     <PageTransition layout='layout'>
       <SEOPageHeader 
         page='Events'
+      />
+      <SEOPageDescription 
+        desc='Join Universal Mindfulness events to explore and unlock your true potential. Experience transformative sessions designed to enhance mindfulness, personal growth, and self-discovery. Embrace the power of presence and start your journey towards a more fulfilling life today.'
       />
       <Subheader header='Events' />
       <PageHeaderSection 

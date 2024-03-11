@@ -26,6 +26,7 @@
     "cmdk": "^0.2.1",
     "dompurify": "^3.0.9",
     "framer-motion": "^10.17.0",
+    "googleapis": "^126.0.1",
     "js-cookie": "^3.0.5",
     "lucide-react": "^0.303.0",
     "nanoid": "^5.0.4",

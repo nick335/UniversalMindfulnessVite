@@ -2,6 +2,7 @@ import ChildrenTestimonial from "../components/testimonials/ChildrenTestimonial"
 import MainTestimonial from "../components/testimonials/MainTestimonial"
 import ParentTestimonials from "../components/testimonials/ParentTestimonials"
 import PageTransition from "../components/utility/motion/PageTransition"
+import SEOPageDescription from "../components/utility/seo/SEOPageDescription"
 import SEOPageHeader from "../components/utility/seo/SEOPageHeader"
 import PageHeaderSection from "../components/utility/subHeaders/PageHeaderSection"
 import Subheader from "../components/utility/subHeaders/Subheader"
@@ -11,6 +12,9 @@ const Testimonial = () => {
     <PageTransition layout="layout">
       <SEOPageHeader 
         page="Testimonials"
+      />
+      <SEOPageDescription 
+        desc="Unlock the power of mindfulness with Universal Mindfulness. Hear inspiring testimonials from individuals who have discovered their true potential through our transformative practices. Start your journey today and experience the life-changing benefits for yourself."
       />
       <Subheader header="Testimonials" />
       <PageHeaderSection

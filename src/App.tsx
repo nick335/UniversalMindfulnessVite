@@ -4,6 +4,8 @@ import Footer from './components/footer/Footer'
 import CartModal from './components/cart/CartModal'
 import SearchModal from './components/search/SearchModal'
 import 'react-loading-skeleton/dist/skeleton.css'
+import 'react-toastify/dist/ReactToastify.css';
+import { ToastContainer } from 'react-toastify';
 
 
 
@@ -19,6 +21,7 @@ function App() {
       <CartModal />
       <SearchModal />
       <ScrollRestoration />
+      <ToastContainer />
     </>
   )
 }

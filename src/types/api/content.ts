@@ -30,3 +30,19 @@ export type deleteContentPayloadType = {
 export type getContentByIdPayloadType = {
   id?: number
 }
+
+export type postContactusPayload = {
+  first_name: string,
+  last_name: string,
+  email:string,
+  phone: string,
+  subject: string,
+  message:string
+}
+
+export type postSubscribeToNewsletter = {
+  email: string
+}
+export type patchUpdateBlogCountType = {
+  id: number
+}

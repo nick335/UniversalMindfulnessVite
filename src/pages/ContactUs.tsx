@@ -3,6 +3,7 @@ import PageTransition from "../components/utility/motion/PageTransition"
 import Subheader from "../components/utility/subHeaders/Subheader"
 import styles from '../components/contactUs/contactUs.module.css'
 import SEOPageHeader from "../components/utility/seo/SEOPageHeader"
+import SEOPageDescription from "../components/utility/seo/SEOPageDescription"
 
 const ContactUs = () => {
   return (
@@ -10,6 +11,9 @@ const ContactUs = () => {
       <div className="lg:mb-32">
         <SEOPageHeader 
           page="Contact Us"
+        />
+        <SEOPageDescription 
+          desc='Unlock your true potential with Universal Mindfulness. Contact us today to start your journey towards self-discovery and personal growth. Learn how mindfulness can transform your life and help you achieve your goals.'
         />
         <Subheader header='Contact Us' />
         <section className="mt-8 lg:flex lg:gap-x-32 xl:gap-x-40 lg:mt-10">

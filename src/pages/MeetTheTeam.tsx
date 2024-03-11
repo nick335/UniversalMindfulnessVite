@@ -10,6 +10,7 @@ import TeamMemberSkeleton from "../components/utility/skeletons/TeamMemberSkelet
 import { nanoid } from "nanoid"
 import NoContent from "../components/utility/admin/contentdisplay/NoContent"
 import ErrorMessage3 from "../components/utility/Error/ErrorMessage3"
+import SEOPageDescription from "../components/utility/seo/SEOPageDescription"
 
 const MeetTheTeam = () => {
   const { data, isLoading, error } = useQuery(['team'], () => getContent({section: 'team'}))
@@ -41,6 +42,9 @@ const MeetTheTeam = () => {
     <PageTransition layout='layout'>
       <SEOPageHeader 
         page='The Team'
+      />
+      <SEOPageDescription 
+        desc='Unlock your true potential with Universal Mindfulness. Our team is dedicated to helping you discover the power of mindfulness in achieving personal growth and transformation. Join us on your journey to self-discovery and fulfillment today.'
       />
       <Subheader header='Meet the Team' />
       <PageHeaderSection 

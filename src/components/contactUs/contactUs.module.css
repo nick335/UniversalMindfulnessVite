@@ -16,3 +16,6 @@
 .divContainer{
   @apply lg:flex gap-x-6;
 }
+.formError{
+  @apply !border-error transition-all ease-in duration-150;
+}
