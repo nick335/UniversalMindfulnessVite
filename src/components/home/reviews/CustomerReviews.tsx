@@ -26,7 +26,7 @@ const CustomerReviews = () => {
       },
     ]
   });
-
+  const isLoading = result[0].isLoading || result[1].isLoading
   useEffect(() => {
     const data: testimonialResponseType[] = [
       ...result[0].data?.data.data || [],
@@ -35,8 +35,7 @@ const CustomerReviews = () => {
     const shuffledArr: testimonialResponseType[] = shuffleArray(data)
     const contentData = shuffledArr.slice(0, 4)
     setDataArr(contentData) 
-  }, [result])
-  const isLoading = result[0].isLoading || result[1].isLoading
+  }, [isLoading])
   const error = result[0].error || result[1].error
   const contentDisplay = dataArr.map((each) => {
     return <CustomerReview 
