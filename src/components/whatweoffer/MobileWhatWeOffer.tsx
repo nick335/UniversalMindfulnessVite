@@ -34,10 +34,10 @@ const MobileWhatWeOffer = ({ data }: props) => {
               <h3 className="font-semibold text-[1.80694rem] text-headerPrimary mt-6 leading-[1.2]">{each.title}</h3>
               <div className={`mt-[0.43rem] text-base font-medium leading-[1.782rem] ${styles.para}`} dangerouslySetInnerHTML={{__html: sanitizedHtml}}></div>
               <div className="w-full aspect-[1/1.25] mt-4">
-               <img src={`${imgBaseUrl}${each.link2}`} alt="img" className="imgFocus object-cover rounded-lg"  /> 
+               <img src={`${imgBaseUrl}${each.link2}`} alt="img" className="imgFocus object-cover rounded-lg w-full h-full"  /> 
               </div>
               <div className="w-full aspect-[1/1.25] mt-4">
-               <img src={`${imgBaseUrl}${each.link3}`} alt="img" className="imgFocus object-cover rounded-lg"  /> 
+               <img src={`${imgBaseUrl}${each.link3}`} alt="img" className="imgFocus object-cover rounded-lg w-full h-full"  /> 
               </div>
                { each.body2 && <div className={`text-base font-medium leading-[1.782rem] mt-2 ${styles.para}`} dangerouslySetInnerHTML={{__html: sanitizedHtml2}} >
               </div>}
