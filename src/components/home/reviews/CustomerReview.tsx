@@ -17,7 +17,7 @@ const CustomerReview = ({name, img, caption, testimony}: props) => {
           <p style={{ whiteSpace: 'normal', wordWrap: 'break-word', overflowWrap: 'break-word', WebkitHyphens: 'auto', msHyphens: 'auto' }} className=' text-sm font-medium leading-[1.34456rem] tracking-[-0.01119rem] text-wrap w-full text-textSecondary lg:text-[1.70988rem] lg:leading-[2.16156rem] lg:tracking-[-0.018rem] lg:mt-2'>{testimony}.</p>
           <div className='mt-3.5'>
             <h4 className='text-[0.7005rem] font-bold'>{name}</h4>
-            <h5 className='text-[0.66769rem] font-medium lg:max-w-[90%] text-wrap' style={{ whiteSpace: 'normal', wordWrap: 'break-word', overflowWrap: 'break-word', WebkitHyphens: 'auto', msHyphens: 'auto' }}>{caption}</h5>
+            <h5 className='text-[0.66769rem] font-medium max-w-[90%] text-wrap' style={{ whiteSpace: 'normal', wordWrap: 'break-word', overflowWrap: 'break-word', WebkitHyphens: 'auto', msHyphens: 'auto' }}>{caption}</h5>
           </div>
         </div>
       </div>
