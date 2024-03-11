@@ -16,14 +16,15 @@ const Nav = ({handleAccordionToggle, navData, active} : props) => {
   const liElements = navData.map((each, idx) => {
     return <li key={idx} className={`${
       active === each.header ? 'border-b-2 border-navLiBorder' : 'border-none'
-    } text-nowrap text-lg font-lato leading-[1.63125rem]`} onClick={() => handleNavAccordionToggle(each.header)}>
+    } text-nowrap text-lg font-lato leading-[1.63125rem]`}
+    style={{ whiteSpace: 'nowrap' }} onClick={() => handleNavAccordionToggle(each.header)}>
             {each.header}
           </li>
   })
   return (
     <div className="bg-bgDisclosure pt-6 pb-3 px-6 rounded-lg  max-w-full overflow-x-hidden ml-4">
       <div className="overflow-x-scroll pb-3" style={{ WebkitOverflowScrolling: 'touch' }}>
-        <ul className="flex items-center flex-nowrap gap-x-[1.19rem]">
+        <ul className="flex items-center flex-nowrap gap-x-[1.19rem]" style={{ WebkitFlexWrap: 'nowrap', flexWrap: 'nowrap' }}>
           {liElements}
         </ul> 
       </div>
