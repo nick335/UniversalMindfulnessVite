@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import Subheader from '../../utility/subHeaders/Subheader'
 import CustomerReview from './CustomerReview'
 import ReviewSliderController from './ReviewSliderController'
@@ -12,6 +12,7 @@ import { nanoid } from 'nanoid'
 import NoContent from '../../utility/admin/contentdisplay/NoContent'
 
 const CustomerReviews = () => {
+  const [dataArr, setDataArr] = useState<testimonialResponseType[]>([])
   const [index, setIndex] = useState(0)
   const result = useQueries({
     queries: [
@@ -25,15 +26,19 @@ const CustomerReviews = () => {
       },
     ]
   });
+
+  useEffect(() => {
+    const data: testimonialResponseType[] = [
+      ...result[0].data?.data.data || [],
+      ...result[1].data?.data.data || [],
+    ]
+    const shuffledArr: testimonialResponseType[] = shuffleArray(data)
+    const contentData = shuffledArr.slice(0, 4)
+    setDataArr(contentData) 
+  }, [result])
   const isLoading = result[0].isLoading || result[1].isLoading
   const error = result[0].error || result[1].error
-  const data: testimonialResponseType[] = [
-    ...result[0].data?.data.data || [],
-    ...result[1].data?.data.data || [],
-  ] 
-  const shuffledArr: testimonialResponseType[] = shuffleArray(data)
-  const contentData = shuffledArr.slice(0, 4)
-  const contentDisplay = contentData.map((each) => {
+  const contentDisplay = dataArr.map((each) => {
     return <CustomerReview 
               key={nanoid()}
               testimony={each.body1}
