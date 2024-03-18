@@ -12,6 +12,7 @@ const AdminShop = lazy(() => import('../pages/AdminShop'))
 const AdminTestimonial = lazy(() => import('../pages/AdminTestimonial'))
 const AdminEvents = lazy(() => import('../pages/AdminEvents'))
 const AdminWhatWeOffer = lazy(() => import('../pages/AdminWhatWeOffer'))
+const AdminVideos = lazy(() => import('../pages/AdminVideo'))
 
 
 const adminRoutes = [
@@ -38,6 +39,10 @@ const adminRoutes = [
   {
     path: '/admin/dashboard/shop',
     element: <Suspense fallback={<PageLoader />}><PrivateRoute children={<AdminShop />} /></Suspense> 
+  },
+  {
+    path: '/admin/dashboard/videos',
+    element: <Suspense fallback={<PageLoader />}><PrivateRoute children={<AdminVideos />} /></Suspense>
   },
   {
     path: '/admin/dashboard/about',

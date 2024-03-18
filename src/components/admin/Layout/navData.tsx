@@ -5,6 +5,7 @@ import wwo from '../../../assets/admin/nav/wwo.svg'
 import shop from '../../../assets/admin/nav/shop.svg'
 import aboutUs from '../../../assets/admin/nav/aboutUs.svg'
 import testimonial from '../../../assets/admin/nav/testimonial.svg'
+import video from '../../../assets/admin/nav/video.svg'
 
 
 
@@ -44,6 +45,11 @@ const data = [
     routeName: 'testimonial',
     img: testimonial
   },
+  {
+    name: 'video',
+    routeName: 'videos',
+    img: video
+  }
 ]
 
 export default data

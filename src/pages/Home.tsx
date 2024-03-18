@@ -6,6 +6,7 @@ import Sponsor from '../components/home/sponsors/Sponsor'
 import PageTransition from '../components/utility/motion/PageTransition'
 import SEOPageHeader from '../components/utility/seo/SEOPageHeader'
 import SEOPageDescription from '../components/utility/seo/SEOPageDescription'
+import InspiringStories from '../components/home/inspiringStories/InspiringStories'
 
 const Home = () => {
   return (
@@ -19,6 +20,7 @@ const Home = () => {
         <Hero />
         <Sponsor />
         <OurServices />
+        <InspiringStories />
         <CustomerReviews />
         <Blogs />
     </PageTransition>
