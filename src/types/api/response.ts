@@ -4,6 +4,12 @@ export type imageResponseType = {
   link: string // image href
   section: string
 }
+export type videoResponseType = {
+  id: number
+  title: string
+  link: string // image href
+  section: string
+}
 
 export type testimonialResponseType = {
   id: number,

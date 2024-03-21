@@ -1,17 +1,19 @@
 import { AnimatePresence, motion } from "framer-motion"
 import { useEffect, useState } from "react"
+import { imageResponseType } from "../../types/api/response"
+import imgBaseUrl from "../../store/ImgBaseUrl"
 
 interface props {
   rowIndex: number
-  row: string[]
+  row: imageResponseType[]
   interval: number
 }
 
 const AboutSwitchingAni = ({ rowIndex, row, interval }: props) => {
   const aniInterval = interval
   const actualRowIndex = rowIndex
-  const images = row.map((_, idx) => {
-    return `https://picsum.photos/700/600?random=${idx + 1 + rowIndex}`
+  const images = row.map((each) => {
+    return `${imgBaseUrl}/${each.link}`
   })
   const [currentImageIndex, setImageCurrentIndex] = useState(0)
 
@@ -19,10 +21,13 @@ const AboutSwitchingAni = ({ rowIndex, row, interval }: props) => {
   useEffect(() => {
     const interval = setInterval(() => {
       setImageCurrentIndex((prevIndex) => (prevIndex + 1) % images.length);
-    }, (aniInterval * currentImageIndex));
-
+    }, aniInterval);
+  
+    // Show the first image immediately after component mount
+    setImageCurrentIndex(0);
+  
     return () => clearInterval(interval);
-  },[aniInterval, currentImageIndex, actualRowIndex])
+  }, [aniInterval, images.length]);
   return (
     <div
       className={`

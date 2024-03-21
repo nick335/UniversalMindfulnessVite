@@ -1,5 +1,7 @@
-export const splitArray = (array: string[], numArrays: number) => {
-  const result: string[][] = Array.from({ length: numArrays }, () => []);
+import { imageResponseType } from "../types/api/response";
+
+export const splitArray = (array: imageResponseType[], numArrays: number) => {
+  const result: imageResponseType[][] = Array.from({ length: numArrays }, () => []);
 
   for (let i = 0; i < array.length; i++) {
     const subArrayIndex = i % numArrays;

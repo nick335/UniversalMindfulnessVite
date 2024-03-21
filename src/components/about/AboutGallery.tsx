@@ -1,9 +1,20 @@
+import { useQuery } from "@tanstack/react-query";
 import useWindowDimensions from "../../hooks/UseWindowDimensions";
 import { splitArray } from "../../utilsFunction/splitArray";
 import EmbeddedVideo from "../utility/EmbeddedVideo/EmbeddedVideo";
 import AboutSwitchingAni from "./AboutSwitchingAni";
+import { getImages } from "../../api/images/getImages";
+import AdminContentLoader from "../utility/Loader/AdminContentLoader";
+import ErrorMessage3 from "../utility/Error/ErrorMessage3";
+import { imageResponseType } from "../../types/api/response";
 
 const AboutGallery = () => {
+  const { data, isLoading, error } = useQuery(['aboutGallery'], () => getImages({
+    title: 'aboutGallery'
+  }))
+
+  const Images: imageResponseType[] = data?.data.data || []
+  console.log(data)
   const { width } = useWindowDimensions()
   const stringArray= [
     "Elderberry",
@@ -33,11 +44,13 @@ const AboutGallery = () => {
     "Cantaloupe",
     "Dragonfruit",
   ];
-  const result = width < 1024  ? splitArray(stringArray, 5) : splitArray(stringArray, 4)
+  const result = width < 1024  ? splitArray(Images, 5) : splitArray(Images, 4)
   const videoUrls = [
     'yCyE91-D-KI',
     'V8eWxOLXLK8',
   ]
+  if(error) return <ErrorMessage3 error={error} />
+  if(isLoading) return <div><AdminContentLoader /></div>
   return (
     <div className="grid grid-cols-2 gap-5 lg:grid-cols-4 w-full overflow-x-hidden">
       <AboutSwitchingAni rowIndex={1} row={result[0]} interval={5000}  />

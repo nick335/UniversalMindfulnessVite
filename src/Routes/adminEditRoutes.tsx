@@ -9,6 +9,7 @@ import AdminEventsEdit from "../pages/edit/AdminEventsEdit";
 import AdminMeetTheTeamEdit from "../pages/edit/AdminMeetTheTeamEdit";
 import AdminParentTestimonialEdit from "../pages/edit/AdminParentTestimonialEdit";
 import AdminChildrenTestimonialEdit from "../pages/edit/AdminChildrenTestimonialEdit";
+import AdminVideoEdit from "../pages/edit/AdminVideoEdit";
 
 
 
@@ -45,6 +46,11 @@ const adminEditRoutes = [
     path: '/admin/dashboard/events/edit/:id',
     element: <Suspense><PrivateRoute children={<AdminEventsEdit />} /></Suspense>
   },
+  {
+    path: '/admin/dashboard/videos/edit',
+    element: <Suspense><PrivateRoute children={<AdminVideoEdit
+       />}/></Suspense>
+  }
 ]
 
 export default adminEditRoutes

@@ -10,3 +10,8 @@ export type postImagePayload = {
 export type deleteImagePayload = {
   id: number
 }
+
+export type postVideoPayload = {
+  title: string;
+  video: Blob;
+}

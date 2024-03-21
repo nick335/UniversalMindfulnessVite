@@ -23,7 +23,7 @@ const SponsorImages = () => {
         btnName='add images'
         routePath="/admin/dashboard/sponsorsimage/add"
       />
-      <div className="adminGridLayout1">
+      <div className="adminGridLayout1 !grid-cols-5 justify-center items-end">
         {
           isLoading ? <AdminContentLoader /> : imagesDisplay.length === 0 ?
           <NoContent /> : imagesDisplay

@@ -1,18 +1,20 @@
+import React from 'react';
+import ReactPlayer from 'react-player';
 
-interface props {
-  vidurl: string
+interface Props {
+  vidurl: string;
+  inputPreview?: boolean;
 }
 
-const AdminEmbeddedVideo = ({ vidurl }: props) => {
+const AdminEmbeddedVideo: React.FC<Props> = ({ vidurl, inputPreview }: Props) => {
   return (
-    <div className='w-full aspect-[4/1] mt-5'>
-      <iframe
-        title="Embedded Video"
-        className='h-full w-full'
-        src={`https://www.youtube.com/embed/${vidurl}`}
-      ></iframe>
+    <div className={` w-full max-h-full flex justify-center  ${ inputPreview ? 'aspect-video' : 'aspect-[4/1]' }`}>
+      <ReactPlayer
+        url={vidurl}
+        controls={true} // Optional: Show video controls
+      />
     </div>
-  )
-}
+  );
+};
 
-export default AdminEmbeddedVideo
+export default AdminEmbeddedVideo;

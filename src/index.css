@@ -104,6 +104,9 @@
   .adminForm{
     @apply grid grid-cols-1 gap-y-10
   }
+  .embeddedvideo video{
+    @apply m-0 w-full h-full;
+  }
 }
 
 *{
