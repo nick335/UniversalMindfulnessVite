@@ -27,11 +27,11 @@ const AdminVideo = () => {
   if(error) return <ErrorMessage2 error={error} />
   return (
     <>
-      <SectionBody>
+      <SectionBody> 
         <SectionHeader 
           header="Add Video"
           btnName="Add"
-          routePath="/admin/dashboard/video/add"
+          routePath="/admin/dashboard/videos/add"
         />
       </SectionBody>
       <div className="mt-8 adminSectionsGridLayout">

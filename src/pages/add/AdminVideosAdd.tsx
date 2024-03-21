@@ -13,7 +13,7 @@ import ErrorHandler from '../../utilsFunction/ErrorHandler'
 import Delete from '../../components/utility/admin/buttons/delete'
 import Update from '../../components/utility/admin/buttons/Update'
 
-const AdminVideoEdit = () => {
+const AdminVideosAdd = () => {
   const [vidFiles, setVidFiles] = useState<Blob>()
   const queryClient = useQueryClient()
   const [previewVideo, setPreviewVideo]= useState<string>('')
@@ -26,8 +26,6 @@ const AdminVideoEdit = () => {
       queryClient.refetchQueries(['videos'])
     }
   })
-
-
 
   type FormSchemaType = z.infer<typeof formSchema>
   const formSchema = z.object({
@@ -72,8 +70,6 @@ const AdminVideoEdit = () => {
     reset()
     setPreviewVideo('')
   }
-
-  
   return (
     <div>
       <form className='adminForm' onSubmit={handleSubmit(onSubmit)}>
@@ -96,4 +92,4 @@ const AdminVideoEdit = () => {
   )
 }
 
-export default AdminVideoEdit
+export default AdminVideosAdd

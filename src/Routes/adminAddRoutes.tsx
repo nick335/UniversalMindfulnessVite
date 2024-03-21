@@ -9,6 +9,7 @@ import SponsorImagesAdd from "../pages/add/SponsorImagesAdd";
 import PageLoader from "../components/utility/Loader/PageLoader";
 import { Suspense } from "react";
 import AdminAboutGallery from "../pages/add/AdminAboutGallery";
+import AdminVideosAdd from "../pages/add/AdminVideosAdd";
 
 
 const adminAddRoutes = [
@@ -43,6 +44,11 @@ const adminAddRoutes = [
   {
     path: '/admin/dashboard/about/gallery/add',
     element: <Suspense fallback={<PageLoader />}><PrivateRoute children={<AdminAboutGallery />} /></Suspense>
+  },
+  {
+    path: '/admin/dashboard/videos/add',
+    element: <Suspense><PrivateRoute children={<AdminVideosAdd
+    />}/></Suspense>
   }
 ]
 
