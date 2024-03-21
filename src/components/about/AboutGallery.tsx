@@ -16,34 +16,6 @@ const AboutGallery = () => {
   const Images: imageResponseType[] = data?.data.data || []
   console.log(data)
   const { width } = useWindowDimensions()
-  const stringArray= [
-    "Elderberry",
-    "Fig",
-    "Grape",
-    "Honeydew",
-    "Ivy",
-    "Jackfruit",
-    "Kiwi",
-    "Lemon",
-    "Mango",
-    "Nectarine",
-    "Orange",
-    "Papaya",
-    "Quince",
-    "Raspberry",
-    "Strawberry",
-    "Tomato",
-    "Ugli fruit",
-    "Vanilla",
-    "Watermelon",
-    "Xigua",
-    "Yam",
-    "Zucchini",
-    "Apricot",
-    "Blueberry",
-    "Cantaloupe",
-    "Dragonfruit",
-  ];
   const result = width < 1024  ? splitArray(Images, 5) : splitArray(Images, 4)
   const videoUrls = [
     'yCyE91-D-KI',

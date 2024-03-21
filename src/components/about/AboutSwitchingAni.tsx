@@ -11,7 +11,6 @@ interface props {
 
 const AboutSwitchingAni = ({ rowIndex, row, interval }: props) => {
   const aniInterval = interval
-  const actualRowIndex = rowIndex
   const images = row.map((each) => {
     return `${imgBaseUrl}/${each.link}`
   })
