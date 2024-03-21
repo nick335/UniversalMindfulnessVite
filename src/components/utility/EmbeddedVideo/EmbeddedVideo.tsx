@@ -9,10 +9,18 @@ const EmbeddedVideo = ({ videoUrls }: props) => {
   const [isInView, setIsInView] = useState(false);
   const videoRef = useRef<HTMLIFrameElement | null>(null)
 
-  const handleVideoEnded = () => {
-    // Move to the next video in the array or loop back to the first video if at the end
-    setCurrentVideoIndex((prevIndex) => (prevIndex + 1) % videoUrls.length);
-  };
+
+    const handleVideoEnded = () => {
+      console.log('ended')
+      // Move to the next video in the array or loop back to the first video if at the end
+      setCurrentVideoIndex((prevIndex) => (prevIndex + 1) % videoUrls.length);
+    
+      // Update videoRef with the new iframe element (if available)
+      if (videoRef.current) {
+        videoRef.current?.contentDocument?.querySelector('iframe'); // Use optional chaining
+      }
+    };
+
 
   // Intersection Observer callback function
   const handleIntersection = (entries: IntersectionObserverEntry[]) => {
@@ -49,7 +57,7 @@ const EmbeddedVideo = ({ videoUrls }: props) => {
       <iframe
         title="Embedded Video"
         className='h-full w-full'
-        src={`https://www.youtube.com/embed/${videoUrls[currentVideoIndex]}`}
+        src={`${videoUrls[currentVideoIndex]}`}
         ref={videoRef}
         onEnded={handleVideoEnded}
       ></iframe>

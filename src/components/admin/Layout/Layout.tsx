@@ -2,10 +2,14 @@ import { Outlet, ScrollRestoration } from 'react-router-dom'
 import SideBar from './SideBar'
 import 'react-toastify/dist/ReactToastify.css';
 import { ToastContainer } from 'react-toastify';
+import SEOPageHeader from '../../utility/seo/SEOPageHeader';
 
 const Layout = () => {
   return (
       <main className='flex'>
+        <SEOPageHeader 
+          page='Admin'
+        />
         <SideBar />
         <div className='w-full'>
           <div className='bg-white shadow-adminNav w-full min-h-[4.25rem]'></div>
