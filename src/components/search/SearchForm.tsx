@@ -1,9 +1,12 @@
 import { FaTimes } from "react-icons/fa";
 import { motion } from "framer-motion";
 import { useSearchStore } from "../../store/useSearchStore";
-import { useRef, useEffect } from "react";
+import { useRef, useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const SearchForm = () => {
+  const [search, setSearch] = useState('')
+  const navigate = useNavigate()
   const inputRef = useRef<HTMLInputElement | null>(null);
   const { toggleSearchVisibility } = useSearchStore()
   const stopPropagation = (e: React.MouseEvent<HTMLDivElement>) => {
@@ -13,6 +16,13 @@ const SearchForm = () => {
     // Focus the input field when the component mounts
     inputRef.current?.focus();
   }, []);
+
+  const handleKeyDown = (event: React.KeyboardEvent<HTMLInputElement>) => {
+    if (event.key === 'Enter') {
+      toggleSearchVisibility()
+      navigate(`/blog?search=${search}`)
+    }
+  };
   return (
     <motion.div
       initial={{ y: 150}}
@@ -24,7 +34,14 @@ const SearchForm = () => {
       </div>
       
       <div className=" my-2.5 ">
-        <input ref={inputRef} placeholder="search keywords?" type='text' className="w-full p-3.5 outline-none text-sm rounded-[2px]" />
+        <input 
+          ref={inputRef} 
+          placeholder="search keywords?" 
+          type='text' 
+          value={search}
+          onChange={(event) => setSearch(event.target.value)}
+          onKeyDown={handleKeyDown}
+          className="w-full p-3.5 outline-none text-sm rounded-[2px]" />
       </div>
       <p className="text-center text-white text-[0.9375rem]">*Type a keyword then press enter</p>
     </motion.div>

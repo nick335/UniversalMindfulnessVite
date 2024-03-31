@@ -46,3 +46,7 @@ export type postSubscribeToNewsletter = {
 export type patchUpdateBlogCountType = {
   id: number
 }
+export type searchPayloadType = {
+  search: string,
+  page?: number,
+}

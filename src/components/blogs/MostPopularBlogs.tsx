@@ -9,7 +9,6 @@ import { getMostPopularBlogs } from "../../api/content/getMostPopularBlogs"
 
 const MostPopularBlogs = () => {
   const { data, isLoading, error} = useQuery(['popular_blogs'], getMostPopularBlogs)
-  console.log(data)
   const contents: blogResponseType[] = data?.data?.data || []
 
   const contentDisplay = contents.map((each) => {

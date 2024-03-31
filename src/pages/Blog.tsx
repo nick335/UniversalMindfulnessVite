@@ -1,4 +1,4 @@
-import { Outlet } from "react-router-dom"
+import { Outlet, useSearchParams } from "react-router-dom"
 import MainBlog from "../components/blogs/MainBlog"
 import MostPopularBlogs from "../components/blogs/MostPopularBlogs"
 import PageTransition from "../components/utility/motion/PageTransition"
@@ -7,6 +7,9 @@ import Subheader from "../components/utility/subHeaders/Subheader"
 import SEOPageDescription from "../components/utility/seo/SEOPageDescription"
 
 const Blog = () => {
+  const [searchParams] = useSearchParams();
+  const searchQuery = searchParams.get('search')
+
   return (
     <PageTransition layout="layout">
       <SEOPageHeader
@@ -17,10 +20,10 @@ const Blog = () => {
       />
       <Subheader header="Mindfulness Blog" />
       <section className="flex flex-col-reverse mt-12 lg:flex-col lg:mb-32">
-        <div className="lg:flex lg:gap-x-12 lg:mb-16">
+        { !searchQuery && <div className="lg:flex lg:gap-x-12 lg:mb-16">
           <MainBlog />
           <MostPopularBlogs />
-        </div>
+        </div>}
         <Outlet />
       </section>
     </PageTransition>
