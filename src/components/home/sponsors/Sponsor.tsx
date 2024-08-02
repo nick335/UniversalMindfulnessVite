@@ -17,7 +17,7 @@ const Sponsor = () => {
 
   return (
     <section className="mt-10 lg:mt-32">
-        <p className="text-center font-semibold">Join 150+ companies that care about emotional intelligence</p>
+        <p className="text-center font-semibold">Just some of our partners who we’re proud to support in achieving their potential through improved emotional intelligence</p>
         <div className="mt-8 lg:mt-12">
           {
             isLoading ? <AdminContentLoader /> : error ? <ErrorMessage3 error={error} /> : imagesLinks.length === 0 ? <NoContent /> : <SlidingImages images={imagesLinks} />

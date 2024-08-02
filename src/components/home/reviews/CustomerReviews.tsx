@@ -54,7 +54,7 @@ const CustomerReviews = () => {
    }
   return (
     <section className='mt-[2.57rem]'>
-      <Subheader header='VOICE OF THE CUSTOMER' />
+      <Subheader header='Voice of the Customer' />
       <div className='mt-4 lg:mt-10'>
         { isLoading ? <HomeCustomerReviewSkeleton /> : error ? <ErrorMessage3 error={error} /> : contentDisplay.length === 0 ? <NoContent /> :
         <><ReviewSliderController 

@@ -19,9 +19,13 @@ const Hero = () => {
         <div className="bg-bgPrimary lg:bg-transparent py-[1.98rem] pl-[1.44rem] pr-[0.3rem] rounded-lg text-textPrimary lg:pl-0 lg:pr-0 lg:rounded-none lg:flex-1 lg:pt-20">
             <h2 className="font-semibold text-[2rem] leading-[1.3] lg:text-dynamicHeroText lg:leading-[1.15] lg:max-w-[30.625rem]" >Welcome to Universal Mindfulness</h2>
             <p className=" pt-[0.43rem] lg:pt-[1.5rem] font-medium text-sm lg:text-lg ">
-            Our belief is that everyone has the right to a happy and positive life and we each have the capabilities within us to achieve that. Our aim is to empower you to develop the appropriate emotional intelligence skills so you can fulfil your potential. 
+              We believe everyone has the right to a happy and fulfilling life, and we each possess the potential to achieve it. Our mission is to empower you to develop the emotional intelligence skills needed to realise your full potential. 
             </p>
-            <button className="mt-[0.43rem] lg:mt-6 btn h-12 flex items-center justify-center w-4/5 max-w-[13.5rem] font-bold text-[0.8645rem] "><Link to='/contactus'>Contact Us</Link></button>
+            <div className='flex flex-col lg:flex-row gap-y-3 lg:gap-x-4 lg:gap-y-0 lg:justify-center '>
+              <button className="mt-[0.43rem] lg:mt-6 btn h-12 flex items-center justify-center w-4/5 max-w-[13.5rem] font-bold text-[0.8645rem] "><Link to='/contactus'>Contact Us</Link></button>
+              <button className="mt-[0.43rem] lg:mt-6 btn h-12 flex items-center justify-center w-4/5 max-w-[13.5rem] font-bold text-[0.8645rem] "><Link to='/about'>Who We Are?</Link></button>
+            </div>
+            
         </div>
         <div className={`mt-6 aspect-[1/1.000001] lg:h-[46.75rem]  lg:aspect-[0] lg:flex-1 z-10 relative lg:w-[100%] lg:-mt-[3.0625rem] lg:rotate-[4.458deg] rounded-lg lg:overflow-hidden ${
           error || imagesLinks.length === 0 ? 'bg-slate-50' : ''
