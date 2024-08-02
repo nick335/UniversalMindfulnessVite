@@ -1,8 +1,8 @@
-import { useMutation } from '@tanstack/react-query'
+// import { useMutation } from '@tanstack/react-query'
 import Logo from '../../assets/header/Logo.svg'
 import { useState } from 'react'
-import showToast from '../../utilsFunction/showToast'
-import ErrorHandler from '../../utilsFunction/ErrorHandler'
+// import showToast from '../../utilsFunction/showToast'
+// import ErrorHandler from '../../utilsFunction/ErrorHandler'
 // Config variables (replace with actual values)
 
 const FooterNewsLetter = () => {
@@ -15,12 +15,12 @@ const FooterNewsLetter = () => {
   // })
 
   const handleSubscribeToNewsLetter = async () => {
-    try{
-      const data = { email: email }
-      // await mutation.mutateAsync(data.email)
-    }catch(error){
-      ErrorHandler(error)
-    }
+    // try{
+    //   const data = { email: email }
+    //   // await mutation.mutateAsync(data.email)
+    // }catch(error){
+    //   ErrorHandler(error)
+    // }
   }
 
   const handleEmailChange =  (e: React.ChangeEvent<HTMLInputElement>) => {

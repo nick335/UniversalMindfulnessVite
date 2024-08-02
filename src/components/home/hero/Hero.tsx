@@ -27,7 +27,7 @@ const Hero = () => {
             </div>
             
         </div>
-        <div className={`mt-6 aspect-[1/1.000001] lg:h-[46.75rem]  lg:aspect-[0] lg:flex-1 z-10 relative lg:w-[100%] lg:-mt-[3.0625rem] lg:rotate-[4.458deg] rounded-lg lg:overflow-hidden ${
+        <div className={`mt-6 aspect-[1/1.000001] lg:h-[46.75rem]  lg:aspect-[0] lg:flex-1 z-10 relative lg:w-[100%] lg:-mt-[3.0625rem]  rounded-lg lg:overflow-hidden ${
           error || imagesLinks.length === 0 ? 'bg-slate-50' : ''
         }`}>
             {

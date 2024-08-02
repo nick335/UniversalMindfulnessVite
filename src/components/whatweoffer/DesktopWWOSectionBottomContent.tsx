@@ -22,7 +22,7 @@ const DesktopWWOSectionBottomContent = ({title, img2, img3, body}: props) => {
         </div>
       </div>
       <div className="ml-[25.25rem] lg:mr-20 xl:mr-28 mt-4">
-        {body && <div className={`text-base leading-[1.782rem] font-medium ${styles.para}`} dangerouslySetInnerHTML={{__html: sanitizedHtml}}>
+        {(body && body.length > 0 && body !== 'undefined') && <div className={`text-base leading-[1.782rem] font-medium ${styles.para}`} dangerouslySetInnerHTML={{__html: sanitizedHtml}}>
         </div>}
       </div>
     </div>

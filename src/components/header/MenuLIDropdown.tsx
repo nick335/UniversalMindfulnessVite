@@ -4,8 +4,10 @@ import MenuDropdownLi from "./MenuDropdownLi";
 import { IoIosArrowDown } from "react-icons/io";
 import LinkActive from "./LinkActive";
 import { useRef } from "react";
+import useWindowDimensions from "../../hooks/UseWindowDimensions";
 
 const MenuLIDropdown = () => {
+  const { width } = useWindowDimensions()
   const {  aboutDropdown, toggleDropdown, hasInteracted, setHasInteracted, setIsDropdownOpen} = useMenuStore()
   const pathname = useLocation().pathname
   const dropdownRef = useRef(null);
@@ -35,7 +37,7 @@ const MenuLIDropdown = () => {
         </h3>
         <IoIosArrowDown className={`transition-all ease-in duration-300 ${aboutDropdown ? 'rotate-90' : ''} `}/>
       </div>
-      <ul className={`pl-4 flex flex-col gap-y-[1.12rem] font-semibold text-xl text-headerSecondary lg:absolute lg:bg-white lg:top-7 lg:-left-1 lg:min-w-[6rem] lg:shadow-lg lg:rounded-md  lg:text-base lg:gap-y-2 lg:px-3 lg:py-3 ${ aboutDropdown ? 'lg:flex' : 'lg:hidden' }`}>
+      <ul className={`pl-4 flex flex-col gap-y-[1.12rem] font-semibold text-xl text-headerSecondary lg:absolute lg:bg-white lg:top-7 lg:-left-1 lg:min-w-[6rem] lg:shadow-lg lg:rounded-md  lg:text-base lg:gap-y-2 lg:px-3 lg:py-3 ${ aboutDropdown ? 'lg:flex' : 'lg:hidden' }`} onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
         <MenuDropdownLi 
           name='About Us'
           href='/about'

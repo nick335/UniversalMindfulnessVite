@@ -20,7 +20,7 @@ const WhatWeOffer = () => {
   return (
     <PageTransition layout='none'>
       <SEOPageHeader 
-        page='What we offer'
+        page='What do we offer?'
       />
       <SEOPageDescription 
         desc='Unlock your true potential with Universal Mindfulness. Discover a transformative journey towards self-discovery and personal growth. Explore mindfulness practices that empower you to live a more fulfilling life. Start your journey today.'
