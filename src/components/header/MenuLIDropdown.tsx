@@ -4,10 +4,8 @@ import MenuDropdownLi from "./MenuDropdownLi";
 import { IoIosArrowDown } from "react-icons/io";
 import LinkActive from "./LinkActive";
 import { useRef } from "react";
-import useWindowDimensions from "../../hooks/UseWindowDimensions";
 
 const MenuLIDropdown = () => {
-  const { width } = useWindowDimensions()
   const {  aboutDropdown, toggleDropdown, hasInteracted, setHasInteracted, setIsDropdownOpen} = useMenuStore()
   const pathname = useLocation().pathname
   const dropdownRef = useRef(null);
