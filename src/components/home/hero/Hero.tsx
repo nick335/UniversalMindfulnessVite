@@ -21,9 +21,9 @@ const Hero = () => {
             <p className=" pt-[0.43rem] lg:pt-[1.5rem] font-medium text-sm lg:text-lg ">
               We believe everyone has the right to a happy and fulfilling life, and we each possess the potential to achieve it. Our mission is to empower you to develop the emotional intelligence skills needed to realise your full potential. 
             </p>
-            <div className='flex flex-col lg:flex-row gap-y-3 lg:gap-x-4 lg:gap-y-0 lg:justify-center '>
-              <button className="mt-[0.43rem] lg:mt-6 btn h-12 flex items-center justify-center w-4/5 max-w-[13.5rem] font-bold text-[0.8645rem] "><Link to='/contactus'>Contact Us</Link></button>
-              <button className="mt-[0.43rem] lg:mt-6 btn h-12 flex items-center justify-center w-4/5 max-w-[13.5rem] font-bold text-[0.8645rem] "><Link to='/about'>Who We Are?</Link></button>
+            <div className='flex flex-col lg:flex-row gap-y-3 lg:gap-x-4 lg:gap-y-0  '>
+              <button className="mt-[0.43rem] lg:mt-6 btn h-12 flex items-center justify-center w-4/5 max-w-[13.5rem] font-bold text-[0.8645rem] !border-2 !border-solid border-white !bg-transparent "><Link to='/contactus'>Contact Us</Link></button>
+              <button className="mt-[0.43rem] lg:mt-6 btn h-12 flex items-center justify-center w-4/5 max-w-[13.5rem] font-bold text-[0.8645rem] !border-2 !border-solid border-white !bg-transparent "><Link to='/about'>Who We Are?</Link></button>
             </div>
             
         </div>

@@ -49,6 +49,11 @@ const data = [
     name: 'video',
     routeName: 'videos',
     img: video
+  },
+  {
+    name: 'newsletter',
+    routeName: 'newsletter',
+    img: testimonial
   }
 ]
 

@@ -12,7 +12,6 @@ const DesktopFooter = () => {
           <FooterNewsLetter />
         </div>
         <ul className=" lg:flex lg:flex-col lg:gap-y-4">
-        <li><Link to='/'>Solutions</Link></li>
           <li><Link to='/about'>About</Link></li>
           <li><Link to='/whatweoffer'>What we offer</Link></li>
           <li><Link to='/events'>Events</Link></li>
