@@ -41,7 +41,7 @@ export type postContactusPayload = {
 }
 export type postSubscribeToNewsletter = {
   section: 'newsletterSubscribers',
-  body: string
+  body1: string
 }
 export type patchUpdateBlogCountType = {
   id: number

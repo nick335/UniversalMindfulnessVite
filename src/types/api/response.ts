@@ -66,5 +66,5 @@ export type whatweofferSectionResponseType = {
 }
 
 export type subscribersResponseType = {
-  body: string
+  body1: string
 }

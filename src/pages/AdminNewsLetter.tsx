@@ -14,7 +14,7 @@ const AdminNewsLetter = () => {
   const subscribersArr: subscribersResponseType[] = data?.data.data || []
 
   const contentDisplay = subscribersArr.map((each, idx) => {
-    return <li className='mb-2 text-base'>{`${(idx+1)}) `}{each.body}</li>
+    return <li className='mb-2 text-base'>{`${(idx+1)}) `}{each.body1}</li>
   })
   if(error) return <ErrorMessage2 error={error} />
   return (

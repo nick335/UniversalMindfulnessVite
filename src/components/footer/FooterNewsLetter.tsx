@@ -19,7 +19,7 @@ const FooterNewsLetter = () => {
     try{
       await mutation.mutateAsync({
         section: 'newsletterSubscribers',
-        body: email,
+        body1: email,
       })
     }catch(error){
       ErrorHandler(error)
