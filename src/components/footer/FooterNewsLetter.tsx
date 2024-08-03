@@ -38,7 +38,7 @@ const FooterNewsLetter = () => {
       }}>
         <div className='p-[0.33rem] border-none border-inputBorder bg-inputBg rounded-md flex gap-x-3 '>
           <input value={email} onChange={(e) => handleEmailChange(e)}  type='email' name='email' placeholder='Enter your Email' className='bg-transparent outline-none border-none w-full' required />
-          <button className='h-[2.38125rem] min-w-[5.06388rem] btn-sec bg-white text-textSecondary font-semibold rounded-md' disabled={mutation.isLoading} onClick={handleSubscribeToNewsLetter} >Sign Up</button>
+          <button className='h-[2.38125rem] min-w-[5.06388rem] btn-sec bg-white text-textSecondary font-semibold rounded-md' disabled={mutation.isLoading}  >Sign Up</button>
         </div>
       </form>
     </div>
