@@ -18,8 +18,7 @@ const FooterNewsLetter = () => {
   const handleSubscribeToNewsLetter = async () => {
     try{
       await mutation.mutateAsync({
-        section: 'newsletterSubscribers',
-        body1: email,
+        email: email,
       })
     }catch(error){
       ErrorHandler(error)

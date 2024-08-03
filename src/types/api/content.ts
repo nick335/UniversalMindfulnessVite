@@ -40,8 +40,7 @@ export type postContactusPayload = {
   message:string
 }
 export type postSubscribeToNewsletter = {
-  section: 'newsletterSubscribers',
-  body1: string
+  email: string
 }
 export type patchUpdateBlogCountType = {
   id: number
