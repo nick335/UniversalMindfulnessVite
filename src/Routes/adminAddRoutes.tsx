@@ -10,12 +10,17 @@ import PageLoader from "../components/utility/Loader/PageLoader";
 import { Suspense } from "react";
 import AdminAboutGallery from "../pages/add/AdminAboutGallery";
 import AdminVideosAdd from "../pages/add/AdminVideosAdd";
+import ServiceAdd from "../pages/add/ServiceAdd";
 
 
 const adminAddRoutes = [
   {
     path: '/admin/dashboard/herocarouselimages/add',
     element: <Suspense fallback={<PageLoader />} ><PrivateRoute children={<HeroCarouselAdd />} /></Suspense>
+  },
+  {
+    path: '/admin/dashboard/services/add',
+    element: <Suspense fallback={<PageLoader />} ><PrivateRoute children={<ServiceAdd />} /></Suspense>
   },
   {
     path: '/admin/dashboard/events/add',

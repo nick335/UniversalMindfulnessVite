@@ -48,6 +48,14 @@ export type blogResponseType = {
   created_at?: string // as time when blog was created
 }
 
+export type serviceResponseType = {
+  id: number,
+  title: string // as service title
+  body1: string // as service description
+  section: string
+  link1: string // as image link
+}
+
 export type aboutSectionResponseType = {
   id: number
   title: string

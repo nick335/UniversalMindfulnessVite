@@ -9,6 +9,7 @@ import AdminEventsEdit from "../pages/edit/AdminEventsEdit";
 import AdminMeetTheTeamEdit from "../pages/edit/AdminMeetTheTeamEdit";
 import AdminParentTestimonialEdit from "../pages/edit/AdminParentTestimonialEdit";
 import AdminChildrenTestimonialEdit from "../pages/edit/AdminChildrenTestimonialEdit";
+import ServiceEdit from "../pages/edit/ServiceEdit";
 
 
 
@@ -16,6 +17,10 @@ const adminEditRoutes = [
   {
     path: '/admin/dashboard/testimonial/main/edit',
     element: <Suspense fallback={<PageLoader />} ><PrivateRoute children={<MainTestimonial />} /></Suspense>
+  },
+  {
+    path: '/admin/dashboard/services/edit/:id',
+    element: <Suspense fallback={<PageLoader />} ><PrivateRoute children={<ServiceEdit />} /></Suspense>
   },
   {
     path: '/admin/dashboard/testimonial/parent/edit/:id',

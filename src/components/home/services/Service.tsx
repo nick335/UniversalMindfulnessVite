@@ -2,6 +2,7 @@ import chevronRight from '../../../assets/utilty/icons/chevron-right.svg'
 import { motion,AnimationControls } from "framer-motion";
 import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import imgBaseUrl from "../../../store/ImgBaseUrl";
 
 interface props {
   img: string,
@@ -31,10 +32,10 @@ const Service = ({img, header, para, isVisible, controls, onComplete}: props) =>
   return (
     <motion.div variants={childVariants} transition={{ease: [0.645, 0.045, 0.355, 1], duration: 0.3}}   className=" mt-10 ">
       <div className='w-full aspect-video rounded-lg '>
-        <img src={img} className='imgFocus object-cover shadow-service w-full h-full object-center rounded-lg '/>
+        <img src={`${imgBaseUrl}${img}`} className='imgFocus object-cover shadow-service w-full h-full object-center rounded-lg '/>
       </div>
       <div className="text-center lg:mt-4 flex flex-col gap-y-[0.66rem] lg:gap-y-4">
-        <h3 className="text-[1.64363rem] font-semibold text-headerPrimary lg:text-4xl">{header}</h3>
+        <h3 className="text-[1.64363rem] font-semibold text-headerPrimary lg:text-4xl capitalize">{header}</h3>
         <p className="text-[0.73963rem] font-medium lg:max-w-[27.8125rem] lg:mx-auto lg:text-lg">{para}</p>
         <button className='text-[0.73963rem] lg:text-lg font-medium underline '>
           <Link to='/whatweoffer' className='flex items-center justify-center'>
