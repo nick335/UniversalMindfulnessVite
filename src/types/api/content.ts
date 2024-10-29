@@ -39,7 +39,6 @@ export type postContactusPayload = {
   subject: string,
   message:string
 }
-
 export type postSubscribeToNewsletter = {
   email: string
 }

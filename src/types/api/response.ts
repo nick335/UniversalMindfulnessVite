@@ -72,3 +72,7 @@ export type whatweofferSectionResponseType = {
   link3: string,
   body2: string
 }
+
+export type subscribersResponseType = {
+  body1: string
+}

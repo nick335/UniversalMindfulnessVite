@@ -11,6 +11,7 @@ interface Actions {
  toggleMenu: () => void,
  toggleDropdown: () => void,
  setHasInteracted:(interaction: boolean) => void
+ setIsDropdownOpen:(isOpen: boolean) => void
 }
 
 const INITIAL_STATE: state = {
@@ -41,5 +42,11 @@ export const useMenuStore = create<state & Actions>((set) => ({
     ...state,
     hasInteracted: interaction
   }))
- }
+ },
+ setIsDropdownOpen: (isOpen) => {
+  set(state => ({
+   ...state,
+   aboutDropdown: isOpen
+  }))
+ },
 }))

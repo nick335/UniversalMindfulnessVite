@@ -7,6 +7,7 @@ import { Login } from "../../api/login"
 import Cookies from 'js-cookie';
 import { useNavigate } from "react-router-dom"
 import { Icon } from '@iconify/react';
+import { toast } from "react-toastify"
 
 
 const LoginForm = () => {
@@ -38,8 +39,8 @@ const LoginForm = () => {
         email: data.email,
         password: data.password
       })
-    }catch(error){
-      console.log(error)
+    }catch(error: any){
+      toast.error(error.response.data.message)
     } 
   }
   return (

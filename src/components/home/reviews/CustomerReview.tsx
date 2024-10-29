@@ -21,7 +21,7 @@ const CustomerReview = ({name, img, caption, testimony}: props) => {
           </div>
         </div>
       </div>
-      <div className='lg:min-w-[40%] lg:mr-1'>
+      <div className='lg:min-w-[40%] lg:mr-1 lg:max-w-[40%]'>
         <img src={`${imgBaseUrl}${img}`} alt={name} className='mt-6 rounded-[0.74606rem] w-full aspect-[1/1.08] lg:aspect-[1/1.10] object-fill' />
       </div>
     </div>

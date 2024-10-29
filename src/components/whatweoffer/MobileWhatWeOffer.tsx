@@ -39,7 +39,7 @@ const MobileWhatWeOffer = ({ data }: props) => {
               <div className="w-full aspect-[1/1.25] mt-4">
                <img src={`${imgBaseUrl}${each.link3}`} alt="img" className="imgFocus object-cover rounded-lg w-full h-full"  /> 
               </div>
-               { each.body2 && <div className={`text-base font-medium leading-[1.782rem] mt-2 ${styles.para}`} dangerouslySetInnerHTML={{__html: sanitizedHtml2}} >
+               { ( each.body2 && each.body2.length > 0 && each.body2 !== 'undefined' ) && <div className={`text-base font-medium leading-[1.782rem] mt-2 ${styles.para}`} dangerouslySetInnerHTML={{__html: sanitizedHtml2}} >
               </div>}
             </AccordionContent>
           </AccordionItem>

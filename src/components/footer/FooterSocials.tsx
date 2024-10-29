@@ -11,7 +11,7 @@ const FooterSocials = () => {
         <li className="cursor-pointer"><a href="https://www.linkedin.com/company/universal-mindfulness/"><FaLinkedinIn /></a></li>
       </ul>
       <li className="lg:hidden">What we offer</li>
-      <li className=" opacity-65 ">info@narrablehealth.com</li>
+      <li className=" opacity-65 ">info@universalmindfulness.co.uk</li>
     </ul>
   )
 }

@@ -1,6 +1,5 @@
 import { useQuery } from "@tanstack/react-query"
 import { getContent } from "../api/content/getContent"
-import AboutGallery from "../components/about/AboutGallery"
 import CustomAboutAccordion from "../components/about/CustomAboutAccordion"
 import DesktopAbout from "../components/about/DesktopAbout"
 import PageTransition from "../components/utility/motion/PageTransition"
@@ -39,7 +38,6 @@ const About = () => {
       </section>
       }
       <section className="mx-4 mt-14"> 
-        <AboutGallery />
       </section>
     </PageTransition>
   )
