@@ -5,7 +5,7 @@ import FormTextArea from "../../components/utility/form/FormTextArea"
 import InputImage from "../../components/utility/form/InputImage"
 import Update from '../../components/utility/admin/buttons/Update'
 import Delete from '../../components/utility/admin/buttons/delete'
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { z } from "zod"
 import { SubmitHandler, useForm } from "react-hook-form"
 import { zodResolver } from '@hookform/resolvers/zod'
@@ -21,6 +21,7 @@ import { editContent } from "../../api/content/editContent"
 import AdminContentLoader from "../../components/utility/Loader/AdminContentLoader"
 import ErrorMessage2 from "../../components/utility/Error/ErrorMessage2"
 import ErrorPage from "../ErrorPage"
+import { getQueryOptions } from "../../utilsFunction/queryconst"
 
 const AdminMeetTheTeamEdit = () => {
   const [notFound, setNotFound] = useState(false)
@@ -30,15 +31,24 @@ const AdminMeetTheTeamEdit = () => {
   const [imgFile, setImgFile] = useState<Blob>()
   const [PreviewImage, setPreviewImage] = useState<string>('')
   const queryClient = useQueryClient()
-  const { data, isLoading, error } = useQuery(['team'], () => getContent({
+  const { data, isLoading, error } = useQuery(['team-edit'], () => getContent({
     section: 'team'
-  }), {
+  }), getQueryOptions())
+  const mutation = useMutation(editContent, {
     onSuccess: () => {
+      showToast('Content uploaded Successfully', 'success')
+      queryClient.invalidateQueries(['team'])
+      queryClient.invalidateQueries(['team-edit'])
+    }
+  })
+  useEffect(() => {
+    if(!isLoading && !error){
       const id = params.id
       const content: teamResponseType[] = data?.data.data || []
       const idExists = content.some(obj => `${obj.id}` === id)
+
       if(idExists){
-        const foundObject= content.find(obj => `${obj.id}` === id);
+        const foundObject = content.find(obj => `${obj.id}` === id);
         if(foundObject){
           setValue('image', foundObject.link1)
           setValue('name', foundObject.title)
@@ -50,20 +60,14 @@ const AdminMeetTheTeamEdit = () => {
           setContentId(contentId)
         }
       }else {
-        setNotFound(true)
         setPageLoading(false)
+        setNotFound(true)
       }
       if(error){
         setPageLoading(false)
       }
-    },
-  })
-  const mutation = useMutation(editContent, {
-    onSuccess: () => {
-      showToast('Content uploaded Successfully', 'success')
-      queryClient.invalidateQueries(['team'])
     }
-  })
+  }, [isLoading, error])
   type FormSchemaType = z.infer<typeof formSchema>
   const formSchema = z.object({
     name: z.string().min(1, 'email is required'),

@@ -1,4 +1,4 @@
-import React, {  useState } from 'react'
+import React, {  useEffect, useState } from 'react'
 import FormRow from '../../components/utility/form/FormRow'
 import InputDesc from '../../components/utility/form/InputDesc'
 import FormTextInput from '../../components/utility/form/FormTextInput'
@@ -21,6 +21,7 @@ import { editContent } from '../../api/content/editContent'
 import ErrorHandler from '../../utilsFunction/ErrorHandler'
 import Delete from '../../components/utility/admin/buttons/delete'
 import Update from '../../components/utility/admin/buttons/Update'
+import { getQueryOptions } from '../../utilsFunction/queryconst'
 
 const AdminWhatWeOfferEdit = () => {
   const queryClient = useQueryClient()
@@ -28,10 +29,11 @@ const AdminWhatWeOfferEdit = () => {
   const params = useParams()
   const [pageLoading, setPageLoading] = useState(true)
   const [contentId, setContentId] = useState('')
-  const { data, isLoading, error } = useQuery(['whatweoffer'], () => getContent({
+  const { data, isLoading, error } = useQuery(['whatweoffer-edit'], () => getContent({
     section: 'whatweoffer'
-  }), {
-    onSuccess: () => {
+  }), getQueryOptions())
+  useEffect(() => {
+    if(!isLoading && !error){
       const id = params.id
       const content: whatweofferSectionResponseType[] = data?.data.data || []
       const idExists = content.some(obj => `${obj.id}` === id)
@@ -60,11 +62,12 @@ const AdminWhatWeOfferEdit = () => {
         setPageLoading(false)
       }
     }
-  })
+  }, [isLoading, error])
   const mutation = useMutation(editContent, {
     onSuccess: () => {
       showToast('Content uploaded Successfully', 'success')
       queryClient.invalidateQueries(['whatweoffer'])
+      queryClient.invalidateQueries(['whatweoffer-edit'])
     }
   })
   const [body1, setBody1] = useState('')

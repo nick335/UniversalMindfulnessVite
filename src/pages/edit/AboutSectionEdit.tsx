@@ -21,13 +21,14 @@ import imgBaseUrl from '../../store/ImgBaseUrl'
 import AdminContentLoader from '../../components/utility/Loader/AdminContentLoader'
 import ErrorMessage2 from '../../components/utility/Error/ErrorMessage2'
 import { editContent } from '../../api/content/editContent'
+import { getQueryOptions } from '../../utilsFunction/queryconst'
 
 const AboutSectionEdit = () => {
   const navigate = useNavigate()
   const [pageLoading, setPageLoading] = useState(true)
-  const { data, isLoading, error } = useQuery(['about'], () => getContent({
+  const { data, isLoading, error } = useQuery(['about-edit'], () => getContent({
     section: 'about'
-  }))
+  }), getQueryOptions())
   const params = useParams()
   const [imgFile, setImgFile] = useState<Blob>()
   const [PreviewImage, setPreviewImage] = useState<string>('')
@@ -66,6 +67,7 @@ const AboutSectionEdit = () => {
     onSuccess: () => {
       showToast('Content uploaded Successfully', 'success')
       queryClient.invalidateQueries(['about'])
+      queryClient.invalidateQueries(['about-edit'])
     }
   })
   type FormSchemaType = z.infer<typeof formSchema>

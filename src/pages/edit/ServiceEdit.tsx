@@ -8,7 +8,7 @@ import { validateImages } from '../../utilsFunction/ValidateImages'
 import FormRow from '../../components/utility/form/FormRow'
 import InputDesc from '../../components/utility/form/InputDesc'
 import FormTextInput from '../../components/utility/form/FormTextInput'
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import showToast from '../../utilsFunction/showToast'
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query'
 import FormTextArea from '../../components/utility/form/FormTextArea'
@@ -20,6 +20,7 @@ import AdminContentLoader from '../../components/utility/Loader/AdminContentLoad
 import ErrorPage from '../ErrorPage'
 import ErrorMessage2 from '../../components/utility/Error/ErrorMessage2'
 import { serviceResponseType } from '../../types/api/response'
+import { getQueryOptions } from '../../utilsFunction/queryconst'
 
 const ServiceEdit = () => {
   const [notFound, setNotFound] = useState(false)
@@ -29,15 +30,17 @@ const ServiceEdit = () => {
   const params = useParams()
   const [imgFile, setImgFile] = useState<Blob>()
   const [PreviewImage, setPreviewImage] = useState<string>('')
-  const { data, isLoading, error } = useQuery(['services'], () => getContent({
+  const { data, isLoading, error } = useQuery(['services-edit'], () => getContent({
     section: 'services'
-  }), {
-    onSuccess: () => {
+  }), getQueryOptions())
+  useEffect(() => {
+    if(!isLoading && !error){
       const id = params.id
       const content: serviceResponseType[] = data?.data.data || []
       const idExists = content.some(obj => `${obj.id}` === id)
+
       if(idExists){
-        const foundObject= content.find(obj => `${obj.id}` === id);
+        const foundObject = content.find(obj => `${obj.id}` === id);
         if(foundObject){
           setValue('image', foundObject.link1)
           setValue('name', foundObject.title)
@@ -48,18 +51,19 @@ const ServiceEdit = () => {
           setContentId(contentId)
         }
       }else {
-        setNotFound(true)
         setPageLoading(false)
+        setNotFound(true)
       }
       if(error){
         setPageLoading(false)
       }
-    },
-  })
+    }
+  }, [isLoading, error])
   const mutation = useMutation(editContent, {
     onSuccess: () => {
       showToast('Content uploaded Successfully', 'success')
       queryClient.invalidateQueries(['services'])
+      queryClient.invalidateQueries(['services-edit'])
     }
   })
   type FormSchemaType = z.infer<typeof serviceAddSchema>

@@ -10,7 +10,7 @@ import { SubmitHandler, useForm } from "react-hook-form"
 import { zodResolver } from '@hookform/resolvers/zod'
 import { validateImages } from '../../utilsFunction/ValidateImages'
 import showToast from '../../utilsFunction/showToast'
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query'
 import ErrorHandler from '../../utilsFunction/ErrorHandler'
 import { editContent } from '../../api/content/editContent'
@@ -21,6 +21,7 @@ import { getContent } from '../../api/content/getContent'
 import AdminContentLoader from '../../components/utility/Loader/AdminContentLoader'
 import ErrorMessage2 from '../../components/utility/Error/ErrorMessage2'
 import ErrorPage from '../ErrorPage'
+import { getQueryOptions } from '../../utilsFunction/queryconst'
 
 
 const AdminChildrenTestimonialEdit = () => {
@@ -31,15 +32,24 @@ const AdminChildrenTestimonialEdit = () => {
   const [imgFile, setImgFile] = useState<Blob>()
   const [PreviewImage, setPreviewImage] = useState<string>('')
   const queryClient = useQueryClient()
-  const { data, isLoading, error } = useQuery(['childrenTestimonial'], () => getContent({
+  const { data, isLoading, error } = useQuery(['childrenTestimonial-edit'], () => getContent({
     section: 'childrenTestimonial'
-  }), {
+  }), getQueryOptions())
+  const mutation = useMutation(editContent, {
     onSuccess: () => {
+      showToast('Content uploaded Successfully', 'success')
+      queryClient.invalidateQueries(['childrenTestimonial'])
+      queryClient.invalidateQueries(['childrenTestimonial-edit'])
+    }
+  })
+  useEffect(() => {
+    if(!isLoading && !error){
       const id = params.id
       const content: testimonialResponseType[] = data?.data.data || []
       const idExists = content.some(obj => `${obj.id}` === id)
+
       if(idExists){
-        const foundObject= content.find(obj => `${obj.id}` === id);
+        const foundObject = content.find(obj => `${obj.id}` === id);
         if(foundObject){
           setValue('image', foundObject.link1)
           setValue('name', foundObject.title)
@@ -57,14 +67,8 @@ const AdminChildrenTestimonialEdit = () => {
       if(error){
         setPageLoading(false)
       }
-    },
-  })
-  const mutation = useMutation(editContent, {
-    onSuccess: () => {
-      showToast('Content uploaded Successfully', 'success')
-      queryClient.invalidateQueries(['childrenTestimonial'])
     }
-  })
+  }, [isLoading, error])
   type FormSchemaType = z.infer<typeof formSchema>
   const formSchema = z.object({
     name: z.string().min(1, 'name is required'),

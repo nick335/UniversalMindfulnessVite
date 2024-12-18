@@ -19,11 +19,12 @@ import ErrorMessage2 from '../../components/utility/Error/ErrorMessage2'
 import AdminContentLoader from '../../components/utility/Loader/AdminContentLoader'
 import { editContent } from '../../api/content/editContent'
 import imgBaseUrl from '../../store/ImgBaseUrl'
+import { getQueryOptions } from '../../utilsFunction/queryconst'
 
 const MainTestimonial = () => {
   const [pageLoading, setPageLoading] = useState(true)
   const [contentId, setContentId] = useState('')
-  const { data, isLoading, error} = useQuery(['mainTestimonial'], () => getContent({section: 'mainTestimonial'}))
+  const { data, isLoading, error} = useQuery(['mainTestimonial-edit'], () => getContent({section: 'mainTestimonial'}), getQueryOptions())
 
   useEffect(() => {
     if(!isLoading && !error){
@@ -50,6 +51,7 @@ const MainTestimonial = () => {
     onSuccess: () => {
       showToast('Content uploaded Successfully', 'success')
       queryClient.invalidateQueries(['mainTestimonial'])
+      queryClient.invalidateQueries(['mainTestimonial-edit'])
     }
   })
   type FormSchemaType = z.infer<typeof formSchema>
