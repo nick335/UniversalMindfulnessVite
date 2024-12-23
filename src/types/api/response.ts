@@ -70,7 +70,8 @@ export type whatweofferSectionResponseType = {
   link1:string
   link2: string
   link3: string,
-  body2: string
+  body2: string,
+  section: string
 }
 
 export type subscribersResponseType = {

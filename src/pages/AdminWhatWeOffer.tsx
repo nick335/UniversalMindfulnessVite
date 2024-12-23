@@ -6,6 +6,7 @@ import ContentDisplay6 from "../components/utility/admin/contentdisplay/ContentD
 import { nanoid } from "nanoid"
 import AdminContentLoader from "../components/utility/Loader/AdminContentLoader"
 import ErrorMessage2 from "../components/utility/Error/ErrorMessage2"
+import AddWhatWeOffer from "../components/admin/whatweoffer/AddWhatWeOffer"
 
 const AdminWhatWeOffer = () => {
   const { data, isLoading, error } = useQuery(['whatweoffer'], () => getContent({
@@ -20,11 +21,13 @@ const AdminWhatWeOffer = () => {
               title={each.title}
               body={each.body1}
               img={each.link1}
+              section={each.section}
               routePath={'/admin/dashboard/whatweoffer/edit/'}
            />
   })
   return (
     <div className='adminSectionsGridLayout'>
+      <AddWhatWeOffer />
       {
         isLoading ? <AdminContentLoader /> : error ? <ErrorMessage2 error={error} /> : contentDisplay.length === 0 ? <NoContent /> : contentDisplay
       }

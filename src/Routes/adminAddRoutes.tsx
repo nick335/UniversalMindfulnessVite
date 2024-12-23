@@ -11,6 +11,7 @@ import { Suspense } from "react";
 import AdminAboutGallery from "../pages/add/AdminAboutGallery";
 import AdminVideosAdd from "../pages/add/AdminVideosAdd";
 import ServiceAdd from "../pages/add/ServiceAdd";
+import WhatWeOfferAdd from "../pages/add/WhatWeOfferAdd";
 
 
 const adminAddRoutes = [
@@ -29,6 +30,10 @@ const adminAddRoutes = [
   {
     path: '/admin/dashboard/blog/add',
     element: <Suspense fallback={<PageLoader />} ><PrivateRoute children={<BlogAdd />} /></Suspense>
+  },
+  {
+    path: '/admin/dashboard/whatweoffer/add',
+    element: <Suspense fallback={<PageLoader />} ><PrivateRoute children={<WhatWeOfferAdd />} /></Suspense>
   },
   {
     path: '/admin/dashboard/about/meettheteam/add',
