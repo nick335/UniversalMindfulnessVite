@@ -37,7 +37,7 @@ const adminAddRoutes = [
     element: <Suspense fallback={<PageLoader />} ><PrivateRoute children={<WhatWeOfferAdd />} /></Suspense>
   },
   {
-    path: '/admin/dashboard/about/add',
+    path: '/admin/dashboard/aboutus/add',
     element: <Suspense fallback={<PageLoader />}>
       <PrivateRoute children={<AboutSectionAdd />} />
     </Suspense>

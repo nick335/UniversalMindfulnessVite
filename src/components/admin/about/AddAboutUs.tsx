@@ -7,7 +7,7 @@ const AddAboutUs = () => {
     <SectionBody>
       <div className='pb-5'>
         <SectionHeader 
-          header='create What We Offer'
+          header='create an about us section'
           btnName='add'
           routePath='/admin/dashboard/aboutus/add'
         />
