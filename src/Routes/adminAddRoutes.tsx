@@ -12,6 +12,7 @@ import AdminAboutGallery from "../pages/add/AdminAboutGallery";
 import AdminVideosAdd from "../pages/add/AdminVideosAdd";
 import ServiceAdd from "../pages/add/ServiceAdd";
 import WhatWeOfferAdd from "../pages/add/WhatWeOfferAdd";
+import AboutSectionAdd from "../pages/add/AboutSectionAdd";
 
 
 const adminAddRoutes = [
@@ -34,6 +35,12 @@ const adminAddRoutes = [
   {
     path: '/admin/dashboard/whatweoffer/add',
     element: <Suspense fallback={<PageLoader />} ><PrivateRoute children={<WhatWeOfferAdd />} /></Suspense>
+  },
+  {
+    path: '/admin/dashboard/about/add',
+    element: <Suspense fallback={<PageLoader />}>
+      <PrivateRoute children={<AboutSectionAdd />} />
+    </Suspense>
   },
   {
     path: '/admin/dashboard/about/meettheteam/add',

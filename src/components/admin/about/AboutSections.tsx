@@ -7,6 +7,7 @@ import { nanoid } from "nanoid"
 import AdminContentLoader from "../../utility/Loader/AdminContentLoader"
 import ErrorMessage2 from "../../utility/Error/ErrorMessage2"
 import NoContent from "../../utility/admin/contentdisplay/NoContent"
+import AddAboutUs from "./AddAboutUs"
 
 
 const AboutSections = () => {
@@ -24,10 +25,12 @@ const AboutSections = () => {
               body={each.body1}
               img={each.link1}
               routePath={'/admin/dashboard/about/edit/'}
+              section={each.section}
           />
   })
   return (
     <div className="adminSectionsGridLayout">
+      <AddAboutUs />
       {
         isLoading ? <AdminContentLoader /> : error ? <ErrorMessage2 error={error} /> : contentDisplay.length === 0 ? <NoContent /> : contentDisplay
       }

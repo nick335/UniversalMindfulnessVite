@@ -61,6 +61,7 @@ export type aboutSectionResponseType = {
   title: string
   body1: string
   link1:string
+  section: string
 }
 
 export type whatweofferSectionResponseType = {
