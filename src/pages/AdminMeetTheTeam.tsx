@@ -8,6 +8,7 @@ import { nanoid } from "nanoid"
 import AdminContentLoader from "../components/utility/Loader/AdminContentLoader"
 import NoContent from "../components/utility/admin/contentdisplay/NoContent"
 import ErrorMessage2 from "../components/utility/Error/ErrorMessage2"
+import EditHeaderComponent from "../components/admin/utility/EditHeaderComponent"
 
 const AdminMeetTheTeam = () => {
   const { data, isLoading, error } = useQuery(['team'], () => getContent({section: 'team'}))
@@ -28,6 +29,10 @@ const AdminMeetTheTeam = () => {
   if(error) return <ErrorMessage2 error={error} />
   return (
     <div className="pb-12">
+      <div className="mb-6">
+        <EditHeaderComponent page='meet the team' value="meettheteam" />
+      </div>
+      
       <SectionBody>
         <SectionHeader 
           header="meet the team"

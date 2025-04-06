@@ -7,6 +7,7 @@ import { nanoid } from "nanoid"
 import AdminContentLoader from "../components/utility/Loader/AdminContentLoader"
 import ErrorMessage2 from "../components/utility/Error/ErrorMessage2"
 import AddWhatWeOffer from "../components/admin/whatweoffer/AddWhatWeOffer"
+import EditHeaderComponent from "../components/admin/utility/EditHeaderComponent"
 
 const AdminWhatWeOffer = () => {
   const { data, isLoading, error } = useQuery(['whatweoffer'], () => getContent({
@@ -27,6 +28,7 @@ const AdminWhatWeOffer = () => {
   })
   return (
     <div className='adminSectionsGridLayout'>
+      <EditHeaderComponent  page='What we offer' value="whatweoffer" />
       <AddWhatWeOffer />
       {
         isLoading ? <AdminContentLoader /> : error ? <ErrorMessage2 error={error} /> : contentDisplay.length === 0 ? <NoContent /> : contentDisplay

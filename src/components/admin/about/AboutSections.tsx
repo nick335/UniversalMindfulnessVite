@@ -8,6 +8,7 @@ import AdminContentLoader from "../../utility/Loader/AdminContentLoader"
 import ErrorMessage2 from "../../utility/Error/ErrorMessage2"
 import NoContent from "../../utility/admin/contentdisplay/NoContent"
 import AddAboutUs from "./AddAboutUs"
+import EditHeaderComponent from "../utility/EditHeaderComponent"
 
 
 const AboutSections = () => {
@@ -30,6 +31,7 @@ const AboutSections = () => {
   })
   return (
     <div className="adminSectionsGridLayout">
+      <EditHeaderComponent page='About Us' value="about" />
       <AddAboutUs />
       {
         isLoading ? <AdminContentLoader /> : error ? <ErrorMessage2 error={error} /> : contentDisplay.length === 0 ? <NoContent /> : contentDisplay

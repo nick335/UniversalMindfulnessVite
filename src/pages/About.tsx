@@ -4,12 +4,12 @@ import CustomAboutAccordion from "../components/about/CustomAboutAccordion"
 import DesktopAbout from "../components/about/DesktopAbout"
 import PageTransition from "../components/utility/motion/PageTransition"
 import SEOPageHeader from "../components/utility/seo/SEOPageHeader"
-import PageHeaderSection from "../components/utility/subHeaders/PageHeaderSection"
 import Subheader from "../components/utility/subHeaders/Subheader"
 import useWindowDimensions from "../hooks/UseWindowDimensions"
 import { aboutSectionResponseType } from "../types/api/response"
 import AdminContentLoader from "../components/utility/Loader/AdminContentLoader"
 import ErrorMessage3 from "../components/utility/Error/ErrorMessage3"
+import FetchSubHeader from "../components/utility/subHeaders/FetchSubHeader"
 
 const About = () => {
   const { width }  = useWindowDimensions()
@@ -23,10 +23,10 @@ const About = () => {
         page="About us"
       />
       <Subheader header='About Us' />
-      <PageHeaderSection 
-        header='The world’s destination for emotional intelligence'
-        para="Mindfulness is a way of paying attention to, and seeing what is happening in our lives with clarity."
-        max="41.75"
+      <FetchSubHeader 
+        page='about'
+        value='about'
+        max='51.25'
       />
       { isLoading ? 
       <div className="mt-[2.43rem] h-[50vh] flexCenter">

@@ -10,6 +10,7 @@ import AdminMeetTheTeamEdit from "../pages/edit/AdminMeetTheTeamEdit";
 import AdminParentTestimonialEdit from "../pages/edit/AdminParentTestimonialEdit";
 import AdminChildrenTestimonialEdit from "../pages/edit/AdminChildrenTestimonialEdit";
 import ServiceEdit from "../pages/edit/ServiceEdit";
+import PageHeaderEditForm from "../components/admin/utility/PageHeaderEditForm";
 
 
 
@@ -50,6 +51,26 @@ const adminEditRoutes = [
     path: '/admin/dashboard/events/edit/:id',
     element: <Suspense><PrivateRoute children={<AdminEventsEdit />} /></Suspense>
   },
+  {
+    path: '/admin/dashboard/events/editHeader',
+    element: <Suspense><PrivateRoute children={<PageHeaderEditForm page="events" value="events" />} /></Suspense>
+  },
+  {
+    path: '/admin/dashboard/meettheteam/editHeader',
+    element: <Suspense><PrivateRoute children={<PageHeaderEditForm page="meet the team" value="team" />} /></Suspense>
+  },
+  {
+    path: '/admin/dashboard/about/editHeader',
+    element: <Suspense><PrivateRoute children={<PageHeaderEditForm page="about" value="about" />} /></Suspense>
+  },
+  {
+    path: '/admin/dashboard/whatweoffer/editHeader',
+    element: <Suspense><PrivateRoute children={<PageHeaderEditForm page="whatweoffer" value="whatweoffer" />} /></Suspense>
+  },
+  {
+    path: '/admin/dashboard/testimonial/editHeader',
+    element: <Suspense><PrivateRoute children={<PageHeaderEditForm page="testimonial" value="testimonial" />} /></Suspense>
+  }
 ]
 
 export default adminEditRoutes

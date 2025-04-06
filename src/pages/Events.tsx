@@ -1,6 +1,5 @@
 import PageTransition from '../components/utility/motion/PageTransition'
 import Subheader from '../components/utility/subHeaders/Subheader'
-import PageHeaderSection from '../components/utility/subHeaders/PageHeaderSection'
 import Event from '../components/events/Event'
 import SEOPageHeader from '../components/utility/seo/SEOPageHeader'
 import { useQuery } from '@tanstack/react-query'
@@ -11,6 +10,7 @@ import { nanoid } from 'nanoid'
 import ErrorMessage3 from '../components/utility/Error/ErrorMessage3'
 import NoContent from '../components/utility/admin/contentdisplay/NoContent'
 import SEOPageDescription from '../components/utility/seo/SEOPageDescription'
+import FetchSubHeader from '../components/utility/subHeaders/FetchSubHeader'
 
 const Events = () => {
   const { data, isLoading, error } = useQuery(['event'], () => getContent({section: 'event'}))
@@ -40,10 +40,10 @@ const Events = () => {
         desc='Join Universal Mindfulness events to explore and unlock your true potential. Experience transformative sessions designed to enhance mindfulness, personal growth, and self-discovery. Embrace the power of presence and start your journey towards a more fulfilling life today.'
       />
       <Subheader header='Events' />
-      <PageHeaderSection 
-        header='Providing emotional intelligence and mindfulness in adults and kids.'
-        para='Throughout the year, we offer adult workshops, kids clubs and training programmes focused on developing emotional intelligence and mindfulness.'
-        max='57.125'
+      <FetchSubHeader 
+        page='events'
+        value='events'
+        max='57.25'
       />
       <section className='mt-7 lg:mt-12 lg:mb-32'>
         {
