@@ -58,7 +58,6 @@ const PageHeaderEditForm = ({ page, value }: props) => {
       const content: any = data?.data.data || []
 
       if(content.length > 0){
-        console.log(content[0])
         setValue('name', content[0].title)
         setValue('summary', content[0].body1)
         setValue('image', content[0].link1)
@@ -77,7 +76,6 @@ const PageHeaderEditForm = ({ page, value }: props) => {
   }, [isLoading, error])
 
   const onSubmit: SubmitHandler<FormSchemaType> = async (data) => {
-    console.log(data)
     try{
       await mutation.mutateAsync({
         id: `${data.id}`,
@@ -95,7 +93,6 @@ const PageHeaderEditForm = ({ page, value }: props) => {
   if(isLoading || pageLoading) return <AdminContentLoader />
   if(error) return <ErrorMessage2 error={error} />
   if(notFound) return <ErrorPage />
-  console.log(errors)
   return (
     <div>
       <form onSubmit={handleSubmit(onSubmit)} className='adminForm'>

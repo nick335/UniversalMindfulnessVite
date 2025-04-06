@@ -113,7 +113,7 @@ const ServiceEdit = () => {
         }
       })
     }catch(error){
-      console.log(error)
+      showToast('Error uploading content', 'error')
     }
   }
   if(isLoading || pageLoading) return <AdminContentLoader />

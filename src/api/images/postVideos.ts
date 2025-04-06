@@ -8,11 +8,6 @@ export const postVideos = async (payload: postVideoPayload ) => {
   formData.append('title', payload.title)
   formData.append(`images[0]`, payload.video)
   formData.append(`images[1]`, payload.video)
-  console.log('Sending FormData:', formData);
-
-  console.log({
-    payload
-  })
 
   const response = await axiosInstance2.post('images', formData)
 

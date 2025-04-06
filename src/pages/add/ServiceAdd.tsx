@@ -70,7 +70,7 @@ const ServiceAdd = () => {
         image1: imgFile,
       })
     }catch(error){
-      console.log(error)
+      showToast('Error uploading content', 'error')
     }
   }
   return (
