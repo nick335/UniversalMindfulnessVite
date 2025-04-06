@@ -1,18 +1,13 @@
-// import React from 'react'
 import { z } from "zod"
 import { SubmitHandler, useForm } from "react-hook-form"
 import { zodResolver } from '@hookform/resolvers/zod'
 import {  useEffect, useState } from "react"
-// import ErrorMessage2 from '../../components/utility/Error/ErrorMessage2'
-// import ErrorPage from '../ErrorPage'
 import FormTextInput from '../../utility/form/FormTextInput'
 import { useMutation,  useQuery,  useQueryClient } from '@tanstack/react-query'
 import showToast from '../../../utilsFunction/showToast'
 import InputDesc from '../../utility/form/InputDesc'
 import FormRow from '../../utility/form/FormRow'
 import Update from '../../utility/admin/buttons/Update'
-// import { editContent } from '../../../api/content/editContent'
-import { postContent } from "../../../api/content/postContent"
 import ErrorHandler from "../../../utilsFunction/ErrorHandler"
 import { getQueryOptions } from "../../../utilsFunction/queryconst"
 import { getContent } from "../../../api/content/getContent"
@@ -26,7 +21,7 @@ interface props {
 }
 
 const PageHeaderEditForm = ({ page, value }: props) => {
-  const [imgFile, setImgFile] = useState<Blob>()
+  const [imgFile, setImgFile] = useState<Blob | undefined>(undefined)
   const [pageLoading, setPageLoading] = useState(true)
   const [notFound, setNotFound] = useState(false)
   const {data, isLoading, error} = useQuery([`${page}-header-edit`], () => getContent({
@@ -69,6 +64,7 @@ const PageHeaderEditForm = ({ page, value }: props) => {
         setValue('image', content[0].link1)
         setValue('id', content[0].id)
         setPageLoading(false)
+        setImgFile(undefined)
       }else{
         setPageLoading(false)
         setNotFound(true)
@@ -89,7 +85,7 @@ const PageHeaderEditForm = ({ page, value }: props) => {
           section: `${value}Header`,
           title: data.name,
           body1: data.summary,
-          ...( imgFile && {image1: imgFile}),
+          ...( imgFile && {image1: imgFile as Blob}),
         }
       })
     }catch(error){
