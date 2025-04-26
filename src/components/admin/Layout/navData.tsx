@@ -54,7 +54,13 @@ const data = [
     name: 'newsletter',
     routeName: 'newsletter',
     img: testimonial
+  },
+  {
+    name: 'contact us',
+    routeName: "contactus",
+    img: blog
   }
+  
 ]
 
 export default data

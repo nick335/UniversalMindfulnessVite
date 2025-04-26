@@ -11,6 +11,7 @@ import AdminParentTestimonialEdit from "../pages/edit/AdminParentTestimonialEdit
 import AdminChildrenTestimonialEdit from "../pages/edit/AdminChildrenTestimonialEdit";
 import ServiceEdit from "../pages/edit/ServiceEdit";
 import PageHeaderEditForm from "../components/admin/utility/PageHeaderEditForm";
+import AdminContactUsEdit from "../pages/edit/AdminContactUsEdit";
 
 
 
@@ -70,6 +71,10 @@ const adminEditRoutes = [
   {
     path: '/admin/dashboard/testimonial/editHeader',
     element: <Suspense><PrivateRoute children={<PageHeaderEditForm page="testimonial" value="testimonial" />} /></Suspense>
+  },
+  {
+    path: '/admin/dashboard/contactus',
+    element: <Suspense><PrivateRoute children={<AdminContactUsEdit />} /></Suspense>
   }
 ]
 

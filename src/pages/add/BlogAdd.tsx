@@ -158,7 +158,7 @@ const BlogAdd = () => {
           />
         </FormRow>
         <div className='adminBtns'>
-        <Delete isLoading={mutation.isLoading} handleDelete={handleDelete} />
+          <Delete isLoading={mutation.isLoading} handleDelete={handleDelete} />
           <Update isLoading={mutation.isLoading} />
         </div>
       </form>
