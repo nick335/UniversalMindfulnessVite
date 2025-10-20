@@ -9,6 +9,8 @@ const AddWhatWeOffer = () => {
           header='create What We Offer'
           btnName='add'
           routePath='/admin/dashboard/whatweoffer/add'
+          secondaryBtnName='Rearrange order'
+          secondaryRoutePath='/admin/dashboard/whatweoffer/rearrange'
         />
       </div>   
     </SectionBody>

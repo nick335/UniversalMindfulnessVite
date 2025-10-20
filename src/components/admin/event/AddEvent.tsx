@@ -9,6 +9,8 @@ const AddEvent = () => {
           header='create Event'
           btnName='add'
           routePath='/admin/dashboard/events/add'
+          secondaryBtnName='Rearrange order'
+          secondaryRoutePath='/admin/dashboard/events/rearrange'
         />
       </div>   
     </SectionBody>

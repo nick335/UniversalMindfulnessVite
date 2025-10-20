@@ -1,4 +1,4 @@
-import FormQuillInput from "../../components/utility/form/FormQuillInput"
+import FormTiptapInput from "../../components/utility/form/FormTiptapInput"
 import FormRow from "../../components/utility/form/FormRow"
 import FormTextInput from "../../components/utility/form/FormTextInput"
 import InputDesc from "../../components/utility/form/InputDesc"
@@ -123,7 +123,7 @@ const BlogAdd = () => {
             inputLabel="body"
             inputDescInfo="This refers to the Content related to the of the article you want to publish."
           />
-          <FormQuillInput  
+          <FormTiptapInput
             label="body"
             value={blogContent}
             error={errors.blogContent}

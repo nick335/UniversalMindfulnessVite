@@ -10,6 +10,8 @@ const AddAboutUs = () => {
           header='create an about us section'
           btnName='add'
           routePath='/admin/dashboard/aboutus/add'
+          secondaryBtnName='Rearrange sections'
+          secondaryRoutePath='/admin/dashboard/about/rearrange'
         />
       </div>  
     </SectionBody>

@@ -28,7 +28,7 @@ const AdminEvents = () => {
   return (
     <div className="adminSectionsGridLayout">
       <EditHeaderComponent page='events' value="events" />
-      <AddEvent />s
+      <AddEvent />
       
       {
         isLoading ? <AdminContentLoader /> : contentDisplay.length  === 0 ? <NoContent /> : contentDisplay

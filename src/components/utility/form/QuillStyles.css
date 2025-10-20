@@ -1,9 +1,0 @@
-/* styles.css */
-.ql-editor {
-  @apply min-h-[34rem] border-adminInputInactive rounded-b-lg;
-}
-
-/* Customize toolbar styles */
-.ql-toolbar {
-  @apply border-adminInputInactive rounded-t-lg;
-}

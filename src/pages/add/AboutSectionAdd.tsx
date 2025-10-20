@@ -1,7 +1,7 @@
 import FormRow from '../../components/utility/form/FormRow'
 import FormRow2 from '../../components/utility/form/FormRow2'
 import InputDesc from '../../components/utility/form/InputDesc'
-import FormQuillInput from '../../components/utility/form/FormQuillInput'
+import FormTiptapInput from '../../components/utility/form/FormTiptapInput'
 import InputImage from '../../components/utility/form/InputImage'
 import { useMutation, useQueryClient } from '@tanstack/react-query'
 import showToast from '../../utilsFunction/showToast'
@@ -116,7 +116,7 @@ const AboutSectionAdd = () => {
             inputLabel="body"
             inputDescInfo="This refers to the Content of the about section."
           />
-          <FormQuillInput  
+          <FormTiptapInput
             label="body"
             value={sectionContent}
             error={errors.sectionContent}

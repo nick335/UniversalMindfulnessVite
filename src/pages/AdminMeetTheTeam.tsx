@@ -32,12 +32,13 @@ const AdminMeetTheTeam = () => {
       <div className="mb-6">
         <EditHeaderComponent page='meet the team' value="meettheteam" />
       </div>
-      
       <SectionBody>
         <SectionHeader 
           header="meet the team"
           btnName="add"
           routePath="/admin/dashboard/about/meettheteam/add"
+          secondaryBtnName="Rearrange order"
+          secondaryRoutePath="/admin/dashboard/about/meettheteam/rearrange"
         />
         <div className="adminGridLayout1">
           {

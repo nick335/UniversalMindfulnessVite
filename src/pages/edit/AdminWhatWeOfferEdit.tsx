@@ -3,7 +3,7 @@ import FormRow from '../../components/utility/form/FormRow'
 import InputDesc from '../../components/utility/form/InputDesc'
 import FormTextInput from '../../components/utility/form/FormTextInput'
 import FormRow2 from '../../components/utility/form/FormRow2'
-import FormQuillInput from '../../components/utility/form/FormQuillInput'
+import FormTiptapInput from '../../components/utility/form/FormTiptapInput'
 import InputImage from '../../components/utility/form/InputImage'
 import { z } from 'zod'
 import { SubmitHandler, useForm } from 'react-hook-form'
@@ -205,7 +205,7 @@ const AdminWhatWeOfferEdit = () => {
             inputLabel="body1"
             inputDescInfo="This refers to the Content of the top section."
           />
-          <FormQuillInput  
+          <FormTiptapInput
             label="body"
             value={body1}
             error={errors.body1}
@@ -231,7 +231,7 @@ const AdminWhatWeOfferEdit = () => {
             inputLabel="body2"
             inputDescInfo="This refers to the Content of the bottom section."
           />
-          <FormQuillInput  
+          <FormTiptapInput
             label="body"
             value={body2}
             error={errors.body2}

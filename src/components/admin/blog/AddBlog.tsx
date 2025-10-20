@@ -9,6 +9,8 @@ const AddBlog = () => {
           header='create Blog'
           btnName='add'
           routePath='/admin/dashboard/blog/add'
+          secondaryBtnName='Rearrange order'
+          secondaryRoutePath='/admin/dashboard/blog/rearrange'
         />
       </div>   
     </SectionBody >

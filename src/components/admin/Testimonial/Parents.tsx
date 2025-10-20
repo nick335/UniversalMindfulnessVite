@@ -33,6 +33,8 @@ const Parents = () => {
         header='parent testimonial'
         btnName='add'
         routePath='/admin/dashboard/testimonial/parent/add'
+        secondaryBtnName='Rearrange order'
+        secondaryRoutePath='/admin/dashboard/testimonial/parent/rearrange'
       />
       <div className='grid grid-cols-3 mt-10 gap-10'>
         {

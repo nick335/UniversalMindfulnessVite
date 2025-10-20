@@ -1,7 +1,7 @@
 import FormRow from '../../components/utility/form/FormRow'
 import InputDesc from '../../components/utility/form/InputDesc'
 import FormTextInput from '../../components/utility/form/FormTextInput'
-import FormQuillInput from '../../components/utility/form/FormQuillInput'
+import FormTiptapInput from '../../components/utility/form/FormTiptapInput'
 import InputImage from '../../components/utility/form/InputImage'
 import Update from '../../components/utility/admin/buttons/Update'
 import Delete from '../../components/utility/admin/buttons/delete'
@@ -105,7 +105,7 @@ const EventsAdd = () => {
             inputLabel='event description'
             inputDescInfo='This refers to the description of the event you want to publish.'
           />
-          <FormQuillInput 
+          <FormTiptapInput
             label='event description'
             value={EventSummary}
             error={errors.eventSummary}

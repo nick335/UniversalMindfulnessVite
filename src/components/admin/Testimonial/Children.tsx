@@ -33,6 +33,8 @@ const Children = () => {
         header='children testimonial'
         btnName='add'
         routePath='/admin/dashboard/testimonial/children/add'
+        secondaryBtnName='Rearrange order'
+        secondaryRoutePath='/admin/dashboard/testimonial/children/rearrange'
       />
       <div className='adminGridLayout1'>
         {

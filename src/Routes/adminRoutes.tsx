@@ -14,6 +14,13 @@ const AdminEvents = lazy(() => import('../pages/AdminEvents'))
 const AdminWhatWeOffer = lazy(() => import('../pages/AdminWhatWeOffer'))
 const AdminVideos = lazy(() => import('../pages/AdminVideo'))
 const AdminNewsLetter = lazy(() => import('../pages/AdminNewsLetter'))
+const AdminAboutReorder = lazy(() => import('../pages/AdminAboutReorder'))
+const AdminMeetTheTeamReorder = lazy(() => import('../pages/AdminMeetTheTeamReorder'))
+const AdminWhatWeOfferReorder = lazy(() => import('../pages/AdminWhatWeOfferReorder'))
+const AdminEventsReorder = lazy(() => import('../pages/AdminEventsReorder'))
+const AdminBlogReorder = lazy(() => import('../pages/AdminBlogReorder'))
+const AdminParentTestimonialReorder = lazy(() => import('../pages/AdminParentTestimonialReorder'))
+const AdminChildrenTestimonialReorder = lazy(() => import('../pages/AdminChildrenTestimonialReorder'))
 
 
 const adminRoutes = [
@@ -26,16 +33,36 @@ const adminRoutes = [
     element: <Suspense fallback={<PageLoader />}><PrivateRoute children={<AdminTestimonial />} /></Suspense> 
   },
   {
+    path: '/admin/dashboard/testimonial/parent/rearrange',
+    element: <Suspense fallback={<PageLoader />}><PrivateRoute children={<AdminParentTestimonialReorder />} /></Suspense>
+  },
+  {
+    path: '/admin/dashboard/testimonial/children/rearrange',
+    element: <Suspense fallback={<PageLoader />}><PrivateRoute children={<AdminChildrenTestimonialReorder />} /></Suspense>
+  },
+  {
     path: '/admin/dashboard/events',
     element: <Suspense fallback={<PageLoader />}><PrivateRoute children={<AdminEvents />}/></Suspense> 
+  },
+  {
+    path: '/admin/dashboard/events/rearrange',
+    element: <Suspense fallback={<PageLoader />}><PrivateRoute children={<AdminEventsReorder />} /></Suspense>
   },
   {
     path: '/admin/dashboard/blog',
     element: <Suspense fallback={<PageLoader />}><PrivateRoute children={<AdminBlog />} /></Suspense> 
   },
   {
+    path: '/admin/dashboard/blog/rearrange',
+    element: <Suspense fallback={<PageLoader />}><PrivateRoute children={<AdminBlogReorder />} /></Suspense>
+  },
+  {
     path: '/admin/dashboard/whatweoffer',
     element: <Suspense fallback={<PageLoader />}><PrivateRoute children={<AdminWhatWeOffer />} /></Suspense> 
+  },
+  {
+    path: '/admin/dashboard/whatweoffer/rearrange',
+    element: <Suspense fallback={<PageLoader />}><PrivateRoute children={<AdminWhatWeOfferReorder />} /></Suspense>
   },
   {
     path: '/admin/dashboard/newsletter',
@@ -56,6 +83,14 @@ const adminRoutes = [
       {
         path: '/admin/dashboard/about',
         element: <Suspense fallback={<PageLoader />}><PrivateRoute  children={<AboutSections />}/></Suspense> 
+      },
+      {
+        path: '/admin/dashboard/about/rearrange',
+        element: <Suspense fallback={<PageLoader />}><PrivateRoute children={<AdminAboutReorder />} /></Suspense>
+      },
+      {
+        path: '/admin/dashboard/about/meettheteam/rearrange',
+        element: <Suspense fallback={<PageLoader />}><PrivateRoute children={<AdminMeetTheTeamReorder />} /></Suspense>
       },
       {
         path: '/admin/dashboard/about/meettheteam',
