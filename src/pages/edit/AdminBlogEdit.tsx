@@ -31,7 +31,7 @@ const AdminBlogEdit = () => {
   const [pageLoading, setPageLoading] = useState(true)
   const [contentId, setContentId] = useState('')
   const params = useParams()
-  const { data, isLoading, error } = useQuery(['blogs-edit'], () => getContent({
+  const { data, isLoading, error } = useQuery(['blogs'], () => getContent({
     section: 'blogs'
   }), getQueryOptions())
   const [imgFile, setImgFile] = useState<Blob>()
@@ -43,9 +43,8 @@ const AdminBlogEdit = () => {
       setPreviewImage('')
       setBlogContent('')
       reset()
-      showToast('Content uploaded Successfully', 'success')
+      showToast('Content updated Successfully', 'success')
       queryClient.invalidateQueries(['blogs'])
-      queryClient.invalidateQueries(['blogs-edit'])
     }
   })
 
@@ -102,20 +101,27 @@ const AdminBlogEdit = () => {
   }
   const onImageChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const file = event.target.files && event.target.files[0];
-  
+
     if (file && validateImages(file)) {
       const imgUrl = URL.createObjectURL(file);
+      if (PreviewImage.startsWith('blob:')) URL.revokeObjectURL(PreviewImage);
       setImgFile(file)
       setValue("image", imgUrl);
       setPreviewImage(imgUrl);
     } else {
-      showToast('Only jpeg, jpg, png, and gif images are allowed, and file size must not exceed the maximum limit of 1.5MB', 'error');
+      showToast('Only jpeg, jpg, png, and gif images are allowed, and file size must not exceed the maximum limit of 5MB', 'error');
     }
   };
   const deleteImg = () => {
+    if (PreviewImage.startsWith('blob:')) URL.revokeObjectURL(PreviewImage);
     setPreviewImage('')
     setValue('image', '')
   }
+  useEffect(() => {
+    return () => {
+      if (PreviewImage.startsWith('blob:')) URL.revokeObjectURL(PreviewImage);
+    }
+  }, [PreviewImage])
   const onSubmit : SubmitHandler<FormSchemaType> = async (data) => {
     try{
       await mutation.mutateAsync({

@@ -10,7 +10,7 @@ import { SubmitHandler, useForm } from "react-hook-form"
 import { zodResolver } from '@hookform/resolvers/zod'
 import { validateImages } from '../../utilsFunction/ValidateImages'
 import showToast from '../../utilsFunction/showToast'
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import FormRow2 from "../../components/utility/form/FormRow2"
 import { useMutation, useQueryClient } from "@tanstack/react-query"
 import { postContent } from "../../api/content/postContent"
@@ -55,20 +55,27 @@ const BlogAdd = () => {
   }
   const onImageChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const file = event.target.files && event.target.files[0];
-  
+
     if (file && validateImages(file)) {
       const imgUrl = URL.createObjectURL(file);
+      if (PreviewImage.startsWith('blob:')) URL.revokeObjectURL(PreviewImage);
       setImgFile(file)
       setValue("image", imgUrl);
       setPreviewImage(imgUrl);
     } else {
-      showToast('Only jpeg, jpg, png, and gif images are allowed, and file size must not exceed the maximum limit of 1.5MB', 'error');
+      showToast('Only jpeg, jpg, png, and gif images are allowed, and file size must not exceed the maximum limit of 5MB', 'error');
     }
   };
   const deleteImg = () => {
+    if (PreviewImage.startsWith('blob:')) URL.revokeObjectURL(PreviewImage);
     setPreviewImage('')
     setValue('image', '')
   }
+  useEffect(() => {
+    return () => {
+      if (PreviewImage.startsWith('blob:')) URL.revokeObjectURL(PreviewImage);
+    }
+  }, [PreviewImage])
   const onSubmit : SubmitHandler<FormSchemaType> = async (data) => {
     try{
       await mutation.mutateAsync({
@@ -134,7 +141,7 @@ const BlogAdd = () => {
         <FormRow>
           <InputDesc 
             inputLabel='upload image'
-            inputDescInfo='Image uploaded must be a .png or jpeg file of the dimension 584px(w) * 950px(h) below. '
+            inputDescInfo='Image uploaded must be a .png or jpeg file of the dimension 584px(w) * 950px(h), and must not exceed 5MB.'
           />
           <InputImage 
             image={PreviewImage}

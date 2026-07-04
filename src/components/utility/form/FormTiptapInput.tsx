@@ -4,12 +4,14 @@ import StarterKit from '@tiptap/starter-kit'
 import Underline from '@tiptap/extension-underline'
 import TextAlign from '@tiptap/extension-text-align'
 import Link from '@tiptap/extension-link'
-import { TextStyle, FontSize } from '@tiptap/extension-text-style'
+import { TextStyle, FontSize, FontFamily } from '@tiptap/extension-text-style'
 import { Color } from '@tiptap/extension-color'
+import Image from '@tiptap/extension-image'
 import './TiptapStyles.css'
 import { FieldError, Merge } from "react-hook-form"
 import ErrorMessage from '../Error/ErrorMessage'
 import { useEffect } from 'react'
+import { transformPastedHTML } from './pasteTransform'
 
 interface props {
   label: string
@@ -30,7 +32,12 @@ const FormTiptapInput = ({ label, error, errorMessage, value, onChange }: props)
       Underline,
       TextStyle.configure(),
       FontSize.configure(),
+      FontFamily.configure(),
       Color.configure(),
+      Image.configure({
+        inline: false,
+        allowBase64: true,
+      }),
       TextAlign.configure({
         types: ['heading', 'paragraph'],
       }),
@@ -50,6 +57,7 @@ const FormTiptapInput = ({ label, error, errorMessage, value, onChange }: props)
       attributes: {
         class: 'tiptap-editor',
       },
+      transformPastedHTML: (html) => transformPastedHTML(html),
     },
   })
 
