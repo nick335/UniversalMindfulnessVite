@@ -1,6 +1,7 @@
 import YouMightLIkeThis from "./YouMightLIkeThis"
 import ContentIdentity from "./ContentIdentity"
 import ContentText from "./ContentText"
+import ShareBlog from "./ShareBlog"
 import imgBaseUrl from "../../../store/ImgBaseUrl"
 
 interface props {
@@ -10,9 +11,10 @@ interface props {
   img: string
   writtenBy: string,
   createdAt: string | undefined
+  blogId?: number
 }
 
-const ContentPage = ({header, body, category, img, writtenBy, createdAt}: props) => {
+const ContentPage = ({header, body, category, img, writtenBy, createdAt, blogId}: props) => {
 
   return (
     <div className="mt-8">
@@ -26,6 +28,7 @@ const ContentPage = ({header, body, category, img, writtenBy, createdAt}: props)
         date={createdAt}
       />
       <ContentText body={body} />
+      <ShareBlog title={header} blogId={blogId} />
       <YouMightLIkeThis />
     </div>
   )

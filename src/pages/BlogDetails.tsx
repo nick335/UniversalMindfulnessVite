@@ -39,13 +39,14 @@ const BlogDetails = () => {
         <SEOPageHeader 
           page={actualContent.title}
         />
-        <ContentPage 
+        <ContentPage
           category={actualContent.sub_section}
           header={actualContent.title}
           writtenBy={actualContent.header}
           img={actualContent.link1}
           body={actualContent.body1}
           createdAt={actualContent.created_at}
+          blogId={actualContent.id}
         />
       </div>
       
