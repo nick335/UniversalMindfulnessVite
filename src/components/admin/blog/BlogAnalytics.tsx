@@ -1,6 +1,6 @@
 import SectionBody from '../../utility/admin/section/sectionBody'
 import { blogResponseType, blogSharesType } from '../../../types/api/response'
-import { getBlogClicks } from '../../../utilsFunction/blogClicks'
+import { getBlogViews } from '../../../utilsFunction/blogViews'
 import { shareChannels, sumSharesByChannel } from '../../../utilsFunction/blogShares'
 import { FaFacebookF, FaLinkedinIn, FaWhatsapp, FaXTwitter } from 'react-icons/fa6'
 import { MdContentCopy, MdIosShare, MdShare } from 'react-icons/md'
@@ -26,17 +26,17 @@ const getChannelMeta = (channel: string) =>
 interface props {
   blogs: blogResponseType[]
   isLoading?: boolean
-  totalCount?: number // aggregate clicks across all matching blogs, from the API
+  totalCount?: number // aggregate views across all matching blogs, from the API
   totalShares?: blogSharesType // aggregate per-channel shares across all matching blogs, from the API
 }
 
 const BlogAnalytics = ({ blogs, isLoading, totalCount, totalShares }: props) => {
-  const withClicks = blogs
-    .map((blog) => ({ ...blog, clicks: getBlogClicks(blog) }))
-    .sort((a, b) => b.clicks - a.clicks)
-  const totalClicks = totalCount ?? withClicks.reduce((sum, blog) => sum + blog.clicks, 0)
-  const topBlogs = withClicks.slice(0, TOP_BLOGS_SHOWN)
-  const maxClicks = topBlogs[0]?.clicks || 1
+  const withViews = blogs
+    .map((blog) => ({ ...blog, views: getBlogViews(blog) }))
+    .sort((a, b) => b.views - a.views)
+  const totalViews = totalCount ?? withViews.reduce((sum, blog) => sum + blog.views, 0)
+  const topBlogs = withViews.slice(0, TOP_BLOGS_SHOWN)
+  const maxViews = topBlogs[0]?.views || 1
 
   const channelTotals = totalShares ?? sumSharesByChannel(blogs)
   const totalSharesCount = Object.values(channelTotals).reduce((sum, n) => sum + n, 0)
@@ -68,9 +68,9 @@ const BlogAnalytics = ({ blogs, isLoading, totalCount, totalShares }: props) => 
           </p>
         </div>
         <div className='rounded-md border border-formBorder bg-bgSubHeader/60 px-6 py-5'>
-          <p className='text-sm text-textSecondary/70'>Total clicks</p>
+          <p className='text-sm text-textSecondary/70'>Total views</p>
           <p className='mt-1 text-[2.5rem] leading-none font-bold text-textSecondary'>
-            {isLoading ? '—' : totalClicks.toLocaleString()}
+            {isLoading ? '—' : totalViews.toLocaleString()}
           </p>
         </div>
         <div className='rounded-md border border-formBorder bg-bgSubHeader/60 px-6 py-5'>
@@ -104,7 +104,7 @@ const BlogAnalytics = ({ blogs, isLoading, totalCount, totalShares }: props) => 
 
       {!isLoading && topBlogs.length > 0 && (
         <div className='mt-8 pb-4 font-inter'>
-          <h4 className='font-semibold text-textSecondary'>Most clicked blogs</h4>
+          <h4 className='font-semibold text-textSecondary'>Most viewed blogs</h4>
           <ul className='mt-4 space-y-3'>
             {topBlogs.map((blog) => (
               <li key={blog.id} className='grid grid-cols-[minmax(0,1fr)_auto] items-center gap-x-4'>
@@ -113,12 +113,12 @@ const BlogAnalytics = ({ blogs, isLoading, totalCount, totalShares }: props) => 
                   <div className='mt-1 h-1.5 w-full rounded-full bg-bgSubHeader'>
                     <div
                       className='h-full rounded-full bg-headerSecondary'
-                      style={{ width: `${Math.max((blog.clicks / maxClicks) * 100, 2)}%` }}
+                      style={{ width: `${Math.max((blog.views / maxViews) * 100, 2)}%` }}
                     />
                   </div>
                 </div>
                 <span className='text-sm font-semibold text-textSecondary tabular-nums'>
-                  {blog.clicks.toLocaleString()}
+                  {blog.views.toLocaleString()}
                 </span>
               </li>
             ))}
