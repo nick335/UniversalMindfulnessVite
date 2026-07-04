@@ -1,7 +1,8 @@
 import axios from "axios";
 import { getAccessToken } from './getAccessToken';
 
-const API_BASE_URL = "https://myserver.universalmindfulness.co.uk/api/"
+// Override locally via .env.local, e.g. VITE_API_BASE_URL=https://staging.universalmindfulness.co.uk/api/
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || "https://myserver.universalmindfulness.co.uk/api/"
 
 
 //instance for endpoint that do not require validation 
