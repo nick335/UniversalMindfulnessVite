@@ -4,17 +4,32 @@ import ContentDisplayDelete from './ContentDisplayDelete'
 import { blogResponseType } from '../../../../types/api/response'
 import DOMPurify from 'dompurify'
 import { deleteContent } from '../../../../api/content/deleteContent'
+import { getBlogClicks } from '../../../../utilsFunction/blogClicks'
+import { getBlogShares } from '../../../../utilsFunction/blogShares'
+import { MdOutlineVisibility, MdIosShare } from 'react-icons/md'
 
 
-const ContentDisplay4 = ({id, title, header, body1, sub_section, link1, section}: blogResponseType) => {
+const ContentDisplay4 = ({id, title, header, body1, sub_section, link1, section, count, shares}: blogResponseType) => {
   const sanitizedHtml = DOMPurify.sanitize(body1);
+  const clicks = getBlogClicks({ id, count })
+  const { total: totalShares } = getBlogShares({ id, shares })
   return (
     <SectionBody>
-      <SectionHeader 
+      <SectionHeader
         header={title}
         btnName='edit'
         routePath={`/admin/dashboard/blog/edit/${id}`}
       />
+      <div className='mt-3 flex flex-wrap gap-2 font-inter'>
+        <span className='inline-flex items-center gap-x-1.5 rounded-full bg-bgSubHeader px-3 py-1 text-xs font-semibold text-headerSecondary'>
+          <MdOutlineVisibility className='w-4 h-4' />
+          {clicks.toLocaleString()} clicks
+        </span>
+        <span className='inline-flex items-center gap-x-1.5 rounded-full bg-bgSubHeader px-3 py-1 text-xs font-semibold text-headerSecondary'>
+          <MdIosShare className='w-4 h-4' />
+          {totalShares.toLocaleString()} shares
+        </span>
+      </div>
 
       <div className='mt-[1.13rem] font-inter'>
         <div className='w-full aspect-[4/1]'>

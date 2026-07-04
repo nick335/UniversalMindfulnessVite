@@ -46,6 +46,21 @@ export type blogResponseType = {
   section: string
   link1: string // as image link
   created_at?: string // as time when blog was created
+  count?: number // as blog click count
+  shares?: blogSharesType // as per-channel share counts
+  updated_at?: string
+}
+
+// channel keys are dynamic — the backend stores whatever channel strings we send
+export type blogSharesType = {
+  [channel: string]: number
+}
+
+// GET contents?section=blogs — items plus aggregate stats across all matching blogs
+export type blogsListResponseType = {
+  data: blogResponseType[]
+  total_count?: number
+  total_shares?: blogSharesType
 }
 
 export type serviceResponseType = {

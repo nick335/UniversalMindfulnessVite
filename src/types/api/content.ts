@@ -45,6 +45,11 @@ export type postSubscribeToNewsletter = {
 export type patchUpdateBlogCountType = {
   id: number
 }
+export type shareChannelType = 'facebook' | 'x' | 'linkedin' | 'whatsapp' | 'copy' | 'native'
+export type patchUpdateBlogShareType = {
+  id: number
+  channel: shareChannelType
+}
 export type searchPayloadType = {
   search: string,
   page?: number,
