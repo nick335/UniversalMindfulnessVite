@@ -22,11 +22,12 @@ const ContentPage = ({header, body, category, img, writtenBy, createdAt, blogId}
       <div className="w-full max-h-[30.25rem] aspect-[1/1.25] mt-[1.38rem] rounded-lg">
         <img src={`${imgBaseUrl}${img}`} alt={header} className="imgFocus rounded-lg object-cover"/>
       </div>
-      <ContentIdentity 
+      <ContentIdentity
         writtenBy={writtenBy}
         category={category}
         date={createdAt}
       />
+      <ShareBlog title={header} blogId={blogId} className='mt-6' />
       <ContentText body={body} />
       <ShareBlog title={header} blogId={blogId} />
       <YouMightLIkeThis />

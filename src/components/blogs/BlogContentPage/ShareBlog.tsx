@@ -7,11 +7,12 @@ import { shareChannelType } from '../../../types/api/content'
 interface props {
   title: string
   blogId?: number
+  className?: string
 }
 
 const btnClasses = 'flexCenter w-10 h-10 rounded-full bg-bgSubHeader text-headerSecondary hover:bg-headerSecondary hover:text-white transition-colors'
 
-const ShareBlog = ({ title, blogId }: props) => {
+const ShareBlog = ({ title, blogId, className }: props) => {
   const url = window.location.href
   const encodedUrl = encodeURIComponent(url)
   const encodedTitle = encodeURIComponent(title)
@@ -69,7 +70,7 @@ const ShareBlog = ({ title, blogId }: props) => {
   }
 
   return (
-    <div className='mt-10 flex flex-wrap items-center gap-x-4 gap-y-3'>
+    <div className={`${className ?? 'mt-10'} flex flex-wrap items-center gap-x-4 gap-y-3`}>
       <p className='font-semibold'>Share this post:</p>
       <div className='flex items-center gap-x-3'>
         {shareLinks.map((link) => (
